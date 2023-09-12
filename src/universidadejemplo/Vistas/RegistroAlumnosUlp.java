@@ -113,6 +113,7 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
        
         // TODO add your handling code here:
         jDescritorio.removeAll();
+        jDescritorio.repaint();
         // Crea una instancia de tu JInternalFrame
         
         // Agrega el JInternalFrame al JDesktopPane
