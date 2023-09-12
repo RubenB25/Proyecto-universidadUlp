@@ -41,7 +41,7 @@ public class AlumnoData {
             }
             ps.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno" + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno 1" + e.getMessage());
         }
     }
 
@@ -68,7 +68,7 @@ public class AlumnoData {
                 ps.close();
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Errpr al acceder a la tabla Alumno." + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Errpr al acceder a la tabla Alumno. 2" + e.getMessage());
         }
         return alumno;
     }
@@ -96,7 +96,7 @@ public class AlumnoData {
                 ps.close();
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Errpr al acceder a la tabla Alumno." + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Errpr al acceder a la tabla Alumno. 3" + e.getMessage());
         }
         return alumno;
     }
@@ -120,7 +120,7 @@ public class AlumnoData {
             psa.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Alumno " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Alumno 4" + ex.getMessage());
         }
         return alumnos;
     }
@@ -168,7 +168,7 @@ public class AlumnoData {
                 JOptionPane.showMessageDialog(null, "El alumno no existe.");
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno" + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno 5" + e.getMessage());
         }
     }
 
@@ -183,7 +183,7 @@ public class AlumnoData {
             }
             ps.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno" + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno 5" + e.getMessage());
 
         }
     }

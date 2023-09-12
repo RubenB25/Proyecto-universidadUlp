@@ -122,6 +122,7 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         JIInsc.setLocation((desktopSize.width - frameSize.width) / 2, (desktopSize.height - frameSize.height) / 2);
         // Hace que el JInternalFrame sea visible
         JIInsc.setVisible(true);
+        jDescritorio.moveToFront(JIInsc);
     }//GEN-LAST:event_jMIManejoInscActionPerformed
 
     public static void main(String args[]) {
