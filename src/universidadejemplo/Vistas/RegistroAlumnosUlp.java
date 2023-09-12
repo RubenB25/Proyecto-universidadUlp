@@ -4,7 +4,7 @@ import java.awt.Dimension;
 
 /** @author Gabriel*/
 public class RegistroAlumnosUlp extends javax.swing.JFrame {
-
+    public static Inscripciones JIInsc = new Inscripciones();
     public RegistroAlumnosUlp() {
         initComponents();
     //  Para centrar el jDescritorio
