@@ -109,5 +109,18 @@ public class InscripcionData {
 
         }
     }
+public void ActualizarNota(int idAlumno,int idMateria,double nota){
+   try {
+            String sql = "update inscripcion set nota inscripcion WHERE idAlumno=" + idAlumno + " AND " + "idMateria=" + idMateria;
+            PreparedStatement ps = con.prepareStatement(sql);
+            int filasAfectadas = ps.executeUpdate();
 
-}
+            if (filasAfectadas > 0) {
+                
+            JOptionPane.showMessageDialog(null, " Se actualizo la nota en la materia");
+       
+            } else {
+                System.out.println("No se pudo insertar ningún dato.");
+            }
+        } catch (SQLException e) {
+}}}
