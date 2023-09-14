@@ -125,18 +125,18 @@ public void actualizarNota(int idAlumno,int idMateria,double nota){
         } catch (SQLException e) {
 }}
 
-public ArrayList obtenerInscripcionesPorAlumno(int idAlumno) {
-ArrayList listaInscripciones = new ArrayList<>();
+public ArrayList<Inscripcion> obtenerInscripcionesPorAlumno(int idAlumno) {
+ArrayList<Inscripcion> listaInscripciones = new ArrayList<>();
 try {
 String sql = "SELECT i.nota, m.nombre, i.idMateria FROM "
-+ "inscripcion me uno a materia m on(i.idMateria = m.idMateria) "
++ "inscripcion i join materia m on(i.idMateria = m.idMateria) "
 + "WHERE i.idAlumno=" + idAlumno;
 PreparedStatement psm = con.prepareStatement(sql);
 ResultSet rs = psm.executeQuery();
 while (rs.next()) {
 Inscripcion inscripcion = new Inscripcion();
-Materia materia = new Materia(rs.getString("nombre"));
-inscripcion.setIdInscripcion(rs.getInt("idMateria"));
+Materia materia = new Materia(rs.getInt("idMateria"),rs.getString("nombre"));
+//inscripcion.setIdInscripcion(rs.getInt("idMateria"));
 inscripcion.setMateria(materia);
 inscripcion.setNota(rs.getDouble("nota"));
 

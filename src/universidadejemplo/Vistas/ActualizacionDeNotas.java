@@ -149,15 +149,6 @@ DefaultTableModel modelo;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCBalumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBalumnosActionPerformed
-        //instancio una inscripcion data 
-        /*InscripcionData materiaInscripta= new InscripcionData();
-        Alumno alumnoSeleccionado = (Alumno)jCBalumnos.getSelectedItem();
-        
-         int idAlumno=alumnoSeleccionado.getIdAlumno();
-    
-        for (Inscripcion listaObtenida:materiaInscripta.obtenerInscripcionesPorAlumno(idAlumno)) {
-            modelo.addRow(new Object[]{listaObtenida.getNota()});
-        }*/
     
 //instancia de una inscripción de datos
 InscripcionData materiaInscripta= new InscripcionData();
@@ -166,7 +157,7 @@ Alumno alumnoSeleccionado = (Alumno)jCBalumnos.getSelectedItem();
      int idAlumno=alumnoSeleccionado.getIdAlumno();
         System.out.println(idAlumno+"muestra id");
       for (Inscripcion listaObtenida:materiaInscripta.obtenerInscripcionesPorAlumno(idAlumno)) {
-            modelo.addRow(new Object[]{listaObtenida.getIdInscripcion(), listaObtenida.getMateria(), listaObtenida.getNota()});
+            modelo.addRow(new Object[]{listaObtenida.getMateria().getIdMateria(), listaObtenida.getMateria(), listaObtenida.getNota()});
         }
      
     }//GEN-LAST:event_jCBalumnosActionPerformed
