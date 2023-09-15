@@ -89,6 +89,11 @@ DefaultTableModel modelo;
         });
 
         jBsalir.setText("Salir");
+        jBsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBsalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -149,7 +154,9 @@ DefaultTableModel modelo;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCBalumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBalumnosActionPerformed
-    
+    while (modelo.getRowCount() > 0) {
+            modelo.removeRow(0);
+        }
 //instancia de una inscripción de datos
 InscripcionData materiaInscripta= new InscripcionData();
 Alumno alumnoSeleccionado = (Alumno)jCBalumnos.getSelectedItem();
@@ -166,6 +173,11 @@ Alumno alumnoSeleccionado = (Alumno)jCBalumnos.getSelectedItem();
        InscripcionData nuevaNota= new InscripcionData();
      
     }//GEN-LAST:event_jBguardarActionPerformed
+
+    private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jBsalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
