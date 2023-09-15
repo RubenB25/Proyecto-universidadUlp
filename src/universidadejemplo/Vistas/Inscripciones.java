@@ -315,7 +315,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
             limpiar();
             InscripcionData iData = new InscripcionData();
             iData.obtenerMateriasCursadas(id.getIdAlumno()).forEach((oMatCur) -> {
-                modelo.addRow(new Object[]{oMatCur.getIdMateria(), oMatCur.getNombre(), oMatCur.getIdAnioMateria()});
+                modelo.addRow(new Object[]{oMatCur.getIdMateria(), oMatCur.getNombre(), oMatCur.getAnio()});
             });
             jRBNoInscriptas.setSelected(false);
         } else {
@@ -331,7 +331,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         if (jRBNoInscriptas.isSelected()) {
             limpiar();
             iData.obtenerMateriasNoCursadas(id.getIdAlumno()).forEach((oMatCur) -> {
-                modelo.addRow(new Object[]{oMatCur.getIdMateria(), oMatCur.getNombre(), oMatCur.getIdAnioMateria()});
+                modelo.addRow(new Object[]{oMatCur.getIdMateria(), oMatCur.getNombre(), oMatCur.getAnio()});
             });
             jRBInscriptas.setSelected(false);
         } else {
