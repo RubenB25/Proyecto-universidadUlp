@@ -277,7 +277,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
             Alumno alumnoAEliminar = alumnoData.buscarAlumnoPorDni(Integer.parseInt(jTFdocumento.getText()));
 
             int idAlumno = alumnoAEliminar.getIdAlumno();
-            
+
             int opcion = JOptionPane.showConfirmDialog(null, "Se dara de baja el alumno seleccionado", "Confirmación", JOptionPane.YES_NO_OPTION);
             if (opcion == JOptionPane.YES_OPTION) {
                 alumnoData.eliminarAlumno(idAlumno);
