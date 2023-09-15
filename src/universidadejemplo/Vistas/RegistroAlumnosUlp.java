@@ -7,6 +7,7 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
     public static Inscripciones JIInsc = new Inscripciones();
     public RegistroAlumnosUlp() {
         initComponents();
+        setTitle("Universidad Ulp");
     //  Para centrar el jDescritorio
         pack();
         setLocationRelativeTo(null);
@@ -73,6 +74,11 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         jMAdministracion.add(jMIManejoInsc);
 
         jMIManipulacion.setText("Manipulación de notas");
+        jMIManipulacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIManipulacionActionPerformed(evt);
+            }
+        });
         jMAdministracion.add(jMIManipulacion);
 
         jMenuBar1.add(jMAdministracion);
@@ -124,6 +130,21 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         // Hace que el JInternalFrame sea visible
         JIInsc.setVisible(true);
     }//GEN-LAST:event_jMIManejoInscActionPerformed
+
+    private void jMIManipulacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIManipulacionActionPerformed
+        jDescritorio.removeAll();
+         jDescritorio.repaint();
+        // Crea una instancia de tu JInternalFrame
+        ActualizacionDeNotas adn =new ActualizacionDeNotas();
+        // Agrega el JInternalFrame al JDesktopPane
+        jDescritorio.add(adn);
+        Dimension desktopSize = jDescritorio.getSize();
+        Dimension frameSize = adn.getSize();
+        adn.setLocation((desktopSize.width - frameSize.width) / 2, (desktopSize.height - frameSize.height) / 2);
+        // Hace que el JInternalFrame sea visible
+        adn.setVisible(true);
+       // adn.addComponentListener(adn);
+    }//GEN-LAST:event_jMIManipulacionActionPerformed
 
     public static void main(String args[]) {
         
