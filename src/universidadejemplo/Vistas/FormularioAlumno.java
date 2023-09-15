@@ -273,12 +273,20 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
 
     private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
         AlumnoData alumnoData = new AlumnoData();
-        
-        Alumno alumnoAEliminar = alumnoData.buscarAlumnoPorDni(Integer.parseInt(jTFdocumento.getText()));
-        
-        int idAlumno = alumnoAEliminar.getIdAlumno();
-        //agregar mensaje de confirmacion
-        alumnoData.eliminarAlumno(idAlumno);
+        try {
+            Alumno alumnoAEliminar = alumnoData.buscarAlumnoPorDni(Integer.parseInt(jTFdocumento.getText()));
+
+            int idAlumno = alumnoAEliminar.getIdAlumno();
+            
+            int opcion = JOptionPane.showConfirmDialog(null, "Se dara de baja el alumno seleccionado", "Confirmación", JOptionPane.YES_NO_OPTION);
+            if (opcion == JOptionPane.YES_OPTION) {
+                alumnoData.eliminarAlumno(idAlumno);
+            }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar un documento y buscar el alumno para eliminar.");
+        }
+
     }//GEN-LAST:event_jBeliminarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
