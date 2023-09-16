@@ -3,10 +3,14 @@ package universidadejemplo.Vistas;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import universidadejemplo.AccesoADatos.AlumnoData;
 import universidadejemplo.AccesoADatos.InscripcionData;
+import universidadejemplo.AccesoADatos.MateriaData;
 import universidadejemplo.Entidades.Alumno;
 import universidadejemplo.Entidades.Inscripcion;
 import universidadejemplo.Entidades.Materia;
@@ -161,7 +165,7 @@ InscripcionData materiaInscripta= new InscripcionData();
 Alumno alumnoSeleccionado = (Alumno)jCBalumnos.getSelectedItem();
 
      int idAlumno=alumnoSeleccionado.getIdAlumno();
-        System.out.println(idAlumno+"muestra id");
+        //System.out.println(idAlumno+"muestra id");
       for (Inscripcion listaObtenida:materiaInscripta.obtenerInscripcionesPorAlumno(idAlumno)) {
             modelo.addRow(new Object[]{listaObtenida.getMateria().getIdMateria(), listaObtenida.getMateria(), listaObtenida.getNota()});
         }
@@ -169,36 +173,8 @@ Alumno alumnoSeleccionado = (Alumno)jCBalumnos.getSelectedItem();
     }//GEN-LAST:event_jCBalumnosActionPerformed
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
-      InscripcionData materiaInscripta= new InscripcionData();
-    Alumno alumnoSeleccionado = (Alumno)jCBalumnos.getSelectedItem();
-
-     int idAlumno=alumnoSeleccionado.getIdAlumno();
-      
-   /* for (int row = 0; row < modelo.getRowCount(); row++) {
-            int idMateria = (int) modelo.getValueAt(row, 0);
-            String materia = (String) modelo.getValueAt(row, 1);
-            double nota = (double) modelo.getValueAt(row, 2);}*/
-   try{
-         String consulta = "UPDATE `inscripcion` SET `nota`='2',`idAlumno`='2',`idMateria`='3'";
-       PreparedStatement pS = con.prepareStatement();
-            // Prepara la declaración SQL
-            
-                // Asigna los valores a los parámetros de la consulta
-                pS.setDouble(1,nota);
-               // Ejecuta la consulta de actualización
-                int filasActualizadas = pS.executeUpdate();
-
-                if (filasActualizadas > 0) {
-                    System.out.println("La nota se actualizó correctamente en la base de datos.");
-                } else {
-                    System.out.println("No se encontraron registros para actualizar.");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println(
-            e.printStackTrace();
-                     "Error al actualizar la nota en la base de datos.");
-        }   
+    
+  
     }//GEN-LAST:event_jBguardarActionPerformed
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
