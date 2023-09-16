@@ -269,7 +269,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             matData.buscarMateria(codigo);
             Materia mat = matData.buscarMateria(codigo);
             jTnombre.setText(mat.getNombre());
-            JTaño.setText(mat.getIdAnioMateria()+"");
+            JTaño.setText(mat.getAnio()+"");
             jRestado.setText((mat.isEstado())+"");
         }
     }//GEN-LAST:event_jBbuscarActionPerformed
@@ -313,7 +313,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             matData.EliminaMateria(codigo);
             Materia mat = matData.buscarMateria(codigo);
             jTnombre.setText(mat.getNombre());
-            JTaño.setText(mat.getIdAnioMateria()+"");
+            JTaño.setText(mat.getAnio()+"");
             jRestado.setText((mat.isEstado())+"");
         }
     }//GEN-LAST:event_jBeliminarActionPerformed

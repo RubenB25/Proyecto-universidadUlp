@@ -35,7 +35,7 @@ public class MateriaData {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             
             ps.setString(1, materia.getNombre());
-            ps.setInt(2, materia.getIdAnioMateria());
+            ps.setInt(2, materia.getAnio());
             ps.setBoolean(3, materia.isEstado());
             ps.executeUpdate();  
             
@@ -62,7 +62,7 @@ public class MateriaData {
             
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, materia.getNombre());
-            ps.setInt(2, materia.getIdAnioMateria());
+            ps.setInt(2, materia.getAnio());
             ps.setBoolean(3, materia.isEstado());
             ps.setInt(4, materia.getIdMateria());
             ps.executeUpdate();  
@@ -132,6 +132,20 @@ public class MateriaData {
     }
     
     public ArrayList<Materia> listarMaterias(){
-        return null;
+        ArrayList<Materia> listaMaterias = new ArrayList<>();
+        
+        try {
+            String sql = "SELECT idMateria,nombre,año From materia WHERE estado = 1";
+            PreparedStatement psm = con.prepareStatement(sql);
+            ResultSet rs = psm.executeQuery();
+            while (rs.next()) {
+                Materia materia = new Materia(rs.getInt("idMateria"), rs.getString("nombre"), rs.getInt("año"));          
+                listaMaterias.add(materia);
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla" + ex.getMessage());
+        }
+        return listaMaterias;
     }
 }

@@ -91,6 +91,11 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         jMConsultas.setText("Consultas");
 
         jMIAlumnosxM.setText("Alumnos por materia");
+        jMIAlumnosxM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIAlumnosxMActionPerformed(evt);
+            }
+        });
         jMConsultas.add(jMIAlumnosxM);
 
         jMenuBar1.add(jMConsultas);
@@ -161,6 +166,16 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         jDescritorio.add(gM);
         jDescritorio.moveToFront(gM);
     }//GEN-LAST:event_jMIFormularioMActionPerformed
+
+    private void jMIAlumnosxMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIAlumnosxMActionPerformed
+        // TODO add your handling code here:
+        jDescritorio.removeAll();
+        jDescritorio.repaint();
+        ConsultaDeAlumnosPorMateria consultaAlumn = new ConsultaDeAlumnosPorMateria();
+        consultaAlumn.setVisible(true);
+        jDescritorio.add(consultaAlumn);
+        jDescritorio.moveToFront(consultaAlumn);
+    }//GEN-LAST:event_jMIAlumnosxMActionPerformed
 
     public static void main(String args[]) {
         
