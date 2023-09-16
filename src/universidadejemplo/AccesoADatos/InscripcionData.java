@@ -156,19 +156,17 @@ public class InscripcionData {
     public ArrayList<Alumno> obtenerAlumnosPorMateria(int idMateria) {
         ArrayList<Alumno> listaAlumnos = new ArrayList<>();
         try {
-            String sql = "SELECT Alumno.idAlumno, Alumno.dni, Alumno.apellido, Alumno.nombre FROM Alumno INNER JOIN Inscripcion ON Alumno.idAlumno = Inscripcion.idAlumno WHERE Inscripcion.idMateria =" + idMateria;
+            String sql = "SELECT a.idAlumno, a.dni, a.apellido, a.nombre FROM Alumno a INNER JOIN Inscripcion i ON a.idAlumno = i.idAlumno WHERE i.idMateria = ?";
             PreparedStatement psm = con.prepareStatement(sql);
+            psm.setInt(1, idMateria); // Establece el valor del parámetro
             ResultSet rs = psm.executeQuery();
             while (rs.next()) {
-                Alumno alumnoObtenido = new Alumno(rs.getInt("idAlumno"),rs.getInt("dni"),rs.getString("apellido"),
-                rs.getString("nombre"));
+                Alumno alumnoObtenido = new Alumno(rs.getInt("idAlumno"), rs.getInt("dni"), rs.getString("apellido"), rs.getString("nombre"));
                 listaAlumnos.add(alumnoObtenido);
             }
-
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla" + ex.getMessage());
         }
-
         return listaAlumnos;
     }
 }

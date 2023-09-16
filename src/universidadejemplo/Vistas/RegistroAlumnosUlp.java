@@ -122,7 +122,11 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         FormularioAlumno fa = new FormularioAlumno();
         fa.setVisible(true);
         jDescritorio.add(fa);
+        Dimension desktopSize = jDescritorio.getSize();
+        Dimension frameSize = fa.getSize();
+        fa.setLocation((desktopSize.width - frameSize.width) / 2, (desktopSize.height - frameSize.height) / 2);
         jDescritorio.moveToFront(fa);
+        
     }//GEN-LAST:event_jMIFormularioAActionPerformed
 
     private void jMIManejoInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIManejoInscActionPerformed
@@ -164,6 +168,9 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         GestionMaterias gM = new GestionMaterias();
         gM.setVisible(true);
         jDescritorio.add(gM);
+        Dimension desktopSize = jDescritorio.getSize();
+        Dimension frameSize = gM.getSize();
+        gM.setLocation((desktopSize.width - frameSize.width) / 2, (desktopSize.height - frameSize.height) / 2);
         jDescritorio.moveToFront(gM);
     }//GEN-LAST:event_jMIFormularioMActionPerformed
 
@@ -174,6 +181,9 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         ConsultaDeAlumnosPorMateria consultaAlumn = new ConsultaDeAlumnosPorMateria();
         consultaAlumn.setVisible(true);
         jDescritorio.add(consultaAlumn);
+        Dimension desktopSize = jDescritorio.getSize();
+        Dimension frameSize = consultaAlumn.getSize();
+        consultaAlumn.setLocation((desktopSize.width - frameSize.width) / 2, (desktopSize.height - frameSize.height) / 2);
         jDescritorio.moveToFront(consultaAlumn);
     }//GEN-LAST:event_jMIAlumnosxMActionPerformed
 

@@ -17,16 +17,18 @@ import universidadejemplo.Entidades.Materia;
  * @author Ruben
  */
 public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
+
     DefaultTableModel modelo;
 
     /**
      * Creates new form ConsultaDeAlumnosPorMateria
      */
     public ConsultaDeAlumnosPorMateria() {
-        
+
         initComponents();
+        modelo = (DefaultTableModel) jTAlumnos.getModel();
         llenarCb();
-        modelo = (DefaultTableModel)jTAlumnos.getModel();
+
     }
 
     /**
@@ -43,6 +45,8 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTAlumnos = new javax.swing.JTable();
         jBsalir = new javax.swing.JButton();
+
+        setBorder(new javax.swing.border.MatteBorder(null));
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 102));
 
@@ -92,22 +96,23 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(184, 184, 184)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(61, 61, 61)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(79, 79, 79)
-                        .addComponent(jCBListado, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(148, 148, 148)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(260, 260, 260)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jBsalir)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 69, Short.MAX_VALUE))))
+                            .addComponent(jCBListado, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(23, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,23 +124,21 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(jCBListado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jBsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -147,9 +150,9 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
 
     private void jCBListadoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBListadoItemStateChanged
         // TODO add your handling code here:
-        if(jCBListado.getSelectedIndex()!=-1){
-            listar();
-        }
+        limpiar();
+        listar();
+
     }//GEN-LAST:event_jCBListadoItemStateChanged
 
 
@@ -165,24 +168,25 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
 
     private void llenarCb() {
         MateriaData materiasCB = new MateriaData();
-        
+
         for (Materia listaMaterias : materiasCB.listarMaterias()) {
             jCBListado.addItem(listaMaterias);
-            
+
         }
     }
 
     private void listar() {
-            Materia id = (Materia) jCBListado.getSelectedItem();
-            System.out.println(id.getIdMateria());
-            InscripcionData iData = new InscripcionData();
-
-            for (Alumno alumnos : iData.obtenerAlumnosPorMateria(id.getIdMateria())) {
-            modelo.addRow(new Object[]{alumnos.getIdAlumno(), alumnos.getDni(), alumnos.getApellido(),alumnos.getNombre()});
+        Materia id = (Materia) jCBListado.getSelectedItem();
+        InscripcionData iData = new InscripcionData();
+        for (Alumno alumnos : iData.obtenerAlumnosPorMateria(id.getIdMateria())) {
+            modelo.addRow(new Object[]{alumnos.getIdAlumno(), alumnos.getDni(), alumnos.getApellido(), alumnos.getNombre()});
         }
-       
-        
+    }
+
+    public void limpiar() {
+        while (modelo.getRowCount() > 0) {
+            modelo.removeRow(0);
+        }
     }
 
 }
-
