@@ -1,8 +1,12 @@
 package universidadejemplo.Vistas;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
+import universidadejemplo.AccesoADatos.AlumnoData;
+import universidadejemplo.Entidades.Alumno;
 
 /**
  *
@@ -12,7 +16,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
 
     public FormularioAlumno() {
         initComponents();
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -80,8 +84,18 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         jBnuevo.setText("Nuevo");
 
         jBeliminar.setText("Eliminar");
+        jBeliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBeliminarActionPerformed(evt);
+            }
+        });
 
         jBguardar.setText("Guardar");
+        jBguardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBguardarActionPerformed(evt);
+            }
+        });
 
         jBsalir.setText("Salir");
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
@@ -141,11 +155,11 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
                                         .addComponent(jBBuscar))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLFecha)
-                            .addComponent(jLabel6))
+                        .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jDCfechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLFecha)
+                            .addComponent(jDCfechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -174,19 +188,16 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
                         .addComponent(jRActivoNo)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLFecha)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jBnuevo)
-                            .addComponent(jBeliminar)
-                            .addComponent(jBguardar)
-                            .addComponent(jBsalir)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jDCfechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(jLabel6)
+                    .addComponent(jDCfechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLFecha)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBnuevo)
+                    .addComponent(jBeliminar)
+                    .addComponent(jBguardar)
+                    .addComponent(jBsalir))
                 .addContainerGap())
         );
 
@@ -205,24 +216,78 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
-
+        dispose();
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jDCfechaNacimientoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDCfechaNacimientoPropertyChange
         if (jDCfechaNacimiento.getDate() != null) {
-            
+
             LocalDate fechaN = jDCfechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-            
+
             jLFecha.setText("Fecha: " + fechaN.format(dtf));
-    }
+        }
     }//GEN-LAST:event_jDCfechaNacimientoPropertyChange
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-        //conectar con metodo buscar alumno por dni
-       
+        AlumnoData alumnoData = new AlumnoData();
+        try {
+            int dni = Integer.parseInt(jTFdocumento.getText());
+            Alumno alumnoObtenido = alumnoData.buscarAlumnoPorDni(dni);
+            if (!"".equals(jTFdocumento.getText()) && alumnoObtenido != null) {
+                jTFapellido.setText(alumnoObtenido.getApellido());
+                jTFnombre.setText(alumnoObtenido.getNombre());
+                if (alumnoObtenido.isEstado() == true) {
+                    jRActivoSi.setSelected(true);
+                    jRActivoNo.setEnabled(false);
+                }
+                jDCfechaNacimiento.setDate(Date.valueOf(alumnoObtenido.getFechaNacimiento()));
+                jDCfechaNacimiento.setEnabled(false);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Ingrese un documento valido.");
+        }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
+    private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
+        AlumnoData alumnoData = new AlumnoData();
+        if (!"".equals(jTFdocumento.getText()) && !"".equals(jTFnombre.getText()) && !"".equals(jTFapellido.getText()) && jDCfechaNacimiento.getDate() != null) {
+
+            try {
+                int dni = Integer.parseInt(jTFdocumento.getText());
+                if (jRActivoSi.isSelected()) {
+                    Alumno alumnoNuevo = new Alumno(dni, jTFapellido.getText(), jTFnombre.getText(), jDCfechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), true);
+                    alumnoData.guardarAlumno(alumnoNuevo);
+                }
+                if (jRActivoNo.isSelected()) {
+                    Alumno alumnoNuevo = new Alumno(dni, jTFapellido.getText(), jTFnombre.getText(), jDCfechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), false);
+                    alumnoData.guardarAlumno(alumnoNuevo);
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Datos invalidos.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe completar todos los campos.");
+        }
+    }//GEN-LAST:event_jBguardarActionPerformed
+
+    private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
+        AlumnoData alumnoData = new AlumnoData();
+        try {
+            Alumno alumnoAEliminar = alumnoData.buscarAlumnoPorDni(Integer.parseInt(jTFdocumento.getText()));
+
+            int idAlumno = alumnoAEliminar.getIdAlumno();
+
+            int opcion = JOptionPane.showConfirmDialog(null, "Se dara de baja el alumno seleccionado", "Confirmación", JOptionPane.YES_NO_OPTION);
+            if (opcion == JOptionPane.YES_OPTION) {
+                alumnoData.eliminarAlumno(idAlumno);
+            }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar un documento y buscar el alumno para eliminar.");
+        }
+
+    }//GEN-LAST:event_jBeliminarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bGEstado;
