@@ -69,6 +69,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTInscriptos = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(0, 153, 102));
         setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         jCBInscriptos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -84,6 +85,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel2.setText("Formulario de Inscripción");
 
+        jRBInscriptas.setBackground(new java.awt.Color(0, 153, 102));
         jRBInscriptas.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jRBInscriptas.setText("Materias inscriptas");
         jRBInscriptas.addActionListener(new java.awt.event.ActionListener() {
@@ -92,6 +94,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
             }
         });
 
+        jRBNoInscriptas.setBackground(new java.awt.Color(0, 153, 102));
         jRBNoInscriptas.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jRBNoInscriptas.setText("Materias no inscriptas");
         jRBNoInscriptas.addActionListener(new java.awt.event.ActionListener() {
