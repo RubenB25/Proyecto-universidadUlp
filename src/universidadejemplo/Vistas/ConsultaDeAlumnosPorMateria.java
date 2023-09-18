@@ -26,6 +26,9 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
     public ConsultaDeAlumnosPorMateria() {
 
         initComponents();
+        setTitle("UNIVERSIDAD ULP GRUPO 83");
+     
+        setSize(400,400);
         modelo = (DefaultTableModel) jTAlumnos.getModel();
         llenarCb();
 

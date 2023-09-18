@@ -13,7 +13,7 @@ DefaultTableModel modelo;
     public ActualizacionDeNotas() {
         initComponents();
         setTitle("UNIVERSIDAD ULP GRUPO 83");
-       
+       //le coloco un titulo y un tamaño para que todos tengan el mismo tamaño
         setSize(400,400);
         //instancio una tabla con el modelo de la vista 
        modelo= new DefaultTableModel();
@@ -176,13 +176,15 @@ DefaultTableModel modelo;
 //GEN-LAST:event_jBsalirActionPerformed
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
+      //obtengo la fila seleccionada para sacar los datos necesarios para invocar el metodo de actualizar
+        int filaSeleccionada = jTinscripcionMateria.getSelectedRow();
+        JOptionPane.showMessageDialog(null,"Recuerda colocar la nota y seleccionar la fila que quieres Guardar");
         //instancie un objeto inscripcionData y un alumno donde pongo la seleccion
         InscripcionData ins= new InscripcionData();
         Alumno alumnoSeleccionado = (Alumno)jCBalumnos.getSelectedItem();
         //pongo variables para guardar los datos que voy a uilizar
         int idAlumno=alumnoSeleccionado.getIdAlumno();
-        //obtengo la fila seleccionada para sacar los datos necesarios para invocar el metodo de actualizar
-        int filaSeleccionada = jTinscripcionMateria.getSelectedRow();
+        
         //de mi objeto inscripciondata obtengo las materias cursadas
         ins.obtenerMateriasCursadas(idAlumno);
         //creo dos objetos para luego obtener los valores dentro de la tabla parseandolos
@@ -202,7 +204,7 @@ DefaultTableModel modelo;
 // Ahora, "valorEntero" es una variable entera que contiene el valor deseado.
     } catch (NumberFormatException e) {
         // En caso de que no se pueda convertir a entero
-            JOptionPane.showMessageDialog(null,"El valor obtenido no es entero");
+            JOptionPane.showMessageDialog(null,"Para poder guardar solo seleccione y cambie una nota");
     }} else {
             JOptionPane.showMessageDialog(null,"El valor obtenido  es nulo");
 }
