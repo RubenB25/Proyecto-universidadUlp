@@ -111,20 +111,23 @@ public class InscripcionData {
     }
 
     public void actualizarNota(int idAlumno, int idMateria, double nota) {
-        try {
-            String sql = "update inscripcion set nota inscripcion WHERE idAlumno=" + idAlumno + " AND " + "idMateria=" + idMateria;
-            PreparedStatement ps = con.prepareStatement(sql);
-            int filasAfectadas = ps.executeUpdate();
-
-            if (filasAfectadas > 0) {
-
-                JOptionPane.showMessageDialog(null, " Se actualizo la nota en la materia");
-
-            } else {
-                System.out.println("No se pudo insertar ningún dato.");
-            }
-        } catch (SQLException e) {
-        }
+       try {
+        String sql = "UPDATE inscripcion SET nota = ? WHERE idAlumno = ? AND idMateria = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setDouble(1, nota);
+        ps.setInt(2, idAlumno);
+        ps.setInt(3, idMateria);
+        ps.setDouble(idAlumno,nota);   
+        int filasAfectadas = ps.executeUpdate();
+       // ResultSet resultado=ps.getGeneratedKeys();
+        if (filasAfectadas >= 0) {
+            JOptionPane.showMessageDialog(null, "Se actualizó la nota en la materia");
+        }else{
+        ps.close();
+            System.out.println("No se pudo actualizar ningún dato.");}
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null,"hay un error al querer cargar la nota"+ e);
+    }
     }
 
     public ArrayList<Inscripcion> obtenerInscripcionesPorAlumno(int idAlumno) {
