@@ -7,10 +7,11 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
     public static Inscripciones JIInsc = new Inscripciones();
     public RegistroAlumnosUlp() {
         initComponents();
-        setTitle("Universidad Ulp");
+        setTitle("GRUPO 83");
     //  Para centrar el jDescritorio
         pack();
         setLocationRelativeTo(null);
+        setSize(600,600);
     }
 
     @SuppressWarnings("unchecked")
@@ -18,6 +19,7 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
     private void initComponents() {
 
         jDescritorio = new javax.swing.JDesktopPane();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMAlumno = new javax.swing.JMenu();
         jMIFormularioA = new javax.swing.JMenuItem();
@@ -31,17 +33,20 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jDescritorio.setBackground(new java.awt.Color(0, 102, 153));
         jDescritorio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        jDescritorio.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDescritorioLayout = new javax.swing.GroupLayout(jDescritorio);
         jDescritorio.setLayout(jDescritorioLayout);
         jDescritorioLayout.setHorizontalGroup(
             jDescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 739, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 739, Short.MAX_VALUE)
         );
         jDescritorioLayout.setVerticalGroup(
             jDescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 542, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
         );
 
         jMAlumno.setText("Alumno");
@@ -116,16 +121,14 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
     }//GEN-LAST:event_jMIFormularioAActionPerformed
 
     private void jMIManejoInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIManejoInscActionPerformed
-       
-        // TODO add your handling code here:
+      
         jDescritorio.removeAll();
-        // Crea una instancia de tu JInternalFrame
-        
+        jDescritorio.repaint();
         // Agrega el JInternalFrame al JDesktopPane
         jDescritorio.add(JIInsc);
-        Dimension desktopSize = jDescritorio.getSize();
-        Dimension frameSize = JIInsc.getSize();
-        JIInsc.setLocation((desktopSize.width - frameSize.width) / 2, (desktopSize.height - frameSize.height) / 2);
+        //Dimension desktopSize = jDescritorio.getSize();
+        //Dimension frameSize = JIInsc.getSize();
+        //JIInsc.setLocation((desktopSize.width - frameSize.width) / 2, (desktopSize.height - frameSize.height) / 2);
         // Hace que el JInternalFrame sea visible
         JIInsc.setVisible(true);
     }//GEN-LAST:event_jMIManejoInscActionPerformed
@@ -137,9 +140,9 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         ActualizacionDeNotas adn =new ActualizacionDeNotas();
         // Agrega el JInternalFrame al JDesktopPane
         jDescritorio.add(adn);
-        Dimension desktopSize = jDescritorio.getSize();
-        Dimension frameSize = adn.getSize();
-        adn.setLocation((desktopSize.width - frameSize.width) / 2, (desktopSize.height - frameSize.height) / 2);
+       // Dimension desktopSize = jDescritorio.getSize();
+        //Dimension frameSize = adn.getSize();
+        //adn.setLocation((desktopSize.width - frameSize.width) / 2, (desktopSize.height - frameSize.height) / 2);
         // Hace que el JInternalFrame sea visible
         adn.setVisible(true);
        // adn.addComponentListener(adn);
@@ -175,6 +178,7 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDescritorio;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMAdministracion;
     private javax.swing.JMenu jMAlumno;
     private javax.swing.JMenu jMConsultas;

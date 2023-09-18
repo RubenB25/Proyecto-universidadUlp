@@ -84,7 +84,6 @@ public class AlumnoData {
 
             if (resultado.next()) {
                 alumno = new Alumno();
-
                 alumno.setIdAlumno(resultado.getInt("idAlumno"));
                 alumno.setDni(resultado.getInt("dni"));
                 alumno.setApellido(resultado.getString("apellido"));
@@ -96,7 +95,7 @@ public class AlumnoData {
                 ps.close();
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Errpr al acceder a la tabla Alumno." + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno." + e.getMessage());
         }
         return alumno;
     }

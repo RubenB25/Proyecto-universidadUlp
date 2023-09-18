@@ -3,6 +3,7 @@ package universidadejemplo.Vistas;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import universidadejemplo.AccesoADatos.AlumnoData;
 
 /**
  *
@@ -12,7 +13,8 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
 
     public FormularioAlumno() {
         initComponents();
-        
+        setTitle("UNIVERDSIDAD ULP GRUPO 83");   
+        setSize(400,400);
     }
 
     @SuppressWarnings("unchecked")
@@ -49,6 +51,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Alumno");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Documento");
 
         jBBuscar.setText("Buscar");
@@ -58,16 +61,20 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Apellido");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Nombre");
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Activo");
 
         jRActivoSi.setBackground(new java.awt.Color(0, 153, 102));
         bGEstado.add(jRActivoSi);
         jRActivoSi.setText("Si");
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("Fecha de nacimiento");
 
         jDCfechaNacimiento.setDateFormatString("dd, MMM, yyyy");
@@ -77,12 +84,16 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
             }
         });
 
+        jBnuevo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jBnuevo.setText("Nuevo");
 
+        jBeliminar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jBeliminar.setText("Eliminar");
 
+        jBguardar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jBguardar.setText("Guardar");
 
+        jBsalir.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jBsalir.setText("Salir");
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +105,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         bGEstado.add(jRActivoNo);
         jRActivoNo.setText("No");
 
+        jLFecha.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLFecha.setText("Fecha:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -120,7 +132,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
                                 .addComponent(jBeliminar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jBguardar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                                 .addComponent(jBsalir))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,7 +158,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
                             .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jDCfechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,7 +190,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLFecha)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jBnuevo)
                             .addComponent(jBeliminar)
@@ -220,6 +232,10 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         //conectar con metodo buscar alumno por dni
+        AlumnoData alumnoAbuscar= new AlumnoData();
+        int dni = Integer.parseInt(jTFdocumento.getText());
+        alumnoAbuscar.buscarAlumno(dni);
+        
        
     }//GEN-LAST:event_jBBuscarActionPerformed
 
@@ -246,4 +262,6 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTFdocumento;
     private javax.swing.JTextField jTFnombre;
     // End of variables declaration//GEN-END:variables
+
+   
 }
