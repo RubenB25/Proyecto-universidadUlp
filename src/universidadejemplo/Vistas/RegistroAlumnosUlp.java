@@ -67,6 +67,11 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         jMMateria.setText("Materia");
 
         jMIFormularioM.setText("Formulario de materia");
+        jMIFormularioM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIFormularioMActionPerformed(evt);
+            }
+        });
         jMMateria.add(jMIFormularioM);
 
         jMenuBar1.add(jMMateria);
@@ -94,6 +99,11 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         jMConsultas.setText("Consultas");
 
         jMIAlumnosxM.setText("Alumnos por materia");
+        jMIAlumnosxM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIAlumnosxMActionPerformed(evt);
+            }
+        });
         jMConsultas.add(jMIAlumnosxM);
 
         jMenuBar1.add(jMConsultas);
@@ -150,6 +160,26 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         adn.setVisible(true);
        // adn.addComponentListener(adn);
     }//GEN-LAST:event_jMIManipulacionActionPerformed
+
+    private void jMIAlumnosxMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIAlumnosxMActionPerformed
+        // TODO add your handling code here:
+        jDescritorio.removeAll();
+        jDescritorio.repaint();
+        ConsultaDeAlumnosPorMateria axMateria = new ConsultaDeAlumnosPorMateria();
+        axMateria.setVisible(true);
+        jDescritorio.add(axMateria);
+        jDescritorio.moveToFront(axMateria);
+    }//GEN-LAST:event_jMIAlumnosxMActionPerformed
+
+    private void jMIFormularioMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIFormularioMActionPerformed
+        // TODO add your handling code here:
+        jDescritorio.removeAll();
+        jDescritorio.repaint();
+        GestionMaterias gestionMaterias= new GestionMaterias();
+        gestionMaterias.setVisible(true);
+        jDescritorio.add(gestionMaterias);
+        jDescritorio.moveToFront(gestionMaterias);
+    }//GEN-LAST:event_jMIFormularioMActionPerformed
 
     public static void main(String args[]) {
         

@@ -156,4 +156,8 @@ public class InscripcionData {
         return listaInscripciones;
         
     }
+
+    public Iterable<Alumno> obtenerAlumnosPorMateria(int idMateria) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
