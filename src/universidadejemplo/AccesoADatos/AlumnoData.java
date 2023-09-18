@@ -103,20 +103,20 @@ public class AlumnoData {
         ArrayList<Alumno> alumnos = new ArrayList<>();
         try {
             String sql = "SELECT * FROM alumno WHERE estado = 1 ";
-            PreparedStatement psa = conex.prepareStatement(sql);
-            ResultSet rs = psa.executeQuery();
-            while (rs.next()) {
-                Alumno alumno = new Alumno();
-
-                alumno.setIdAlumno(rs.getInt("idAlumno"));
-                alumno.setDni(rs.getInt("dni"));
-                alumno.setApellido(rs.getString("apellido"));
-                alumno.setNombre(rs.getString("nombre"));
-                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
-                alumno.setEstado(rs.getBoolean("estado"));
-                alumnos.add(alumno);
+            try (PreparedStatement psa = conex.prepareStatement(sql)) {
+                ResultSet rs = psa.executeQuery();
+                while (rs.next()) {
+                    Alumno alumno = new Alumno();
+                    
+                    alumno.setIdAlumno(rs.getInt("idAlumno"));
+                    alumno.setDni(rs.getInt("dni"));
+                    alumno.setApellido(rs.getString("apellido"));
+                    alumno.setNombre(rs.getString("nombre"));
+                    alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
+                    alumno.setEstado(rs.getBoolean("estado"));
+                    alumnos.add(alumno);
+                }
             }
-            psa.close();
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Alumno " + ex.getMessage());
@@ -149,13 +149,13 @@ public class AlumnoData {
     public void eliminarAlumno(int id) {
         try {
             String sql = "update alumno set estado = 0 where idAlumno = ?";
-            PreparedStatement ps = conex.prepareStatement(sql);
-            int fila = ps.executeUpdate();
-
-            if (fila == 1) {
-                JOptionPane.showMessageDialog(null, "Alumno eliminado correctamente.");
+            try (PreparedStatement ps = conex.prepareStatement(sql)) {
+                int fila = ps.executeUpdate();
+                
+                if (fila == 1) {
+                    JOptionPane.showMessageDialog(null, "Alumno eliminado correctamente.");
+                }
             }
-            ps.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno" + e.getMessage());
 

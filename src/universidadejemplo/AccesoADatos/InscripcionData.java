@@ -117,13 +117,14 @@ public class InscripcionData {
         ps.setDouble(1, nota);
         ps.setInt(2, idAlumno);
         ps.setInt(3, idMateria);
-        ps.setDouble(idAlumno,nota);
-        int filasAfectadas = ps.executeUpdate(); 
+        ps.setDouble(idAlumno,nota);   
+        int filasAfectadas = ps.executeUpdate();
+       // ResultSet resultado=ps.getGeneratedKeys();
         if (filasAfectadas >= 0) {
             JOptionPane.showMessageDialog(null, "Se actualizó la nota en la materia");
-        } else {
-            System.out.println("No se pudo actualizar ningún dato.");
-        }
+        }else{
+        ps.close();
+            System.out.println("No se pudo actualizar ningún dato.");}
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(null,"hay un error al querer cargar la nota"+ e);
     }
