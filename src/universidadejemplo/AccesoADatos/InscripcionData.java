@@ -94,12 +94,12 @@ public class InscripcionData {
 
     public void anularInscripcion(int idAlumno, int idMateria) {
         try {
-            String sql = "DELETE FROM inscripcion WHERE idAlumno=" + idAlumno + " AND " + "idMateria=" + idMateria;
+            String sql = "delete FROM inscripcion WHERE idAlumno=" + idAlumno + " AND " + "idMateria=" + idMateria;
             PreparedStatement ps = con.prepareStatement(sql);
             int filasAfectadas = ps.executeUpdate();
 
             if (filasAfectadas > 0) {
-
+                
                 JOptionPane.showMessageDialog(null, "Anulación de inscripción realizada con éxito.");
 
             } else {
@@ -112,20 +112,24 @@ public class InscripcionData {
 
     public void actualizarNota(int idAlumno, int idMateria, double nota) {
         try {
-            String sql = "UPDATE `inscripcion` SET `nota`= ?" ;
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setDouble(idAlumno, nota);
-            ResultSet rs= ps.executeQuery();
-            int filasAfectadas = ps.executeUpdate();
-            if (filasAfectadas > 0) {
-
-                JOptionPane.showMessageDialog(null, " Se actualizo la nota en la materia");
-
-            } else {
-                System.out.println("No se pudo insertar ningún dato.");
-            }
-        } catch (SQLException e) {
+        String sql = "UPDATE inscripcion SET nota = ? WHERE idAlumno = ? AND idMateria = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setDouble(1, nota);
+        ps.setInt(2, idAlumno);
+        ps.setInt(3, idMateria);
+        ps.setDouble(idAlumno,nota);
+        int filasAfectadas = ps.executeUpdate();
+        
+        if (filasAfectadas > 0) {
+            JOptionPane.showMessageDialog(null, "Se actualizó la nota en la materia");
+        } else {
+            System.out.println("No se pudo actualizar ningún dato.");
         }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null,"hay un error al querer cargar la nota"+ e);
+    }
+        
+        
     }
 
     public ArrayList<Inscripcion> obtenerInscripcionesPorAlumno(int idAlumno) {
@@ -139,7 +143,6 @@ public class InscripcionData {
             while (rs.next()) {
                 Inscripcion inscripcion = new Inscripcion();
                 Materia materia = new Materia(rs.getInt("idMateria"), rs.getString("nombre"));
-//inscripcion.setIdInscripcion(rs.getInt("idMateria"));
                 inscripcion.setMateria(materia);
                 inscripcion.setNota(rs.getDouble("nota"));
 

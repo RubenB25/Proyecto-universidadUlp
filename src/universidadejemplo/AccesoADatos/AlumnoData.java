@@ -124,32 +124,7 @@ public class AlumnoData {
         }
         return alumnos;
     }
-//
-//    public ArrayList<Alumno> listarAlumnos() {
-//        ArrayList<Alumno> alumnos = new ArrayList<>();
-//
-//        try {
-//            String sql = "select * from alumno where estado = 1";
-//            PreparedStatement ps = conex.prepareStatement(sql);
-//            ResultSet resultado = ps.executeQuery();
-//
-//            while (resultado.next()) {
-//                Alumno alumno = new Alumno();
-//
-//                alumno.setIdAlumno(resultado.getInt("idAlumno"));
-//                alumno.setDni(resultado.getInt("dni"));
-//                alumno.setApellido(resultado.getString("apellido"));
-//                alumno.setNombre(resultado.getString("nombre"));
-//                alumno.setFechaNacimiento(resultado.getDate("fechaNacimiento").toLocalDate());
-//                alumno.setEstado(resultado.getBoolean("estado"));
-//                alumnos.add(alumno);
-//            }
-//
-//        } catch (SQLException e) {
-//            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno" + e.getMessage());
-//        }
-//        return alumnos;
-//    }
+
 
     public void modificarAlumno(Alumno alumno) {
         String sql = "update alumno set dni = ?, apellido = ?, nombre = ?, fechaNacimiento = ? where idAlumno = ?";
