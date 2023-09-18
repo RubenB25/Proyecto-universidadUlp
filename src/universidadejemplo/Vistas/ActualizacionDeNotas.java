@@ -169,21 +169,28 @@ DefaultTableModel modelo;
 //GEN-LAST:event_jBsalirActionPerformed
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
-
+        //instancie un objeto inscripcionData y un alumno donde pongo la seleccion
         InscripcionData ins= new InscripcionData();
         Alumno alumnoSeleccionado = (Alumno)jCBalumnos.getSelectedItem();
+        //pongo variables para guardar los datos que voy a uilizar
         int idAlumno=alumnoSeleccionado.getIdAlumno();
+        //obtengo la fila seleccionada para sacar los datos necesarios para invocar el metodo de actualizar
         int filaSeleccionada = jTinscripcionMateria.getSelectedRow();
+        //de mi objeto inscripciondata obtengo las materias cursadas
         ins.obtenerMateriasCursadas(idAlumno);
+        //creo dos objetos para luego obtener los valores dentro de la tabla parseandolos
         Object valorMateria = modelo.getValueAt(filaSeleccionada,0);
         Object valorNota= modelo.getValueAt(filaSeleccionada,2);
-        if (valorMateria!=null|| valorNota!=null){
+        if (valorMateria!=null|| valorNota!=null){//si los mismos no son nulos 
     try {
-        // Convertirlo a entero
+        // los Convirto a entero
         int idMateria = Integer.parseInt(valorMateria.toString());
-        System.out.println(idMateria);
+        //este sout fue para probar que me de el valor que necesitaba
+        //System.out.println(idMateria);
         int nota=Integer.parseInt(valorNota.toString());
-        System.out.println(nota);
+        //este sou era para sabe que lo que me daba era correco
+        //System.out.println(nota);
+        //llamo al metodo actualizar enviando la informacion necesaria
         ins.actualizarNota(idAlumno, idMateria, nota);
 // Ahora, "valorEntero" es una variable entera que contiene el valor deseado.
     } catch (NumberFormatException e) {

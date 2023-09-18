@@ -118,9 +118,8 @@ public class InscripcionData {
         ps.setInt(2, idAlumno);
         ps.setInt(3, idMateria);
         ps.setDouble(idAlumno,nota);
-        int filasAfectadas = ps.executeUpdate();
-        
-        if (filasAfectadas > 0) {
+        int filasAfectadas = ps.executeUpdate(); 
+        if (filasAfectadas >= 0) {
             JOptionPane.showMessageDialog(null, "Se actualizó la nota en la materia");
         } else {
             System.out.println("No se pudo actualizar ningún dato.");
