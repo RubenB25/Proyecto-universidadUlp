@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import javax.swing.ButtonModel;
 import javax.swing.JOptionPane;
 import universidadejemplo.AccesoADatos.AlumnoData;
 import universidadejemplo.Entidades.Alumno;
@@ -14,9 +15,38 @@ import universidadejemplo.Entidades.Alumno;
  */
 public class FormularioAlumno extends javax.swing.JInternalFrame {
 
+    private Alumno alumno;
+    private int dni;
     public FormularioAlumno() {
         initComponents();
+        alumno = new Alumno();
 
+    }
+
+    public boolean verificarCampos() {
+        ButtonModel bm = bGEstado.getSelection();
+        try {  
+            dni = Integer.parseInt(jTFdocumento.getText());
+            if ((!"".equals(jTFapellido.getText()) && !"".equals(jTFnombre.getText()))
+                    && bGEstado.isSelected(bm) && jDCfechaNacimiento.getDate() != null) { //(jRActivoNo.isSelected() || jRActivoSi.isSelected())
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe completar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Ingrese un documento valido");
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Debe completar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return false;
+    }
+
+    public void limpiarCampos() {
+        jTFdocumento.setText("");
+        jTFapellido.setText("");
+        jTFnombre.setText("");
+        bGEstado.clearSelection();
+        jDCfechaNacimiento.setDate(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -35,9 +65,9 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         jRActivoSi = new javax.swing.JRadioButton();
         jLabel6 = new javax.swing.JLabel();
         jDCfechaNacimiento = new com.toedter.calendar.JDateChooser();
-        jBnuevo = new javax.swing.JButton();
+        jBeditar = new javax.swing.JButton();
         jBeliminar = new javax.swing.JButton();
-        jBguardar = new javax.swing.JButton();
+        jBnuevo = new javax.swing.JButton();
         jBsalir = new javax.swing.JButton();
         jTFapellido = new javax.swing.JTextField();
         jTFnombre = new javax.swing.JTextField();
@@ -81,7 +111,12 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
             }
         });
 
-        jBnuevo.setText("Nuevo");
+        jBeditar.setText("Guardar Cambios");
+        jBeditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBeditarActionPerformed(evt);
+            }
+        });
 
         jBeliminar.setText("Eliminar");
         jBeliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -90,10 +125,10 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
             }
         });
 
-        jBguardar.setText("Guardar");
-        jBguardar.addActionListener(new java.awt.event.ActionListener() {
+        jBnuevo.setText("Nuevo Alumno");
+        jBnuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBguardarActionPerformed(evt);
+                jBnuevoActionPerformed(evt);
             }
         });
 
@@ -130,11 +165,11 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jBnuevo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(18, 18, 18)
                                 .addComponent(jBeliminar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jBguardar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBeditar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                                 .addComponent(jBsalir))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,7 +195,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLFecha)
                             .addComponent(jDCfechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,11 +227,11 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
                     .addComponent(jDCfechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLFecha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBnuevo)
+                    .addComponent(jBeditar)
                     .addComponent(jBeliminar)
-                    .addComponent(jBguardar)
+                    .addComponent(jBnuevo)
                     .addComponent(jBsalir))
                 .addContainerGap())
         );
@@ -231,25 +266,24 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         AlumnoData alumnoData = new AlumnoData();
+
         try {
             int dni = Integer.parseInt(jTFdocumento.getText());
-            Alumno alumnoObtenido = alumnoData.buscarAlumnoPorDni(dni);
-            if (!"".equals(jTFdocumento.getText()) && alumnoObtenido != null) {
-                jTFapellido.setText(alumnoObtenido.getApellido());
-                jTFnombre.setText(alumnoObtenido.getNombre());
-                if (alumnoObtenido.isEstado() == true) {
+            alumno = alumnoData.buscarAlumnoPorDni(dni);
+            if (!"".equals(jTFdocumento.getText()) && alumno != null) {
+                jTFapellido.setText(alumno.getApellido());
+                jTFnombre.setText(alumno.getNombre());
+                if (alumno.isEstado() == true) {
                     jRActivoSi.setSelected(true);
-                    jRActivoNo.setEnabled(false);
                 }
-                jDCfechaNacimiento.setDate(Date.valueOf(alumnoObtenido.getFechaNacimiento()));
-                jDCfechaNacimiento.setEnabled(false);
+                jDCfechaNacimiento.setDate(Date.valueOf(alumno.getFechaNacimiento()));
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Ingrese un documento valido.");
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
-    private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
+    private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
         AlumnoData alumnoData = new AlumnoData();
         if (!"".equals(jTFdocumento.getText()) && !"".equals(jTFnombre.getText()) && !"".equals(jTFapellido.getText()) && jDCfechaNacimiento.getDate() != null) {
 
@@ -263,13 +297,15 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
                     Alumno alumnoNuevo = new Alumno(dni, jTFapellido.getText(), jTFnombre.getText(), jDCfechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), false);
                     alumnoData.guardarAlumno(alumnoNuevo);
                 }
+
+                limpiarCampos();
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Datos invalidos.");
             }
         } else {
             JOptionPane.showMessageDialog(null, "Debe completar todos los campos.");
         }
-    }//GEN-LAST:event_jBguardarActionPerformed
+    }//GEN-LAST:event_jBnuevoActionPerformed
 
     private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
         AlumnoData alumnoData = new AlumnoData();
@@ -283,17 +319,41 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
                 alumnoData.eliminarAlumno(idAlumno);
             }
 
+            limpiarCampos();
+
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Debe ingresar un documento y buscar el alumno para eliminar.");
         }
 
     }//GEN-LAST:event_jBeliminarActionPerformed
 
+    private void jBeditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeditarActionPerformed
+        AlumnoData alumnoData = new AlumnoData();
+
+        if (verificarCampos()) {
+            
+            alumno.setDni(Integer.parseInt(jTFdocumento.getText()));
+            alumno.setApellido(jTFapellido.getText());
+            alumno.setNombre(jTFnombre.getText());
+            if (jRActivoSi.isSelected()) {
+                alumno.setEstado(true);
+            } else {
+                alumno.setEstado(false);
+            }
+            alumno.setFechaNacimiento(jDCfechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+
+            alumnoData.modificarAlumno(alumno);
+
+            limpiarCampos();
+        }
+
+    }//GEN-LAST:event_jBeditarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bGEstado;
     private javax.swing.JButton jBBuscar;
+    private javax.swing.JButton jBeditar;
     private javax.swing.JButton jBeliminar;
-    private javax.swing.JButton jBguardar;
     private javax.swing.JButton jBnuevo;
     private javax.swing.JButton jBsalir;
     private com.toedter.calendar.JDateChooser jDCfechaNacimiento;
