@@ -273,9 +273,9 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
             if (!"".equals(jTFdocumento.getText()) && alumno != null) {
                 jTFapellido.setText(alumno.getApellido());
                 jTFnombre.setText(alumno.getNombre());
-                if (alumno.isEstado() == true) {
+                if (alumno.isEstado()) {
                     jRActivoSi.setSelected(true);
-                }
+                }else jRActivoNo.setSelected(true);
                 jDCfechaNacimiento.setDate(Date.valueOf(alumno.getFechaNacimiento()));
             }
         } catch (NumberFormatException e) {

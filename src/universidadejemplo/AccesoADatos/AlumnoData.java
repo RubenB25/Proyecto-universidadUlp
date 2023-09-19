@@ -77,7 +77,7 @@ public class AlumnoData {
 
     public Alumno buscarAlumnoPorDni(int dni) {
         Alumno alumno = null;
-        String sql = "select idAlumno, dni, apellido, nombre, fechaNacimiento from alumno where dni= ? and estado = 1";
+        String sql = "select estado,idAlumno, dni, apellido, nombre, fechaNacimiento from alumno where dni= ?";
         PreparedStatement ps = null;
         try {
             ps = conex.prepareStatement(sql);
@@ -92,7 +92,7 @@ public class AlumnoData {
                 alumno.setApellido(resultado.getString("apellido"));
                 alumno.setNombre(resultado.getString("nombre"));
                 alumno.setFechaNacimiento(resultado.getDate("fechaNacimiento").toLocalDate());
-                alumno.setEstado(true);
+                alumno.setEstado(resultado.getBoolean("estado"));
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el alumno o no se encuentra activo");
                 ps.close();
@@ -129,7 +129,7 @@ public class AlumnoData {
     }
 
     public void modificarAlumno(Alumno alumno) {
-        String sql = "update alumno set dni = ?, apellido = ?, nombre = ?, fechaNacimiento = ? where idAlumno = ?";
+        String sql = "update alumno set dni = ?, apellido = ?, nombre = ?, fechaNacimiento = ?, estado = ? where idAlumno = ?";
         try {
             PreparedStatement ps = conex.prepareStatement(sql);
             ps.setInt(1, alumno.getDni());
@@ -137,6 +137,7 @@ public class AlumnoData {
             ps.setString(3, alumno.getNombre());
             ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento()));
             ps.setInt(5, alumno.getIdAlumno());
+            ps.setBoolean(6, alumno.isEstado());
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
