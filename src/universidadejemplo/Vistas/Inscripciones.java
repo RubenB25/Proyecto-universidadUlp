@@ -323,8 +323,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
         // TODO add your handling code here:
-
-        RegistroAlumnosUlp.JIInsc.setVisible(false);
+        dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
 
     public void listar() {

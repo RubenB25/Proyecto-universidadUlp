@@ -4,7 +4,7 @@ import java.awt.Dimension;
 
 /** @author Gabriel*/
 public class RegistroAlumnosUlp extends javax.swing.JFrame {
-    public static Inscripciones JIInsc = new Inscripciones();
+
     public RegistroAlumnosUlp() {
         initComponents();
         setTitle("Universidad Ulp");
@@ -135,7 +135,7 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         jDescritorio.removeAll();
         jDescritorio.repaint();
         // Crea una instancia de tu JInternalFrame
-        
+        Inscripciones JIInsc = new Inscripciones();
         // Agrega el JInternalFrame al JDesktopPane
         jDescritorio.add(JIInsc);
         Dimension desktopSize = jDescritorio.getSize();

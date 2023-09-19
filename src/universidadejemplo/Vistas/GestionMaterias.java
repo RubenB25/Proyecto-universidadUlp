@@ -50,7 +50,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         jTnombre = new javax.swing.JTextField();
         JTaño = new javax.swing.JTextField();
         jBbuscar = new javax.swing.JButton();
-        jRestado = new javax.swing.JRadioButton();
+        jChBEstado = new javax.swing.JCheckBox();
 
         setBorder(new javax.swing.border.MatteBorder(null));
         setClosable(true);
@@ -95,7 +95,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         });
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Estado:");
+        jLabel1.setText("Activo");
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Año:");
@@ -163,21 +163,17 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel1))
+                                .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(19, 19, 19)
-                                        .addComponent(jRestado))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(JTaño, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                                    .addComponent(jTcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(jBbuscar))
-                                                .addComponent(jTnombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addGap(0, 123, Short.MAX_VALUE))
+                                    .addComponent(JTaño, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jTcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jBbuscar))
+                                        .addComponent(jTnombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jChBEstado))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(jBnuevo)
@@ -214,10 +210,10 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(JTaño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jRestado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                    .addComponent(jChBEstado))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBnuevo)
                     .addComponent(jBeliminar)
@@ -241,17 +237,21 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
-         if (validaDatos()) {
+         boolean estado=false; 
+        if (validaDatos()) {
             JOptionPane.showMessageDialog(null, "Debe completar todos los campos solicitados");
         } else {
-            
-            Materia mat = new Materia(Integer.valueOf(jTcodigo.getText()), jTnombre.getText(), Integer.valueOf(JTaño.getText()) , true);
+            if(jChBEstado.isSelected()){
+               estado = true;
+            }
+            Materia mat = new Materia(Integer.valueOf(jTcodigo.getText()), jTnombre.getText(), Integer.valueOf(JTaño.getText()) , estado);
             //Materia mat = new Materia(1, jTnombre.getText(), Integer.valueOf(JTaño.getText()) , true);
              //System.out.println(mat.getIdMateria() + "" + " " + mat.getNombre() + " " 
              //        + mat.getIdAnioMateria() + " " + mat.isEstado());
              
             MateriaData matData = new MateriaData();
             matData.ModificaMateria(mat);
+            limpiar();
         }      
         
     
@@ -274,7 +274,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             Materia mat = matData.buscarMateria(codigo);
             jTnombre.setText(mat.getNombre());
             JTaño.setText(mat.getAnio()+"");
-            jRestado.setText((mat.isEstado())+"");
+            
         }
     }//GEN-LAST:event_jBbuscarActionPerformed
 
@@ -305,6 +305,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             Materia mat = new Materia(jTnombre.getText(), Integer.valueOf(JTaño.getText()) , true);
             MateriaData matData = new MateriaData();
             matData.nuevaMateria(mat);
+            limpiar();
         }
     }//GEN-LAST:event_jBnuevoActionPerformed
     //boton Eliminar
@@ -315,10 +316,9 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             int codigo = Integer.parseInt(jTcodigo.getText());
             MateriaData matData = new MateriaData();
             matData.EliminaMateria(codigo);
-            Materia mat = matData.buscarMateria(codigo);
-            jTnombre.setText(mat.getNombre());
-            JTaño.setText(mat.getAnio()+"");
-            jRestado.setText((mat.isEstado())+"");
+            limpiar();
+            
+            
         }
     }//GEN-LAST:event_jBeliminarActionPerformed
 
@@ -376,7 +376,12 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             return false;
         }
     }
-
+    public void limpiar(){
+        jTnombre.setText("");
+        JTaño.setText("");
+        jTcodigo.setText("");
+        jChBEstado.setSelected(false);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JTaño;
     private javax.swing.JButton jBbuscar;
@@ -384,13 +389,13 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBguardar;
     private javax.swing.JButton jBnuevo;
     private javax.swing.JButton jBsalir;
+    private javax.swing.JCheckBox jChBEstado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRestado;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTcodigo;
     private javax.swing.JTextField jTnombre;
