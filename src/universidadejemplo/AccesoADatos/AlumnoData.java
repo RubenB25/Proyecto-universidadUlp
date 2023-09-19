@@ -136,8 +136,8 @@ public class AlumnoData {
             ps.setString(2, alumno.getApellido());
             ps.setString(3, alumno.getNombre());
             ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento()));
-            ps.setInt(5, alumno.getIdAlumno());
-            ps.setBoolean(6, alumno.isEstado());
+            ps.setBoolean(5, alumno.isEstado());
+            ps.setInt(6, alumno.getIdAlumno());
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
@@ -157,7 +157,7 @@ public class AlumnoData {
             ps.setInt(1, id);
             int exito = ps.executeUpdate();
 
-            if (exito== 1) {
+            if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Alumno eliminado correctamente.");
             }
             ps.close();

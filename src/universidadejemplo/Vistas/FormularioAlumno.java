@@ -337,7 +337,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
             alumno.setNombre(jTFnombre.getText());
             if (jRActivoSi.isSelected()) {
                 alumno.setEstado(true);
-            } else {
+            } else if (jRActivoNo.isSelected()) {
                 alumno.setEstado(false);
             }
             alumno.setFechaNacimiento(jDCfechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
