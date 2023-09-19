@@ -340,7 +340,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 || tecla == KeyEvent.VK_DELETE
                 || tecla == KeyEvent.VK_BACKSPACE
                 || tecla == KeyEvent.VK_MINUS){
-            evt.setKeyChar(Character.toUpperCase(tecla));
+           
         } else {
             evt.consume();
         }
