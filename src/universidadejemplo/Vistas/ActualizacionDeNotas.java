@@ -1,38 +1,54 @@
-
 package universidadejemplo.Vistas;
 
 import java.awt.BorderLayout;
+import java.awt.event.KeyEvent;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import javax.swing.DefaultCellEditor;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
+import javax.swing.event.CellEditorListener;
+import javax.swing.event.ChangeEvent;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableColumn;
 import universidadejemplo.AccesoADatos.AlumnoData;
 import universidadejemplo.AccesoADatos.InscripcionData;
 import universidadejemplo.Entidades.Alumno;
 import universidadejemplo.Entidades.Inscripcion;
 import universidadejemplo.Entidades.Materia;
 
-
 public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
-DefaultTableModel modelo;
-  
+
+    Alumno alumnoSeleccionado;
+    DefaultTableModel modelo;
+    ArrayList<Double> listaNotas = new ArrayList<>();
+    Set<Integer> filasSelec = new HashSet<>();
+
+    double notaTabla, nota;
+    int idAlumno;
+    int registroError = 0;
+
     public ActualizacionDeNotas() {
         initComponents();
         //instancio una tabla con el modelo de la vista 
         modelo = (DefaultTableModel) jTinscripcionMateria.getModel();
         llenarCB();
-        listar();
-    
-    }
-      public void llenarCB() {
-          //metodo de llenado de la array de alumno
-     AlumnoData llenar = new AlumnoData();
-     //lo recorre a la array y la llena
-        for (Alumno listarAlumno : llenar.listarAlumnos()) {
+//        listar();
 
+    }
+
+    public void llenarCB() {
+        //metodo de llenado de la array de alumno
+        AlumnoData llenar = new AlumnoData();
+        //lo recorre a la array y la llena
+        for (Alumno listarAlumno : llenar.listarAlumnos()) {
             jCBalumnos.addItem(listarAlumno);
-           
+
         }
-      }   
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -88,7 +104,20 @@ DefaultTableModel modelo;
                 return canEdit [columnIndex];
             }
         });
+        jTinscripcionMateria.setColumnSelectionAllowed(true);
+        jTinscripcionMateria.getTableHeader().setReorderingAllowed(false);
+        jTinscripcionMateria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTinscripcionMateriaMouseReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTinscripcionMateria);
+        jTinscripcionMateria.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (jTinscripcionMateria.getColumnModel().getColumnCount() > 0) {
+            jTinscripcionMateria.getColumnModel().getColumn(0).setResizable(false);
+            jTinscripcionMateria.getColumnModel().getColumn(1).setResizable(false);
+            jTinscripcionMateria.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         jBguardar.setText("Guardar");
         jBguardar.addActionListener(new java.awt.event.ActionListener() {
@@ -108,10 +137,6 @@ DefaultTableModel modelo;
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(188, 188, 188)
-                .addComponent(jLabe, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -119,12 +144,16 @@ DefaultTableModel modelo;
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(94, 94, 94)
+                                .addComponent(jLabe, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(22, 219, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jCBalumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jBguardar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jBsalir)))))
@@ -163,69 +192,121 @@ DefaultTableModel modelo;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCBalumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBalumnosActionPerformed
-    
-     
+
+
     }//GEN-LAST:event_jCBalumnosActionPerformed
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
-       //instancie un objeto inscripcionData y un alumno donde pongo la seleccion
-        InscripcionData ins= new InscripcionData();
-        Alumno alumnoSeleccionado = (Alumno)jCBalumnos.getSelectedItem();
-        //pongo variables para guardar los datos que voy a uilizar
-        int idAlumno=alumnoSeleccionado.getIdAlumno();
-        //obtengo la fila seleccionada para sacar los datos necesarios para invocar el metodo de actualizar
-        int filaSeleccionada = jTinscripcionMateria.getSelectedRow();
-        //de mi objeto inscripciondata obtengo las materias cursadas
-        ins.obtenerMateriasCursadas(idAlumno);
-        //creo dos objetos para luego obtener los valores dentro de la tabla parseandolos
-        Object valorMateria = modelo.getValueAt(filaSeleccionada,0);
-        Object valorNota= modelo.getValueAt(filaSeleccionada,2);
-        if (valorMateria!=null|| valorNota!=null){//si los mismos no son nulos 
-    try {
-        // los Convirto a entero
-        int idMateria = Integer.parseInt(valorMateria.toString());
-        //este sout fue para probar que me de el valor que necesitaba
-        //System.out.println(idMateria);
-        int nota=Integer.parseInt(valorNota.toString());
-        //este sou era para sabe que lo que me daba era correco
-        //System.out.println(nota);
-        //llamo al metodo actualizar enviando la informacion necesaria
-        ins.actualizarNota(idAlumno, idMateria, nota);
-// Ahora, "valorEntero" es una variable entera que contiene el valor deseado.
-    } catch (NumberFormatException e) {
-        // En caso de que no se pueda convertir a entero
-            JOptionPane.showMessageDialog(null,"El valor obtenido no es entero");
-    }} else {
-            JOptionPane.showMessageDialog(null,"El valor obtenido  es nulo");
-}
-       
-     
+        //instancie un objeto inscripcionData y un alumno donde pongo la seleccion
+//        InscripcionData ins= new InscripcionData();
+//        Alumno alumnoSeleccionado = (Alumno)jCBalumnos.getSelectedItem();
+//        //pongo variables para guardar los datos que voy a uilizar
+//        int idAlumno=alumnoSeleccionado.getIdAlumno();
+//        //obtengo la fila seleccionada para sacar los datos necesarios para invocar el metodo de actualizar
+//        int filaSeleccionada = jTinscripcionMateria.getSelectedRow();
+//        //de mi objeto inscripciondata obtengo las materias cursadas
+//        ins.obtenerMateriasCursadas(idAlumno);
+//        //creo dos objetos para luego obtener los valores dentro de la tabla parseandolos
+//        Object valorMateria = modelo.getValueAt(filaSeleccionada,0);
+//        Object valorNota= modelo.getValueAt(filaSeleccionada,2);
+//        if (valorMateria!=null|| valorNota!=null){//si los mismos no son nulos 
+//    try {
+//        // los Convirto a entero
+//        int idMateria = Integer.parseInt(valorMateria.toString());
+//        //este sout fue para probar que me de el valor que necesitaba
+//        //System.out.println(idMateria);
+//        int nota=Integer.parseInt(valorNota.toString());
+//        //este sou era para sabe que lo que me daba era correco
+//        //System.out.println(nota);
+//        //llamo al metodo actualizar enviando la informacion necesaria
+//        ins.actualizarNota(idAlumno, idMateria, nota);
+//// Ahora, "valorEntero" es una variable entera que contiene el valor deseado.
+//    } catch (NumberFormatException e) {
+//        // En caso de que no se pueda convertir a entero
+//            JOptionPane.showMessageDialog(null,"El valor obtenido no es entero");
+//    }} else {
+//            JOptionPane.showMessageDialog(null,"El valor obtenido  es nulo");
+//}     
+        try {
+            registroError = 0;
+            InscripcionData ins = new InscripcionData();
+            // actualiza la lista de notas del alumno seleccionado 
+            obtenerNotasDeInscripciones(ins, idAlumno);
+            for (Integer integer : filasSelec) {
+                notaTabla = Double.parseDouble(jTinscripcionMateria.getValueAt(integer, 2).toString());
+                int idMateria = Integer.parseInt(jTinscripcionMateria.getValueAt(integer, 0).toString());
+                // itero sobre la lista fila y utilizo mi objeto integer como indice para obtener la nota actual de la fila que se está checkeando si hay cambios con la nota cambiada.
+                nota = listaNotas.get(integer);
+                if (notaTabla > 0 && notaTabla < 11) {
+                    // si las notas difieren, se actualiza
+                    if (notaTabla != nota) {
+                        nota = notaTabla;
+                        ins.actualizarNota(idAlumno, idMateria, nota);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Valor de nota fuera de rango (1 a 10)", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    registroError++;
+                }
+            }
+            // mensaje de confirmación y limpieza de las listas.
+            if (registroError == 0) {
+                JOptionPane.showMessageDialog(this, "Notas actualizadas.");
+                filasSelec.removeAll(filasSelec);
+                listaNotas.removeAll(listaNotas);
+
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese un valor númerico.", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+
+
     }//GEN-LAST:event_jBguardarActionPerformed
 
     private void jCBalumnosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBalumnosItemStateChanged
         limpiar();
         listar();
-        
+
+        filasSelec.removeAll(filasSelec);
+        listaNotas.removeAll(listaNotas);
+
     }//GEN-LAST:event_jCBalumnosItemStateChanged
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jBsalirActionPerformed
+
+    private void jTinscripcionMateriaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTinscripcionMateriaMouseReleased
+        // TODO add your handling code here:
+        int filaFocused = jTinscripcionMateria.getSelectedRow();
+        if (filaFocused >= 0) {
+            filasSelec.add(filaFocused);
+        }
+
+    }//GEN-LAST:event_jTinscripcionMateriaMouseReleased
     public void limpiar() {
         while (modelo.getRowCount() > 0) {
             modelo.removeRow(0);
         }
     }
-    public void listar(){
-        InscripcionData materiaInscripta= new InscripcionData();
-Alumno alumnoSeleccionado = (Alumno)jCBalumnos.getSelectedItem();
 
-     int idAlumno=alumnoSeleccionado.getIdAlumno();
-      for (Inscripcion listaObtenida:materiaInscripta.obtenerInscripcionesPorAlumno(idAlumno)) {
-            modelo.addRow(new Object[]{listaObtenida.getMateria().getIdMateria(), listaObtenida.getMateria(), listaObtenida.getNota()});
+    public void obtenerNotasDeInscripciones(InscripcionData ins, int idAlumno) {
+        for (Inscripcion listaObtenida : ins.obtenerInscripcionesPorAlumno(idAlumno)) {
+            listaNotas.add(listaObtenida.getNota());
         }
     }
+
+    public void listar() {
+        InscripcionData materiaInscripta = new InscripcionData();
+        Alumno alumnoSeleccionado = (Alumno) jCBalumnos.getSelectedItem();
+        idAlumno = alumnoSeleccionado.getIdAlumno();
+        for (Inscripcion listaObtenida : materiaInscripta.obtenerInscripcionesPorAlumno(idAlumno)) {
+            modelo.addRow(new Object[]{listaObtenida.getMateria().getIdMateria(), listaObtenida.getMateria(), listaObtenida.getNota()});
+
+        }
+
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBguardar;
@@ -238,6 +319,4 @@ Alumno alumnoSeleccionado = (Alumno)jCBalumnos.getSelectedItem();
     private javax.swing.JTable jTinscripcionMateria;
     // End of variables declaration//GEN-END:variables
 
-
 }
-

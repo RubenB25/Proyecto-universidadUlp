@@ -353,7 +353,8 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
               boolean contieneNumero = false;
         String input = jTnombre.getText();
-        for (char c : input.toCharArray()) {
+        if (!input.isEmpty()) {
+            for (char c : input.toCharArray()) {
             if (Character.isDigit(c)) {
                 contieneNumero = true;
             }
@@ -363,6 +364,8 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                     jLNombreError.setVisible(false);
                 }
         }
+            
+        }else jLNombreError.setVisible(false);
     }//GEN-LAST:event_jTnombreKeyReleased
 
         
