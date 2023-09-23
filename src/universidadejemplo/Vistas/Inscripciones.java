@@ -65,11 +65,11 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jRBNoInscriptas = new javax.swing.JRadioButton();
         jCBInscriptos = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jBInscribir = new javax.swing.JButton();
         jBAnularInsc = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setBorder(new javax.swing.border.MatteBorder(null));
         setClosable(true);
@@ -77,7 +77,8 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 102));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTInscriptos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTInscriptos.setModel(new javax.swing.table.DefaultTableModel(
@@ -104,6 +105,8 @@ public class Inscripciones extends javax.swing.JInternalFrame {
             jTInscriptos.getColumnModel().getColumn(2).setResizable(false);
         }
 
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 421, 256));
+
         jRBInscriptas.setBackground(new java.awt.Color(0, 153, 102));
         buttonGroup1.add(jRBInscriptas);
         jRBInscriptas.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -113,9 +116,11 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                 jRBInscriptasActionPerformed(evt);
             }
         });
+        jPanel1.add(jRBInscriptas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel1.setText("Seleccione un alumno:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
 
         jRBNoInscriptas.setBackground(new java.awt.Color(0, 153, 102));
         buttonGroup1.add(jRBNoInscriptas);
@@ -126,6 +131,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                 jRBNoInscriptasActionPerformed(evt);
             }
         });
+        jPanel1.add(jRBNoInscriptas, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, -1, 28));
 
         jCBInscriptos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jCBInscriptos.addItemListener(new java.awt.event.ItemListener() {
@@ -133,12 +139,11 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                 jCBInscriptosItemStateChanged(evt);
             }
         });
-
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel2.setText("Formulario de Inscripción");
+        jPanel1.add(jCBInscriptos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 207, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel3.setText("Listado de materias");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, -1, -1));
 
         jBInscribir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jBInscribir.setText("Inscribir");
@@ -147,6 +152,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                 jBInscribirActionPerformed(evt);
             }
         });
+        jPanel1.add(jBInscribir, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, -1, -1));
 
         jBAnularInsc.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jBAnularInsc.setText("Anular inscripción");
@@ -155,6 +161,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                 jBAnularInscActionPerformed(evt);
             }
         });
+        jPanel1.add(jBAnularInsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, -1, -1));
 
         jBSalir.setBackground(new java.awt.Color(255, 102, 102));
         jBSalir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -164,67 +171,10 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                 jBSalirActionPerformed(evt);
             }
         });
+        jPanel1.add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 450, 71, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCBInscriptos, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jRBInscriptas)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jRBNoInscriptas))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jBInscribir)
-                                .addGap(54, 54, 54)
-                                .addComponent(jBAnularInsc)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap(40, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
-                        .addComponent(jLabel3)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCBInscriptos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRBInscriptas)
-                    .addComponent(jRBNoInscriptas, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBAnularInsc)
-                    .addComponent(jBInscribir)
-                    .addComponent(jBSalir))
-                .addGap(19, 19, 19))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FooterUlpVirtualM.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -234,7 +184,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
         );
 
         pack();
@@ -369,8 +319,8 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBSalir;
     private javax.swing.JComboBox<Alumno> jCBInscriptos;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRBInscriptas;
     private javax.swing.JRadioButton jRBNoInscriptas;

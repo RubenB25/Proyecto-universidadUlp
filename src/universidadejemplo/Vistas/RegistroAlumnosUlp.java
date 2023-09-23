@@ -1,6 +1,9 @@
 package universidadejemplo.Vistas;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /** @author Gabriel*/
 public class RegistroAlumnosUlp extends javax.swing.JFrame {
@@ -17,6 +20,7 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDescritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMAlumno = new javax.swing.JMenu();
         jMIFormularioA = new javax.swing.JMenuItem();
@@ -29,7 +33,16 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         jMIAlumnosxM = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
+        ImageIcon icon = new ImageIcon(getClass().getResource("/imagenes/Fondo1.png"));
+        Image image = icon.getImage();
+        jDescritorio = new javax.swing.JDesktopPane(){
+
+            public void paintComponent(Graphics g){
+                g.drawImage(image,0,0,getWidth(),getHeight(),this);
+            }
+        };
         jDescritorio.setBackground(new java.awt.Color(255, 255, 255));
         jDescritorio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
@@ -106,11 +119,11 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDescritorio)
+            .addComponent(jDescritorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDescritorio, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jDescritorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -151,6 +164,7 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         // Crea una instancia de tu JInternalFrame
         ActualizacionDeNotas adn =new ActualizacionDeNotas();
         // Agrega el JInternalFrame al JDesktopPane
+        
         jDescritorio.add(adn);
         Dimension desktopSize = jDescritorio.getSize();
         Dimension frameSize = adn.getSize();
@@ -216,7 +230,7 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private final javax.swing.JDesktopPane jDescritorio = new javax.swing.JDesktopPane();
+    private javax.swing.JDesktopPane jDescritorio;
     private javax.swing.JMenu jMAdministracion;
     private javax.swing.JMenu jMAlumno;
     private javax.swing.JMenu jMConsultas;
