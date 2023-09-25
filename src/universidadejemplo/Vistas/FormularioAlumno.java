@@ -13,8 +13,8 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
 
     public FormularioAlumno() {
         initComponents();
-        setTitle("UNIVERDSIDAD ULP GRUPO 83");   
-        setSize(400,400);
+         
+        setSize(508,537);
     }
 
     @SuppressWarnings("unchecked")
@@ -23,7 +23,6 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
 
         bGEstado = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTFdocumento = new javax.swing.JTextField();
         jBBuscar = new javax.swing.JButton();
@@ -45,11 +44,10 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        setTitle("Formulario de Alumno");
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 102));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("Alumno");
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setForeground(new java.awt.Color(204, 204, 204));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Documento");
@@ -70,7 +68,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Activo");
 
-        jRActivoSi.setBackground(new java.awt.Color(0, 153, 102));
+        jRActivoSi.setBackground(new java.awt.Color(204, 204, 204));
         bGEstado.add(jRActivoSi);
         jRActivoSi.setText("Si");
 
@@ -101,7 +99,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
             }
         });
 
-        jRActivoNo.setBackground(new java.awt.Color(0, 153, 102));
+        jRActivoNo.setBackground(new java.awt.Color(204, 204, 204));
         bGEstado.add(jRActivoNo);
         jRActivoNo.setText("No");
 
@@ -114,9 +112,6 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(166, 166, 166)
-                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel3))
@@ -163,8 +158,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -190,7 +184,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLFecha)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jBnuevo)
                             .addComponent(jBeliminar)
@@ -249,7 +243,6 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBsalir;
     private com.toedter.calendar.JDateChooser jDCfechaNacimiento;
     private javax.swing.JLabel jLFecha;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

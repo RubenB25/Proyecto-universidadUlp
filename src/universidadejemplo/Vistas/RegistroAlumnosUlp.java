@@ -7,11 +7,10 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
     public static Inscripciones JIInsc = new Inscripciones();
     public RegistroAlumnosUlp() {
         initComponents();
-        setTitle("GRUPO 83");
-    //  Para centrar el jDescritorio
+         //  Para centrar el jDescritorio
         pack();
         setLocationRelativeTo(null);
-        setSize(600,600);
+        setSize(508,537);
     }
 
     @SuppressWarnings("unchecked")
@@ -37,7 +36,7 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         jDescritorio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         imagenLabel.setForeground(new java.awt.Color(0, 102, 204));
-        imagenLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imanulpl.jpg"))); // NOI18N
+        imagenLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo1.png"))); // NOI18N
 
         jDescritorio.setLayer(imagenLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -49,7 +48,7 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         );
         jDescritorioLayout.setVerticalGroup(
             jDescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(imagenLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(imagenLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jMAlumno.setText("Alumno");
@@ -131,6 +130,7 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         fa.setVisible(true);
         jDescritorio.add(fa);
         jDescritorio.moveToFront(fa);
+        
     }//GEN-LAST:event_jMIFormularioAActionPerformed
 
     private void jMIManejoInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIManejoInscActionPerformed

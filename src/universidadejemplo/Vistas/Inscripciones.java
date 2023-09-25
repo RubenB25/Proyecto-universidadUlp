@@ -26,10 +26,9 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     public Inscripciones() {
 // se inician los componentes del jframe
         initComponents();
-        // le coloco titulo
-        setTitle("UNIVERSIDAD ULP GRUPO 83");
+     
      // el tamaño es de 400 x400
-        setSize(400,400);
+        setSize(508,537);
         // a la tabla le doy el modelo de tabla que usare 
         modelo = (DefaultTableModel) jTInscriptos.getModel();
         // llamo al metodo llenar 
@@ -54,7 +53,6 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 
         jCBInscriptos = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jRBInscriptas = new javax.swing.JRadioButton();
         jRBNoInscriptas = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
@@ -64,8 +62,11 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTInscriptos = new javax.swing.JTable();
 
-        setBackground(new java.awt.Color(0, 153, 102));
-        setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        setBorder(new javax.swing.border.MatteBorder(null));
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("Formulario de Inscripcion ");
 
         jCBInscriptos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jCBInscriptos.addItemListener(new java.awt.event.ItemListener() {
@@ -77,10 +78,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("Seleccione un alumno:");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setText("Formulario de Inscripción");
-
-        jRBInscriptas.setBackground(new java.awt.Color(0, 153, 102));
+        jRBInscriptas.setBackground(new java.awt.Color(204, 204, 204));
         jRBInscriptas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRBInscriptas.setText("Materias inscriptas");
         jRBInscriptas.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +87,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
             }
         });
 
-        jRBNoInscriptas.setBackground(new java.awt.Color(0, 153, 102));
+        jRBNoInscriptas.setBackground(new java.awt.Color(204, 204, 204));
         jRBNoInscriptas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRBNoInscriptas.setText("Materias no inscriptas");
         jRBNoInscriptas.addActionListener(new java.awt.event.ActionListener() {
@@ -176,14 +174,9 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(68, 68, 68))))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addComponent(jLabel3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(157, 157, 157)
-                        .addComponent(jLabel2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(185, 185, 185)
+                .addComponent(jLabel3)
+                .addContainerGap(201, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,9 +187,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCBInscriptos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -213,7 +204,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                     .addComponent(jBAnularInsc)
                     .addComponent(jBInscribir)
                     .addComponent(jBSalir))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
@@ -354,7 +345,6 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBSalir;
     private javax.swing.JComboBox<Alumno> jCBInscriptos;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JRadioButton jRBInscriptas;
     private javax.swing.JRadioButton jRBNoInscriptas;

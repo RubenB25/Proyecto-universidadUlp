@@ -12,9 +12,9 @@ DefaultTableModel modelo;
   
     public ActualizacionDeNotas() {
         initComponents();
-        setTitle("UNIVERSIDAD ULP GRUPO 83");
+       
        //le coloco un titulo y un tamaño para que todos tengan el mismo tamaño
-        setSize(400,400);
+        setSize(508,537);
         //instancio una tabla con el modelo de la vista 
        modelo= new DefaultTableModel();
         //le doy a la tabla un valor de la tabla inscripcionMateria.  
@@ -38,7 +38,6 @@ DefaultTableModel modelo;
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabe = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jCBalumnos = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -50,12 +49,10 @@ DefaultTableModel modelo;
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Actualizacion de Materias");
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 102));
-        jPanel1.setForeground(new java.awt.Color(0, 153, 102));
-
-        jLabe.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabe.setText("Carga de Notas");
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setForeground(new java.awt.Color(204, 204, 204));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("Seleccione un alumno:");
@@ -122,10 +119,6 @@ DefaultTableModel modelo;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBsalir)
                 .addGap(59, 59, 59))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabe, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -141,8 +134,7 @@ DefaultTableModel modelo;
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabe)
-                .addGap(18, 18, 18)
+                .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jCBalumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -247,7 +239,6 @@ DefaultTableModel modelo;
     private javax.swing.JButton jBguardar;
     private javax.swing.JButton jBsalir;
     private javax.swing.JComboBox<Alumno> jCBalumnos;
-    private javax.swing.JLabel jLabe;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

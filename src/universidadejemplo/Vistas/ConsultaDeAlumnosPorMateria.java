@@ -26,9 +26,9 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
     public ConsultaDeAlumnosPorMateria() {
 
         initComponents();
-        setTitle("UNIVERSIDAD ULP GRUPO 83");
      
-        setSize(400,400);
+     
+        setSize(508,537);
         modelo = (DefaultTableModel) jTAlumnos.getModel();
         llenarCb();
 
@@ -50,8 +50,9 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         jBsalir = new javax.swing.JButton();
 
         setBorder(new javax.swing.border.MatteBorder(null));
+        setTitle("Consulta Materias por Alumno");
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 102));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel1.setText("Listado de alumnos por materia");
 
