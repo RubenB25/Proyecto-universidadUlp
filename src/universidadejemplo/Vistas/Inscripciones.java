@@ -99,7 +99,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
             jTInscriptos.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 421, 250));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 440, 250));
 
         jRBInscriptas.setBackground(new java.awt.Color(204, 204, 204));
         buttonGroup1.add(jRBInscriptas);
@@ -133,38 +133,35 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                 jCBInscriptosItemStateChanged(evt);
             }
         });
-        jPanel1.add(jCBInscriptos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 207, -1));
+        jPanel1.add(jCBInscriptos, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 80, 220, 20));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Listado de materias");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, -1, -1));
 
-        jBInscribir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jBInscribir.setText("Inscribir");
         jBInscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBInscribirActionPerformed(evt);
             }
         });
-        jPanel1.add(jBInscribir, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, -1, -1));
+        jPanel1.add(jBInscribir, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, -1, 30));
 
-        jBAnularInsc.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jBAnularInsc.setText("Anular inscripción");
         jBAnularInsc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBAnularInscActionPerformed(evt);
             }
         });
-        jPanel1.add(jBAnularInsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, -1, -1));
+        jPanel1.add(jBAnularInsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 450, -1, 30));
 
-        jBSalir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jBSalir.setText("Salir");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 450, 71, -1));
+        jPanel1.add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 450, 71, 30));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FooterUlpVirtualM.png"))); // NOI18N
         jLabel4.setPreferredSize(new java.awt.Dimension(502, 114));
