@@ -55,27 +55,25 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabe = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jCBalumnos = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTinscripcionMateria = new javax.swing.JTable();
         jBguardar = new javax.swing.JButton();
         jBsalir = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
-        setBorder(new javax.swing.border.MatteBorder(null));
-        setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setResizable(true);
+        setTitle("Carga de Notas");
+        setPreferredSize(new java.awt.Dimension(499, 531));
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 102));
-        jPanel1.setForeground(new java.awt.Color(0, 153, 102));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabe.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabe.setText("Carga de Notas");
-
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Seleccione un alumno:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
 
         jCBalumnos.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -87,6 +85,7 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
                 jCBalumnosActionPerformed(evt);
             }
         });
+        jPanel1.add(jCBalumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 210, 20));
 
         jTinscripcionMateria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,12 +118,15 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
             jTinscripcionMateria.getColumnModel().getColumn(2).setResizable(false);
         }
 
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 420, 301));
+
         jBguardar.setText("Guardar");
         jBguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBguardarActionPerformed(evt);
             }
         });
+        jPanel1.add(jBguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, -1));
 
         jBsalir.setText("Salir");
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
@@ -132,50 +134,10 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
                 jBsalirActionPerformed(evt);
             }
         });
+        jPanel1.add(jBsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 440, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(35, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(94, 94, 94)
-                                .addComponent(jLabe, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(22, 219, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jCBalumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jBguardar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jBsalir)))))
-                .addGap(43, 43, 43))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabe)
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jCBalumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBguardar)
-                    .addComponent(jBsalir))
-                .addGap(26, 26, 26))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FooterUlpVirtualM.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -274,6 +236,7 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
         // TODO add your handling code here:
         dispose();
+        RegistroAlumnosUlp.ventanaAbiertaA = false;
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jTinscripcionMateriaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTinscripcionMateriaMouseReleased
@@ -312,8 +275,8 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBguardar;
     private javax.swing.JButton jBsalir;
     private javax.swing.JComboBox<Alumno> jCBalumnos;
-    private javax.swing.JLabel jLabe;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTinscripcionMateria;

@@ -5,11 +5,6 @@
  */
 package universidadejemplo.Vistas;
 
-import com.sun.java.swing.plaf.windows.resources.windows;
-import java.awt.Color;
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -71,11 +66,10 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         jBSalir = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
-        setBorder(new javax.swing.border.MatteBorder(null));
-        setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        setTitle("Formulario de Inscripción");
+        setMinimumSize(new java.awt.Dimension(52, 29));
+        setPreferredSize(new java.awt.Dimension(499, 531));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -105,11 +99,11 @@ public class Inscripciones extends javax.swing.JInternalFrame {
             jTInscriptos.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 421, 256));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 421, 250));
 
-        jRBInscriptas.setBackground(new java.awt.Color(0, 153, 102));
+        jRBInscriptas.setBackground(new java.awt.Color(204, 204, 204));
         buttonGroup1.add(jRBInscriptas);
-        jRBInscriptas.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jRBInscriptas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jRBInscriptas.setText("Materias inscriptas");
         jRBInscriptas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,13 +112,13 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jRBInscriptas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Seleccione un alumno:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
 
-        jRBNoInscriptas.setBackground(new java.awt.Color(0, 153, 102));
+        jRBNoInscriptas.setBackground(new java.awt.Color(204, 204, 204));
         buttonGroup1.add(jRBNoInscriptas);
-        jRBNoInscriptas.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jRBNoInscriptas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jRBNoInscriptas.setText("Materias no inscriptas");
         jRBNoInscriptas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,7 +135,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jCBInscriptos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 207, -1));
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Listado de materias");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, -1, -1));
 
@@ -163,7 +157,6 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jBAnularInsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, -1, -1));
 
-        jBSalir.setBackground(new java.awt.Color(255, 102, 102));
         jBSalir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jBSalir.setText("Salir");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -174,6 +167,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         jPanel1.add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 450, 71, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FooterUlpVirtualM.png"))); // NOI18N
+        jLabel4.setPreferredSize(new java.awt.Dimension(502, 114));
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -184,7 +178,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -274,6 +268,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
         // TODO add your handling code here:
         dispose();
+        RegistroAlumnosUlp.ventanaAbiertaI = false;
     }//GEN-LAST:event_jBSalirActionPerformed
 
     public void listar() {
