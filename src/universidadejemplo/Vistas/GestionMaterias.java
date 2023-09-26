@@ -7,6 +7,8 @@ package universidadejemplo.Vistas;
 
 import com.sun.glass.events.KeyEvent;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 import universidadejemplo.AccesoADatos.MateriaData;
 import universidadejemplo.Entidades.Materia;
 
@@ -269,7 +271,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             matData.buscarMateria(codigo);
             Materia mat = matData.buscarMateria(codigo);
             jTnombre.setText(mat.getNombre());
-            JTaño.setText(mat.getIdAnioMateria()+"");
+            JTaño.setText(mat.getAnio()+"");
             jRestado.setText((mat.isEstado())+"");
         }
     }//GEN-LAST:event_jBbuscarActionPerformed
@@ -313,7 +315,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             matData.EliminaMateria(codigo);
             Materia mat = matData.buscarMateria(codigo);
             jTnombre.setText(mat.getNombre());
-            JTaño.setText(mat.getIdAnioMateria()+"");
+            JTaño.setText(mat.getAnio()+"");
             jRestado.setText((mat.isEstado())+"");
         }
     }//GEN-LAST:event_jBeliminarActionPerformed
@@ -391,4 +393,22 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTcodigo;
     private javax.swing.JTextField jTnombre;
     // End of variables declaration//GEN-END:variables
+
+    public JTextField getJTaño() {
+        return JTaño;
+    }
+
+    public JRadioButton getjRestado() {
+        return jRestado;
+    }
+
+    public JTextField getjTcodigo() {
+        return jTcodigo;
+    }
+
+    public JTextField getjTnombre() {
+        return jTnombre;
+    }
+
+
 }
