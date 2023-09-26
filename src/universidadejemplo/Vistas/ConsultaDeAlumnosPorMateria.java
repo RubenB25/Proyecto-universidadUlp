@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package universidadejemplo.Vistas;
 
 import javax.swing.JTable;
@@ -12,25 +8,15 @@ import universidadejemplo.AccesoADatos.MateriaData;
 import universidadejemplo.Entidades.Alumno;
 import universidadejemplo.Entidades.Materia;
 
-/**
- *
- * @author Ruben
- */
 public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
-
     DefaultTableModel modelo;
-
-    /**
-     * Creates new form ConsultaDeAlumnosPorMateria
-     */
     public ConsultaDeAlumnosPorMateria() {
-
         initComponents();
-     
-     
-        setSize(508,537);
-        modelo = (DefaultTableModel) jTAlumnos.getModel();
+        setTitle("Consulta alumno por materia");
         llenarCb();
+        
+       listar();
+        setSize(500,477);
 
     }
 
@@ -48,22 +34,30 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTAlumnos = new javax.swing.JTable();
         jBsalir = new javax.swing.JButton();
+        jLimagen = new javax.swing.JLabel();
+        jLfirma = new javax.swing.JLabel();
 
         setBorder(new javax.swing.border.MatteBorder(null));
-        setTitle("Consulta Materias por Alumno");
+        setTitle("Consulta de Alumnos Por Materia");
+        setToolTipText("");
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setPreferredSize(new java.awt.Dimension(500, 477));
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel1.setText("Listado de alumnos por materia");
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel2.setText("Seleccione una materia:");
 
+        jCBListado.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jCBListado.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jCBListadoItemStateChanged(evt);
             }
         });
 
+        jTAlumnos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -88,6 +82,7 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
             jTAlumnos.getColumnModel().getColumn(3).setResizable(false);
         }
 
+        jBsalir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jBsalir.setText("Salir");
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,54 +90,66 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
             }
         });
 
+        jLimagen.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLimagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FooterUlpVirtualM.png"))); // NOI18N
+
+        jLfirma.setForeground(new java.awt.Color(255, 153, 0));
+        jLfirma.setText("Elaborado por el grupo 83");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLimagen, javax.swing.GroupLayout.DEFAULT_SIZE, 894, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(216, 216, 216)
+                        .addComponent(jBsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(260, 260, 260)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jCBListado, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(23, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(174, 174, 174)
+                        .addComponent(jLfirma, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(141, 141, 141)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(38, 38, 38)
+                                .addComponent(jLabel2)
+                                .addGap(53, 53, 53)
+                                .addComponent(jCBListado, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jLimagen, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jCBListado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jLfirma)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addGap(48, 48, 48))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 894, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
         );
 
         pack();
@@ -154,7 +161,7 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
 
     private void jCBListadoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBListadoItemStateChanged
         // TODO add your handling code here:
-        limpiar();
+       limpiar();
         listar();
 
     }//GEN-LAST:event_jCBListadoItemStateChanged
@@ -165,6 +172,8 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<Materia> jCBListado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLfirma;
+    private javax.swing.JLabel jLimagen;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTAlumnos;
@@ -172,14 +181,12 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
 
     private void llenarCb() {
         MateriaData materiasCB = new MateriaData();
-
         for (Materia listaMaterias : materiasCB.listarMaterias()) {
             jCBListado.addItem(listaMaterias);
-
         }
     }
-
     private void listar() {
+          modelo = (DefaultTableModel) jTAlumnos.getModel();
         Materia id = (Materia) jCBListado.getSelectedItem();
         InscripcionData iData = new InscripcionData();
         for (Alumno alumnos : iData.obtenerAlumnosPorMateria(id.getIdMateria())) {
@@ -188,6 +195,7 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
     }
 
     public void limpiar() {
+         modelo = (DefaultTableModel) jTAlumnos.getModel();
         while (modelo.getRowCount() > 0) {
             modelo.removeRow(0);
         }
