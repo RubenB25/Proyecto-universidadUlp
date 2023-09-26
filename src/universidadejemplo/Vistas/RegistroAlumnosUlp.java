@@ -42,7 +42,7 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1024, 768));
         setResizable(false);
 
-        ImageIcon icon = new ImageIcon(getClass().getResource("src/imagenes/Fondo.png"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/imagenes/Fondo.png"));
         Image image = icon.getImage();
         jDescritorio = new javax.swing.JDesktopPane(){
 
