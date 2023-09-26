@@ -36,7 +36,7 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         jDescritorio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         imagenLabel.setForeground(new java.awt.Color(0, 102, 204));
-        imagenLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo1.png"))); // NOI18N
+        imagenLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondoconnombre1.png"))); // NOI18N
 
         jDescritorio.setLayer(imagenLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -44,11 +44,14 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         jDescritorio.setLayout(jDescritorioLayout);
         jDescritorioLayout.setHorizontalGroup(
             jDescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(imagenLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(imagenLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jDescritorioLayout.setVerticalGroup(
             jDescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(imagenLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jDescritorioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(imagenLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jMAlumno.setText("Alumno");
