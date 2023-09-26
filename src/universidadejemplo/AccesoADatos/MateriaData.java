@@ -5,6 +5,8 @@
  */
 package universidadejemplo.AccesoADatos;
 
+import java.awt.AWTError;
+import java.awt.AWTException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -55,11 +57,12 @@ public class MateriaData {
     
     public void ModificaMateria(Materia materia) {
         
-        String sql = "UPDATE materia SET nombre = ?, año = ?, estado = ? "
-                    + "WHERE idMateria = ?";
+
     
         try {
-            
+              String sql = "UPDATE materia SET nombre = ?, año = ?, estado = ? "
+                    + "WHERE idMateria = ?";
+    
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, materia.getNombre());
             ps.setInt(2, materia.getAnio());
@@ -75,7 +78,7 @@ public class MateriaData {
                 System.out.println("Error al modificar materia");
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error de acceso tabla Materia");    
+            JOptionPane.showMessageDialog(null, "Código de materia duplicado", "ERROR",JOptionPane.ERROR_MESSAGE);    
         }
 
     }

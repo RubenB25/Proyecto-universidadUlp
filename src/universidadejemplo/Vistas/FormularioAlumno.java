@@ -14,7 +14,7 @@ import universidadejemplo.Entidades.Alumno;
  * @author Gabriel
  */
 public class FormularioAlumno extends javax.swing.JInternalFrame {
-
+    boolean contieneNumero=false;
     private Alumno alumno;
     private int dni;
     public FormularioAlumno() {
@@ -82,9 +82,9 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Documento");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
-        jPanel1.add(jTFdocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 221, -1));
+        jLabel2.setText("Documento:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+        jPanel1.add(jTFdocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 221, -1));
 
         jBBuscar.setText("Buscar");
         jBBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -92,29 +92,29 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
                 jBBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(jBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, -1, 40));
+        jPanel1.add(jBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, -1, 40));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Apellido");
+        jLabel3.setText("Apellido:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("Nombre");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
+        jLabel4.setText("Nombre:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setText("Activo");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, 30));
+        jLabel5.setText("Activo:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, 30));
 
         jRActivoSi.setBackground(new java.awt.Color(204, 204, 204));
         bGEstado.add(jRActivoSi);
         jRActivoSi.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jRActivoSi.setText("Si");
-        jPanel1.add(jRActivoSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 50, 30));
+        jPanel1.add(jRActivoSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 50, 30));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setText("Fecha de nacimiento");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
+        jLabel6.setText("Fecha de nacimiento:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
 
         jDCfechaNacimiento.setDateFormatString("dd, MMM, yyyy");
         jDCfechaNacimiento.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -122,7 +122,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
                 jDCfechaNacimientoPropertyChange(evt);
             }
         });
-        jPanel1.add(jDCfechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 177, -1));
+        jPanel1.add(jDCfechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 177, -1));
 
         jBeditar.setText("Guardar cambios");
         jBeditar.addActionListener(new java.awt.event.ActionListener() {
@@ -156,17 +156,17 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jBsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, -1, 30));
         jPanel1.add(jTFapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 221, -1));
-        jPanel1.add(jTFnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 221, -1));
+        jPanel1.add(jTFnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 221, -1));
 
         jRActivoNo.setBackground(new java.awt.Color(204, 204, 204));
         bGEstado.add(jRActivoNo);
         jRActivoNo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jRActivoNo.setText("No");
-        jPanel1.add(jRActivoNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, -1, 30));
+        jPanel1.add(jRActivoNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, -1, 30));
 
         jLFecha.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLFecha.setText("Fecha:");
-        jPanel1.add(jLFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, -1, -1));
+        jPanel1.add(jLFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FooterUlpVirtualM.png"))); // NOI18N
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 60));
@@ -220,6 +220,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
+        if(!validarString()){
         AlumnoData alumnoData = new AlumnoData();
         if (!"".equals(jTFdocumento.getText()) && !"".equals(jTFnombre.getText()) && !"".equals(jTFapellido.getText()) && jDCfechaNacimiento.getDate() != null) {
 
@@ -241,6 +242,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Debe completar todos los campos.");
         }
+        }else JOptionPane.showMessageDialog(this, "Verifique los datos", "ERROR", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_jBnuevoActionPerformed
 
     private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
@@ -262,10 +264,25 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         }
 
     }//GEN-LAST:event_jBeliminarActionPerformed
-
+    
+     public boolean validarString(){
+         
+         String inputA= jTFapellido.getText();
+         String inputN = jTFnombre.getText()+inputA;
+        if (!inputN.isEmpty()) {
+            for (char c : inputN.toCharArray()) {
+            if (Character.isDigit(c)) {
+                contieneNumero = true;
+                break;
+            }else contieneNumero= false;    
+        }
+            
+        }
+        return contieneNumero;
+    }
     private void jBeditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeditarActionPerformed
         AlumnoData alumnoData = new AlumnoData();
-
+        if(!validarString()){
         if (verificarCampos()) {
             
             alumno.setDni(Integer.parseInt(jTFdocumento.getText()));
@@ -281,8 +298,9 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
             alumnoData.modificarAlumno(alumno);
 
             limpiarCampos();
-        }
-
+        }}else JOptionPane.showMessageDialog(this, "Verifique los datos", "ERROR", JOptionPane.ERROR_MESSAGE);
+        
+        
     }//GEN-LAST:event_jBeditarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

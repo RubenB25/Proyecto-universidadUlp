@@ -15,7 +15,7 @@ import universidadejemplo.Entidades.Materia;
  * @author rar
  */
 public class GestionMaterias extends javax.swing.JInternalFrame {
-
+boolean contieneNumero = false;
     /**
      * Creates new form GestionMaterias
      */
@@ -47,9 +47,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         jBbuscar = new javax.swing.JButton();
         jChBEstado = new javax.swing.JCheckBox();
         jLabel6 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         jTnombre = new javax.swing.JTextField();
-        jLNombreError = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -106,7 +104,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Codigo:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
 
         jTcodigo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -116,7 +114,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 jTcodigoKeyTyped(evt);
             }
         });
-        jPanel1.add(jTcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 104, -1));
+        jPanel1.add(jTcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 104, -1));
 
         JTaño.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -131,14 +129,12 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 jBbuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(jBbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, 40));
+        jPanel1.add(jBbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, -1, 40));
         jPanel1.add(jChBEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FooterUlpVirtualM.png"))); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(502, 114));
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 60));
-
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
         jTnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,45 +152,11 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 jTnombreKeyTyped(evt);
             }
         });
-
-        jLNombreError.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLNombreError.setForeground(new java.awt.Color(255, 102, 102));
-        jLNombreError.setText("* El nombre no debe incluir números.");
-        jLNombreError.setVisible(false);
+        jPanel1.add(jTnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 245, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Nombre:");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLNombreError, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 50, Short.MAX_VALUE)))
-                .addGap(87, 87, 87))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLNombreError)
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 500, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -211,7 +173,9 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
-         boolean estado=false; 
+         if(!validarString()){
+        boolean estado=false; 
+         
         if (validaDatos()) {
             JOptionPane.showMessageDialog(null, "Debe completar todos los campos solicitados");
         } else {
@@ -226,7 +190,9 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             MateriaData matData = new MateriaData();
             matData.ModificaMateria(mat);
             limpiar();
-        }      
+        }
+         
+         }else JOptionPane.showMessageDialog(this, "Verifique los datos", "ERROR", JOptionPane.ERROR_MESSAGE);
         
     
     }//GEN-LAST:event_jBguardarActionPerformed
@@ -249,27 +215,20 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             Materia mat = matData.buscarMateria(codigo);
             jTnombre.setText(mat.getNombre());
             JTaño.setText(mat.getAnio()+"");
-            
+            jChBEstado.setSelected(mat.isEstado());
         }
     }//GEN-LAST:event_jBbuscarActionPerformed
 
     private void jTcodigoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTcodigoKeyPressed
     }//GEN-LAST:event_jTcodigoKeyPressed
 
-    private void jTnombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTnombreKeyPressed
-
-    }//GEN-LAST:event_jTnombreKeyPressed
-
     private void jTcodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTcodigoKeyTyped
         validaNumero(evt);
     }//GEN-LAST:event_jTcodigoKeyTyped
 
-    private void jTnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTnombreKeyTyped
-//        validaNombre(evt);
-    }//GEN-LAST:event_jTnombreKeyTyped
-
     private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
             
+        if(!validarString()){
         if (validaDatos()) {
             JOptionPane.showMessageDialog(null, "Debe completar todos los campos solicitados");
         } else {
@@ -278,7 +237,8 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             MateriaData matData = new MateriaData();
             matData.nuevaMateria(mat);
             limpiar();
-        }
+            }
+        }else JOptionPane.showMessageDialog(this, "Verifique los datos", "ERROR", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_jBnuevoActionPerformed
     //boton Eliminar
     private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
@@ -289,37 +249,29 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             MateriaData matData = new MateriaData();
             matData.EliminaMateria(codigo);
             limpiar();
-            
-            
         }
     }//GEN-LAST:event_jBeliminarActionPerformed
-
-    private void jTnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTnombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTnombreActionPerformed
-
-    private void jTnombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTnombreKeyReleased
-        // TODO add your handling code here:
-              boolean contieneNumero = false;
-        String input = jTnombre.getText();
-        if (!input.isEmpty()) {
-            for (char c : input.toCharArray()) {
-            if (Character.isDigit(c)) {
-                contieneNumero = true;
-            }
-            if (contieneNumero) {
-                    jLNombreError.setVisible(true);
-                }else{
-                    jLNombreError.setVisible(false);
-                }
-        }
-            
-        }else jLNombreError.setVisible(false);
-    }//GEN-LAST:event_jTnombreKeyReleased
 
     private void JTañoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTañoKeyTyped
         validaNumero(evt);
     }//GEN-LAST:event_JTañoKeyTyped
+
+    private void jTnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTnombreKeyTyped
+        //        validaNombre(evt);
+    }//GEN-LAST:event_jTnombreKeyTyped
+
+    private void jTnombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTnombreKeyReleased
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jTnombreKeyReleased
+
+    private void jTnombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTnombreKeyPressed
+
+    }//GEN-LAST:event_jTnombreKeyPressed
+
+    private void jTnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTnombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTnombreActionPerformed
 
         
     public void validaNumero(java.awt.event.KeyEvent evt) {
@@ -381,6 +333,19 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         jTcodigo.setText("");
         jChBEstado.setSelected(false);
     }
+    public boolean validarString(){
+         String input = jTnombre.getText();
+        if (!input.isEmpty()) {
+            for (char c : input.toCharArray()) {
+            if (Character.isDigit(c)) {
+                contieneNumero = true;
+                break;
+            }else contieneNumero= false;    
+        }
+            
+        }
+        return contieneNumero;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JTaño;
     private javax.swing.JButton jBbuscar;
@@ -389,14 +354,12 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBnuevo;
     private javax.swing.JButton jBsalir;
     private javax.swing.JCheckBox jChBEstado;
-    private javax.swing.JLabel jLNombreError;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTcodigo;
     private javax.swing.JTextField jTnombre;
     // End of variables declaration//GEN-END:variables
