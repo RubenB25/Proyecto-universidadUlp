@@ -1,8 +1,13 @@
 package universidadejemplo.Vistas;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import javax.swing.ButtonModel;
+import javax.swing.JOptionPane;
+import universidadejemplo.AccesoADatos.AlumnoData;
+import universidadejemplo.Entidades.Alumno;
 
 /**
  *
@@ -10,9 +15,38 @@ import java.time.format.DateTimeFormatter;
  */
 public class FormularioAlumno extends javax.swing.JInternalFrame {
 
+    private Alumno alumno;
+    private int dni;
     public FormularioAlumno() {
         initComponents();
-        
+        alumno = new Alumno();
+
+    }
+
+    public boolean verificarCampos() {
+        ButtonModel bm = bGEstado.getSelection();
+        try {  
+            dni = Integer.parseInt(jTFdocumento.getText());
+            if ((!"".equals(jTFapellido.getText()) && !"".equals(jTFnombre.getText()))
+                    && bGEstado.isSelected(bm) && jDCfechaNacimiento.getDate() != null) { //(jRActivoNo.isSelected() || jRActivoSi.isSelected())
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe completar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Ingrese un documento valido");
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Debe completar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return false;
+    }
+
+    public void limpiarCampos() {
+        jTFdocumento.setText("");
+        jTFapellido.setText("");
+        jTFnombre.setText("");
+        bGEstado.clearSelection();
+        jDCfechaNacimiento.setDate(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -21,7 +55,6 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
 
         bGEstado = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTFdocumento = new javax.swing.JTextField();
         jBBuscar = new javax.swing.JButton();
@@ -31,25 +64,27 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         jRActivoSi = new javax.swing.JRadioButton();
         jLabel6 = new javax.swing.JLabel();
         jDCfechaNacimiento = new com.toedter.calendar.JDateChooser();
-        jBnuevo = new javax.swing.JButton();
+        jBeditar = new javax.swing.JButton();
         jBeliminar = new javax.swing.JButton();
-        jBguardar = new javax.swing.JButton();
+        jBnuevo = new javax.swing.JButton();
         jBsalir = new javax.swing.JButton();
         jTFapellido = new javax.swing.JTextField();
         jTFnombre = new javax.swing.JTextField();
         jRActivoNo = new javax.swing.JRadioButton();
         jLFecha = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
-        setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        setTitle("Alumno");
+        setPreferredSize(new java.awt.Dimension(499, 531));
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 102));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("Alumno");
-
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Documento");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
+        jPanel1.add(jTFdocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 221, -1));
 
         jBBuscar.setText("Buscar");
         jBBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -57,18 +92,29 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
                 jBBuscarActionPerformed(evt);
             }
         });
+        jPanel1.add(jBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, -1, 40));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Apellido");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Nombre");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Activo");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, 30));
 
-        jRActivoSi.setBackground(new java.awt.Color(0, 153, 102));
+        jRActivoSi.setBackground(new java.awt.Color(204, 204, 204));
         bGEstado.add(jRActivoSi);
+        jRActivoSi.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jRActivoSi.setText("Si");
+        jPanel1.add(jRActivoSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 50, 30));
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Fecha de nacimiento");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
 
         jDCfechaNacimiento.setDateFormatString("dd, MMM, yyyy");
         jDCfechaNacimiento.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -76,12 +122,31 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
                 jDCfechaNacimientoPropertyChange(evt);
             }
         });
+        jPanel1.add(jDCfechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 177, -1));
 
-        jBnuevo.setText("Nuevo");
+        jBeditar.setText("Guardar cambios");
+        jBeditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBeditarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jBeditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, -1, 30));
 
         jBeliminar.setText("Eliminar");
+        jBeliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBeliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jBeliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, -1, 30));
 
-        jBguardar.setText("Guardar");
+        jBnuevo.setText("Nuevo Alumno");
+        jBnuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBnuevoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jBnuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 110, 30));
 
         jBsalir.setText("Salir");
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
@@ -89,106 +154,22 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
                 jBsalirActionPerformed(evt);
             }
         });
+        jPanel1.add(jBsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, -1, 30));
+        jPanel1.add(jTFapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 221, -1));
+        jPanel1.add(jTFnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 221, -1));
 
-        jRActivoNo.setBackground(new java.awt.Color(0, 153, 102));
+        jRActivoNo.setBackground(new java.awt.Color(204, 204, 204));
         bGEstado.add(jRActivoNo);
+        jRActivoNo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jRActivoNo.setText("No");
+        jPanel1.add(jRActivoNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, -1, 30));
 
+        jLFecha.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLFecha.setText("Fecha:");
+        jPanel1.add(jLFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(166, 166, 166)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jBnuevo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jBeliminar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jBguardar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
-                                .addComponent(jBsalir))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel5))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jRActivoSi)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRActivoNo))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jTFnombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-                                            .addComponent(jTFapellido, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTFdocumento, javax.swing.GroupLayout.Alignment.LEADING))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jBBuscar))))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLFecha)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jDCfechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jTFdocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3))
-                    .addComponent(jTFapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTFnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jRActivoSi, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jRActivoNo)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLFecha)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jBnuevo)
-                            .addComponent(jBeliminar)
-                            .addComponent(jBguardar)
-                            .addComponent(jBsalir)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jDCfechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FooterUlpVirtualM.png"))); // NOI18N
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -205,40 +186,120 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
-
+        dispose();
+        RegistroAlumnosUlp.ventanaAbiertaF = false;
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jDCfechaNacimientoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDCfechaNacimientoPropertyChange
         if (jDCfechaNacimiento.getDate() != null) {
-            
+
             LocalDate fechaN = jDCfechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-            
+
             jLFecha.setText("Fecha: " + fechaN.format(dtf));
-    }
+        }
     }//GEN-LAST:event_jDCfechaNacimientoPropertyChange
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-        //conectar con metodo buscar alumno por dni
-       
+        AlumnoData alumnoData = new AlumnoData();
+
+        try {
+            int dni = Integer.parseInt(jTFdocumento.getText());
+            alumno = alumnoData.buscarAlumnoPorDni(dni);
+            if (!"".equals(jTFdocumento.getText()) && alumno != null) {
+                jTFapellido.setText(alumno.getApellido());
+                jTFnombre.setText(alumno.getNombre());
+                if (alumno.isEstado()) {
+                    jRActivoSi.setSelected(true);
+                }else jRActivoNo.setSelected(true);
+                jDCfechaNacimiento.setDate(Date.valueOf(alumno.getFechaNacimiento()));
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Ingrese un documento valido.");
+        }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
+    private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
+        AlumnoData alumnoData = new AlumnoData();
+        if (!"".equals(jTFdocumento.getText()) && !"".equals(jTFnombre.getText()) && !"".equals(jTFapellido.getText()) && jDCfechaNacimiento.getDate() != null) {
+
+            try {
+                int dni = Integer.parseInt(jTFdocumento.getText());
+                if (jRActivoSi.isSelected()) {
+                    Alumno alumnoNuevo = new Alumno(dni, jTFapellido.getText(), jTFnombre.getText(), jDCfechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), true);
+                    alumnoData.guardarAlumno(alumnoNuevo);
+                }
+                if (jRActivoNo.isSelected()) {
+                    Alumno alumnoNuevo = new Alumno(dni, jTFapellido.getText(), jTFnombre.getText(), jDCfechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), false);
+                    alumnoData.guardarAlumno(alumnoNuevo);
+                }
+
+                limpiarCampos();
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Datos invalidos.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe completar todos los campos.");
+        }
+    }//GEN-LAST:event_jBnuevoActionPerformed
+
+    private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
+        AlumnoData alumnoData = new AlumnoData();
+        try {
+            Alumno alumnoAEliminar = alumnoData.buscarAlumnoPorDni(Integer.parseInt(jTFdocumento.getText()));
+
+            int idAlumno = alumnoAEliminar.getIdAlumno();
+
+            int opcion = JOptionPane.showConfirmDialog(null, "Se dara de baja el alumno seleccionado", "Confirmación", JOptionPane.YES_NO_OPTION);
+            if (opcion == JOptionPane.YES_OPTION) {
+                alumnoData.eliminarAlumno(idAlumno);
+            }
+
+            limpiarCampos();
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar un documento y buscar el alumno para eliminar.");
+        }
+
+    }//GEN-LAST:event_jBeliminarActionPerformed
+
+    private void jBeditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeditarActionPerformed
+        AlumnoData alumnoData = new AlumnoData();
+
+        if (verificarCampos()) {
+            
+            alumno.setDni(Integer.parseInt(jTFdocumento.getText()));
+            alumno.setApellido(jTFapellido.getText());
+            alumno.setNombre(jTFnombre.getText());
+            if (jRActivoSi.isSelected()) {
+                alumno.setEstado(true);
+            } else if (jRActivoNo.isSelected()) {
+                alumno.setEstado(false);
+            }
+            alumno.setFechaNacimiento(jDCfechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+
+            alumnoData.modificarAlumno(alumno);
+
+            limpiarCampos();
+        }
+
+    }//GEN-LAST:event_jBeditarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bGEstado;
     private javax.swing.JButton jBBuscar;
+    private javax.swing.JButton jBeditar;
     private javax.swing.JButton jBeliminar;
-    private javax.swing.JButton jBguardar;
     private javax.swing.JButton jBnuevo;
     private javax.swing.JButton jBsalir;
     private com.toedter.calendar.JDateChooser jDCfechaNacimiento;
     private javax.swing.JLabel jLFecha;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRActivoNo;
     private javax.swing.JRadioButton jRActivoSi;
