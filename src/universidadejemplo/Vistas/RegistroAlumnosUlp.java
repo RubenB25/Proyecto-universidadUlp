@@ -16,7 +16,7 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
     
     public RegistroAlumnosUlp() {
         initComponents();
-    //  Para centrar el jDescritorio
+    //  Para centrar el jDescritorio ...
         pack();
         setLocationRelativeTo(null);
     }
