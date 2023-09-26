@@ -125,7 +125,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                 jRBNoInscriptasActionPerformed(evt);
             }
         });
-        jPanel1.add(jRBNoInscriptas, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, -1, 28));
+        jPanel1.add(jRBNoInscriptas, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, 28));
 
         jCBInscriptos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jCBInscriptos.addItemListener(new java.awt.event.ItemListener() {
@@ -198,7 +198,6 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 
     private void jCBInscriptosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBInscriptosItemStateChanged
         // TODO add your handling code here:
-
         limpiar();
         if (jRBInscriptas.isSelected()) {
             listar();
