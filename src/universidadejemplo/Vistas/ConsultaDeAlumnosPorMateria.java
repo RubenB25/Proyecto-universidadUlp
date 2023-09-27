@@ -90,7 +90,7 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
             jTAlumnos.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 440, 280));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 430, 280));
 
         jBsalir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jBsalir.setText("Salir");
@@ -99,7 +99,7 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
                 jBsalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jBsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 440, 60, 30));
+        jPanel1.add(jBsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 440, 60, 30));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FooterUlpVirtualM.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 60));
