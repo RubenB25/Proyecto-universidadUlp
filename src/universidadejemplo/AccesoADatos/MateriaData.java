@@ -12,8 +12,10 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLWarning;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import org.eclipse.persistence.sdo.helper.extension.SDOUtil;
 import org.mariadb.jdbc.Statement;
 import universidadejemplo.Entidades.Inscripcion;
 import universidadejemplo.Entidades.Materia;
@@ -151,4 +153,23 @@ public class MateriaData {
         }
         return listaMaterias;
     }
+    
+    public ArrayList<Materia> listaComboMaterias(){
+        ArrayList<Materia> listaMaterias = new ArrayList<>();
+        
+        try {
+            String sql = "SELECT idMateria,nombre,año,estado From materia";
+            PreparedStatement psm = con.prepareStatement(sql);
+            ResultSet rs = psm.executeQuery();
+            while (rs.next()) {
+                Materia materia = new Materia(rs.getInt("idMateria"), rs.getString("nombre"), rs.getInt("año"), rs.getBoolean("estado"));          
+                listaMaterias.add(materia);
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla" + ex.getMessage());
+        }
+        return listaMaterias;
+    }
+    
 }

@@ -5,7 +5,9 @@
  */
 package universidadejemplo.Vistas;
 
+import Control.ValidacionesController;
 import com.sun.glass.events.KeyEvent;
+import java.util.Iterator;
 import javax.swing.JOptionPane;
 import universidadejemplo.AccesoADatos.MateriaData;
 import universidadejemplo.Entidades.Materia;
@@ -22,7 +24,7 @@ boolean contieneNumero = false;
     
     public GestionMaterias() {
         initComponents();
-       
+        cargarComboMaterias();
     }
 
     /**
@@ -49,6 +51,7 @@ boolean contieneNumero = false;
         jLabel6 = new javax.swing.JLabel();
         jTnombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        jCBMaterias = new javax.swing.JComboBox<>();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setTitle("Gestion de Materias");
@@ -117,6 +120,9 @@ boolean contieneNumero = false;
         jPanel1.add(jTcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 104, -1));
 
         JTaño.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JTañoKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 JTañoKeyTyped(evt);
             }
@@ -158,6 +164,18 @@ boolean contieneNumero = false;
         jLabel3.setText("Nombre:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
 
+        jCBMaterias.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCBMateriasItemStateChanged(evt);
+            }
+        });
+        jCBMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBMateriasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jCBMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 210, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -190,6 +208,7 @@ boolean contieneNumero = false;
             MateriaData matData = new MateriaData();
             matData.ModificaMateria(mat);
             limpiar();
+            cargarComboMaterias();
         }
          
          }else JOptionPane.showMessageDialog(this, "Verifique los datos", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -220,10 +239,11 @@ boolean contieneNumero = false;
     }//GEN-LAST:event_jBbuscarActionPerformed
 
     private void jTcodigoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTcodigoKeyPressed
+        ValidacionesController.validaNumero(evt);
     }//GEN-LAST:event_jTcodigoKeyPressed
 
     private void jTcodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTcodigoKeyTyped
-        validaNumero(evt);
+        ValidacionesController.validaNumero(evt);
     }//GEN-LAST:event_jTcodigoKeyTyped
 
     private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
@@ -237,9 +257,12 @@ boolean contieneNumero = false;
             MateriaData matData = new MateriaData();
             matData.nuevaMateria(mat);
             limpiar();
+            cargarComboMaterias();
             }
         }else JOptionPane.showMessageDialog(this, "Verifique los datos", "ERROR", JOptionPane.ERROR_MESSAGE);
+        
     }//GEN-LAST:event_jBnuevoActionPerformed
+    
     //boton Eliminar
     private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
         if (jTcodigo.getText().isEmpty()) {
@@ -249,11 +272,12 @@ boolean contieneNumero = false;
             MateriaData matData = new MateriaData();
             matData.EliminaMateria(codigo);
             limpiar();
+            cargarComboMaterias();
         }
     }//GEN-LAST:event_jBeliminarActionPerformed
 
     private void JTañoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTañoKeyTyped
-        validaNumero(evt);
+        ValidacionesController.validaNumero(evt);
     }//GEN-LAST:event_JTañoKeyTyped
 
     private void jTnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTnombreKeyTyped
@@ -273,12 +297,35 @@ boolean contieneNumero = false;
         // TODO add your handling code here:
     }//GEN-LAST:event_jTnombreActionPerformed
 
+    private void jCBMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBMateriasActionPerformed
+        Materia materiaSelec = (Materia) jCBMaterias.getSelectedItem();
+        if (materiaSelec.getIdMateria() != 0) {
+            jTcodigo.setText(materiaSelec.getIdMateria() + "");
+            jTnombre.setText(materiaSelec.getNombre());
+            JTaño.setText(materiaSelec.getAnio() + "");
+            jChBEstado.setSelected(materiaSelec.isEstado());
+        } else {
+            limpiar();
+        }
+        
+        
+    }//GEN-LAST:event_jCBMateriasActionPerformed
+
+    private void JTañoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTañoKeyPressed
+           ValidacionesController.validaNumero(evt);
+    }//GEN-LAST:event_JTañoKeyPressed
+
+    private void jCBMateriasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBMateriasItemStateChanged
+        
+    }//GEN-LAST:event_jCBMateriasItemStateChanged
+
         
     public void validaNumero(java.awt.event.KeyEvent evt) {
         final char tecla = evt.getKeyChar();
         if (Character.isDigit(tecla) 
                 || tecla == KeyEvent.VK_BACKSPACE
-                || tecla == KeyEvent.VK_DELETE) {
+                || tecla == KeyEvent.VK_DELETE
+                || (evt.isControlDown() && evt.getKeyCode() == KeyEvent.VK_V)) {
         } else {
             evt.consume();     
         }
@@ -321,7 +368,6 @@ boolean contieneNumero = false;
     public boolean validaDatos(){
         
         if (jTnombre.getText().isEmpty() || JTaño.getText().isEmpty()) {
-            
            return true;
         } else {
             return false;
@@ -333,6 +379,7 @@ boolean contieneNumero = false;
         jTcodigo.setText("");
         jChBEstado.setSelected(false);
     }
+    
     public boolean validarString(){
          String input = jTnombre.getText();
         if (!input.isEmpty()) {
@@ -346,6 +393,21 @@ boolean contieneNumero = false;
         }
         return contieneNumero;
     }
+    
+    private void cargarComboMaterias() {
+        MateriaData materiasCB = new MateriaData();
+        jCBMaterias.addItem(new Materia(0,"---* Selecciones una materia *---",0,false));
+        for (Materia listaMaterias : materiasCB.listaComboMaterias()) {
+            jCBMaterias.addItem(listaMaterias);
+        }
+        
+        for (int i = 1; i < materiasCB.listaComboMaterias().size() ; i++) {
+            System.out.println("i " + i); 
+           jCBMaterias.removeItem(i);
+        }
+        jCBMaterias.setSelectedIndex(0);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JTaño;
     private javax.swing.JButton jBbuscar;
@@ -353,6 +415,7 @@ boolean contieneNumero = false;
     private javax.swing.JButton jBguardar;
     private javax.swing.JButton jBnuevo;
     private javax.swing.JButton jBsalir;
+    private javax.swing.JComboBox<Materia> jCBMaterias;
     private javax.swing.JCheckBox jChBEstado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -35,40 +35,40 @@ public class ValidacionesController {
         }
     }
     
-    public static void validaNombre(java.awt.event.KeyEvent evt) {
-        Character tecla = evt.getKeyChar();
-        if (Character.isLetter(tecla) 
-                || tecla == KeyEvent.VK_SPACE
-                || tecla == KeyEvent.VK_DELETE
-                || tecla == KeyEvent.VK_BACKSPACE
-                || tecla == KeyEvent.VK_MINUS){
-            evt.setKeyChar(Character.toUpperCase(tecla));
-        } else {
-            evt.consume();
-        }
-
-        //elimina primer caracter si no es una letra
-        String texto = ventana.getjTnombre().getText();
-        
-        if (texto.length() > 0) {
-            if (!Character.isLetter(texto.charAt(0))) {
-                texto = texto.length() > 1 ? texto.substring(1) : "";
-            }
-        }
-
-        // reemplaza guiones duplicados por un guion
-        texto = texto.replaceAll("[-]+", "-");
-        // reemplaza espacios duplicados por un espacio
-        texto = texto.replaceAll("[ ]+", " ");
-
-        JTextField nombre = ventana.getjTnombre();
-        nombre.setText(texto);
-
-        String nom = ventana.getjTnombre().getText();
-        if (nom.length() > 100) {
-            evt.consume(); 
-        }
-    }
+//    public static void validaNombre(java.awt.event.KeyEvent evt) {
+//        Character tecla = evt.getKeyChar();
+//        if (Character.isLetter(tecla) 
+//                || tecla == KeyEvent.VK_SPACE
+//                || tecla == KeyEvent.VK_DELETE
+//                || tecla == KeyEvent.VK_BACKSPACE
+//                || tecla == KeyEvent.VK_MINUS){
+//            evt.setKeyChar(Character.toUpperCase(tecla));
+//        } else {
+//            evt.consume();
+//        }
+//
+//        //elimina primer caracter si no es una letra
+//        String texto = ventana.getjTnombre().getText();
+//        
+//        if (texto.length() > 0) {
+//            if (!Character.isLetter(texto.charAt(0))) {
+//                texto = texto.length() > 1 ? texto.substring(1) : "";
+//            }
+//        }
+//
+//        // reemplaza guiones duplicados por un guion
+//        texto = texto.replaceAll("[-]+", "-");
+//        // reemplaza espacios duplicados por un espacio
+//        texto = texto.replaceAll("[ ]+", " ");
+//
+//        JTextField nombre = ventana.getjTnombre();
+//        nombre.setText(texto);
+//
+//        String nom = ventana.getjTnombre().getText();
+//        if (nom.length() > 100) {
+//            evt.consume(); 
+//        }
+//    }
 
     
     
