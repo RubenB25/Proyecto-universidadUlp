@@ -45,6 +45,7 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         jTAlumnos = new javax.swing.JTable();
         jBsalir = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jLfirma = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setResizable(true);
@@ -58,6 +59,7 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         jLabel2.setText("Seleccione una materia:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, 20));
 
+        jCBListado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jCBListado.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jCBListadoItemStateChanged(evt);
@@ -65,6 +67,7 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jCBListado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 215, -1));
 
+        jTAlumnos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -89,8 +92,9 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
             jTAlumnos.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 440, 280));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 440, 230));
 
+        jBsalir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jBsalir.setText("Salir");
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +104,11 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         jPanel1.add(jBsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 440, 60, 30));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FooterUlpVirtualM.png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 60));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 60));
+
+        jLfirma.setForeground(new java.awt.Color(255, 153, 0));
+        jLfirma.setText("Realizado  por el grupo 83");
+        jPanel1.add(jLfirma, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,6 +142,7 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<Materia> jCBListado;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLfirma;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTAlumnos;

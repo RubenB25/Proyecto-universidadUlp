@@ -73,6 +73,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         jRActivoNo = new javax.swing.JRadioButton();
         jLFecha = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLfirma = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setTitle("Alumno");
@@ -84,8 +85,11 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Documento:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+
+        jTFdocumento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel1.add(jTFdocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 221, -1));
 
+        jBBuscar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jBBuscar.setText("Buscar");
         jBBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,26 +108,28 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Activo:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, 30));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, 30));
 
         jRActivoSi.setBackground(new java.awt.Color(204, 204, 204));
         bGEstado.add(jRActivoSi);
         jRActivoSi.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jRActivoSi.setText("Si");
-        jPanel1.add(jRActivoSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 50, 30));
+        jPanel1.add(jRActivoSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 50, 30));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Fecha de nacimiento:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, -1));
 
         jDCfechaNacimiento.setDateFormatString("dd, MMM, yyyy");
+        jDCfechaNacimiento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jDCfechaNacimiento.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jDCfechaNacimientoPropertyChange(evt);
             }
         });
-        jPanel1.add(jDCfechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 177, -1));
+        jPanel1.add(jDCfechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 177, -1));
 
+        jBeditar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jBeditar.setText("Guardar cambios");
         jBeditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,6 +138,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jBeditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, -1, 30));
 
+        jBeliminar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jBeliminar.setText("Eliminar");
         jBeliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,6 +147,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jBeliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, -1, 30));
 
+        jBnuevo.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jBnuevo.setText("Nuevo Alumno");
         jBnuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,6 +156,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jBnuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 110, 30));
 
+        jBsalir.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jBsalir.setText("Salir");
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,14 +164,18 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jBsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, -1, 30));
+
+        jTFapellido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel1.add(jTFapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 221, -1));
+
+        jTFnombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel1.add(jTFnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 221, -1));
 
         jRActivoNo.setBackground(new java.awt.Color(204, 204, 204));
         bGEstado.add(jRActivoNo);
         jRActivoNo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jRActivoNo.setText("No");
-        jPanel1.add(jRActivoNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, -1, 30));
+        jPanel1.add(jRActivoNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, -1, 30));
 
         jLFecha.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLFecha.setText("Fecha:");
@@ -170,6 +183,10 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FooterUlpVirtualM.png"))); // NOI18N
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 60));
+
+        jLfirma.setForeground(new java.awt.Color(255, 153, 0));
+        jLfirma.setText("Realizado  por el grupo 83");
+        jPanel1.add(jLfirma, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -318,6 +335,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLfirma;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRActivoNo;
     private javax.swing.JRadioButton jRActivoSi;

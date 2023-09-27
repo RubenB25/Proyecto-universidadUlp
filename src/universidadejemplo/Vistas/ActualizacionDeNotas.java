@@ -62,6 +62,7 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
         jBguardar = new javax.swing.JButton();
         jBsalir = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jLfirma = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setResizable(true);
@@ -75,6 +76,7 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
         jLabel1.setText("Seleccione un alumno:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
 
+        jCBalumnos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jCBalumnos.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jCBalumnosItemStateChanged(evt);
@@ -87,6 +89,7 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jCBalumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 210, 20));
 
+        jTinscripcionMateria.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTinscripcionMateria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -118,8 +121,9 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
             jTinscripcionMateria.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 420, 301));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 420, 280));
 
+        jBguardar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jBguardar.setText("Guardar");
         jBguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,16 +132,21 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jBguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, -1));
 
+        jBsalir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jBsalir.setText("Salir");
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBsalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jBsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 440, -1, -1));
+        jPanel1.add(jBsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 440, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FooterUlpVirtualM.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 60));
+
+        jLfirma.setForeground(new java.awt.Color(255, 153, 0));
+        jLfirma.setText("Realizado  por el grupo 83");
+        jPanel1.add(jLfirma, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -277,6 +286,7 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<Alumno> jCBalumnos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLfirma;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTinscripcionMateria;
