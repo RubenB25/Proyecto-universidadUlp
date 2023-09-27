@@ -1,31 +1,54 @@
-
 package universidadejemplo.Vistas;
+
+import java.awt.BorderLayout;
+import java.awt.event.KeyEvent;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import javax.swing.DefaultCellEditor;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
+import javax.swing.event.CellEditorListener;
+import javax.swing.event.ChangeEvent;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableColumn;
 import universidadejemplo.AccesoADatos.AlumnoData;
 import universidadejemplo.AccesoADatos.InscripcionData;
 import universidadejemplo.Entidades.Alumno;
 import universidadejemplo.Entidades.Inscripcion;
-public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
-    //instancion una tabla y la llamo modelo y la puedo utilizar de cualquier metodo 
+import universidadejemplo.Entidades.Materia;
 
-  
+public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
+
+    Alumno alumnoSeleccionado;
+    DefaultTableModel modelo;
+    ArrayList<Double> listaNotas = new ArrayList<>();
+    Set<Integer> filasSelec = new HashSet<>();
+
+    double notaTabla, nota;
+    int idAlumno;
+    int registroError = 0;
+
     public ActualizacionDeNotas() {
         initComponents();
-        
-       //le coloco un titulo y un tamaño para que todos tengan el mismo tamaño
-        setSize(500,477);
         //instancio una tabla con el modelo de la vista 
+        modelo = (DefaultTableModel) jTinscripcionMateria.getModel();
         llenarCB();
-    }
-      public void llenarCB() {
-          //metodo de llenado de la array del objeto  alumno
-     AlumnoData llenar = new AlumnoData();
-     //lo recorre  y va llenando  el combo box con la lista
-      for (Alumno listarAlumno : llenar.listarAlumnos()) {
+//        listar();
 
+    }
+
+    public void llenarCB() {
+        //metodo de llenado de la array de alumno
+        AlumnoData llenar = new AlumnoData();
+        //lo recorre a la array y la llena
+        for (Alumno listarAlumno : llenar.listarAlumnos()) {
             jCBalumnos.addItem(listarAlumno);
-      }}   
+
+        }
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -38,32 +61,32 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
         jTinscripcionMateria = new javax.swing.JTable();
         jBguardar = new javax.swing.JButton();
         jBsalir = new javax.swing.JButton();
-        jLimagen = new javax.swing.JLabel();
-        jLfirma = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
-        setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setResizable(true);
-        setTitle("Cargar Notas");
+        setTitle("Carga de Notas");
+        setPreferredSize(new java.awt.Dimension(499, 531));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setForeground(new java.awt.Color(204, 204, 204));
-        jPanel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.setPreferredSize(new java.awt.Dimension(500, 477));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Seleccione un alumno:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
 
-        jCBalumnos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jCBalumnos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCBalumnosItemStateChanged(evt);
+            }
+        });
         jCBalumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCBalumnosActionPerformed(evt);
             }
         });
+        jPanel1.add(jCBalumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 210, 20));
 
-        jTinscripcionMateria.setAutoCreateRowSorter(true);
-        jTinscripcionMateria.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTinscripcionMateria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -80,192 +103,183 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTinscripcionMateria.setColumnSelectionAllowed(true);
+        jTinscripcionMateria.getTableHeader().setReorderingAllowed(false);
         jTinscripcionMateria.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTinscripcionMateriaMouseClicked(evt);
-            }
-        });
-        jTinscripcionMateria.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTinscripcionMateriaKeyTyped(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTinscripcionMateriaMouseReleased(evt);
             }
         });
         jScrollPane1.setViewportView(jTinscripcionMateria);
+        jTinscripcionMateria.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (jTinscripcionMateria.getColumnModel().getColumnCount() > 0) {
+            jTinscripcionMateria.getColumnModel().getColumn(0).setResizable(false);
+            jTinscripcionMateria.getColumnModel().getColumn(1).setResizable(false);
+            jTinscripcionMateria.getColumnModel().getColumn(2).setResizable(false);
+        }
 
-        jBguardar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 420, 301));
+
         jBguardar.setText("Guardar");
         jBguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBguardarActionPerformed(evt);
             }
         });
+        jPanel1.add(jBguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, -1));
 
-        jBsalir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jBsalir.setText("Salir");
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBsalirActionPerformed(evt);
             }
         });
+        jPanel1.add(jBsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 440, -1, -1));
 
-        jLimagen.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLimagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FooterUlpVirtualM.png"))); // NOI18N
-
-        jLfirma.setForeground(new java.awt.Color(255, 153, 0));
-        jLfirma.setText("Elaborado por el grupo 83");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLimagen, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jBguardar)
-                                .addGap(221, 221, 221)
-                                .addComponent(jBsalir))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(64, 64, 64)
-                                .addComponent(jCBalumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(jLfirma, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLimagen, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(136, 136, 136)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jCBalumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jLfirma)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBguardar)
-                    .addComponent(jBsalir))
-                .addGap(36, 36, 36))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FooterUlpVirtualM.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
-        dispose();
-    }//GEN-LAST:event_jBsalirActionPerformed
+    private void jCBalumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBalumnosActionPerformed
+
+
+    }//GEN-LAST:event_jCBalumnosActionPerformed
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
-        //obtengo la fila seleccionada para sacar los datos necesarios para invocar el metodo de actualizar
-        DefaultTableModel modelo;
-         modelo = (DefaultTableModel)jTinscripcionMateria.getModel();
-        int filaSeleccionada = jTinscripcionMateria.getSelectedRow();
-        // JOptionPane.showMessageDialog(null,"Recuerda colocar la nota y seleccionar la fila que quieres Guardar");
         //instancie un objeto inscripcionData y un alumno donde pongo la seleccion
-        InscripcionData ins= new InscripcionData();
-        Alumno alumnoSeleccionado = (Alumno)jCBalumnos.getSelectedItem();
-        //pongo variables para guardar los datos que voy a uilizar
-        int idAlumno=alumnoSeleccionado.getIdAlumno();
-
-        //de mi objeto inscripciondata obtengo las materias cursadas
-        ins.obtenerMateriasCursadas(idAlumno);
-        //creo dos objetos para luego obtener los valores dentro de la tabla parseandolos
-        Object valorMateria = modelo.getValueAt(filaSeleccionada,0);
-        Object valorNota= modelo.getValueAt(filaSeleccionada,2);
-        if (valorMateria!=null|| valorNota!=null){//si los mismos no son nulos
-            try {
-                // los Convirto a entero
-                int idMateria = Integer.parseInt(valorMateria.toString());
-                //este sout fue para probar que me de el valor que necesitaba
-                //System.out.println(idMateria);
-                int nota=Integer.parseInt(valorNota.toString());
-                //este sou era para sabe que lo que me daba era correco
-                //System.out.println(nota);
-                //llamo al metodo actualizar enviando la informacion necesaria
-                ins.actualizarNota(idAlumno, idMateria, nota);
-                // Ahora, "valorEntero" es una variable entera que contiene el valor deseado.
-            } catch (NumberFormatException e) {
-                // En caso de que no se pueda convertir a entero
-                JOptionPane.showMessageDialog(null,"Para poder guardar solo seleccione y cambie una nota");
-            }} else {
-                JOptionPane.showMessageDialog(null,"El valor obtenido  es nulo");
+//        InscripcionData ins= new InscripcionData();
+//        Alumno alumnoSeleccionado = (Alumno)jCBalumnos.getSelectedItem();
+//        //pongo variables para guardar los datos que voy a uilizar
+//        int idAlumno=alumnoSeleccionado.getIdAlumno();
+//        //obtengo la fila seleccionada para sacar los datos necesarios para invocar el metodo de actualizar
+//        int filaSeleccionada = jTinscripcionMateria.getSelectedRow();
+//        //de mi objeto inscripciondata obtengo las materias cursadas
+//        ins.obtenerMateriasCursadas(idAlumno);
+//        //creo dos objetos para luego obtener los valores dentro de la tabla parseandolos
+//        Object valorMateria = modelo.getValueAt(filaSeleccionada,0);
+//        Object valorNota= modelo.getValueAt(filaSeleccionada,2);
+//        if (valorMateria!=null|| valorNota!=null){//si los mismos no son nulos 
+//    try {
+//        // los Convirto a entero
+//        int idMateria = Integer.parseInt(valorMateria.toString());
+//        //este sout fue para probar que me de el valor que necesitaba
+//        //System.out.println(idMateria);
+//        int nota=Integer.parseInt(valorNota.toString());
+//        //este sou era para sabe que lo que me daba era correco
+//        //System.out.println(nota);
+//        //llamo al metodo actualizar enviando la informacion necesaria
+//        ins.actualizarNota(idAlumno, idMateria, nota);
+//// Ahora, "valorEntero" es una variable entera que contiene el valor deseado.
+//    } catch (NumberFormatException e) {
+//        // En caso de que no se pueda convertir a entero
+//            JOptionPane.showMessageDialog(null,"El valor obtenido no es entero");
+//    }} else {
+//            JOptionPane.showMessageDialog(null,"El valor obtenido  es nulo");
+//}     
+        try {
+            registroError = 0;
+            InscripcionData ins = new InscripcionData();
+            // actualiza la lista de notas del alumno seleccionado 
+            obtenerNotasDeInscripciones(ins, idAlumno);
+            for (Integer integer : filasSelec) {
+                notaTabla = Double.parseDouble(jTinscripcionMateria.getValueAt(integer, 2).toString());
+                int idMateria = Integer.parseInt(jTinscripcionMateria.getValueAt(integer, 0).toString());
+                // itero sobre la lista fila y utilizo mi objeto integer como indice para obtener la nota actual de la fila que se está checkeando si hay cambios con la nota cambiada.
+                nota = listaNotas.get(integer);
+                if (notaTabla > 0 && notaTabla < 11) {
+                    // si las notas difieren, se actualiza
+                    if (notaTabla != nota) {
+                        nota = notaTabla;
+                        ins.actualizarNota(idAlumno, idMateria, nota);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Valor de nota fuera de rango (1 a 10)", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    registroError++;
+                }
             }
+            // mensaje de confirmación y limpieza de las listas.
+            if (registroError == 0) {
+                JOptionPane.showMessageDialog(this, "Notas actualizadas.");
+                filasSelec.removeAll(filasSelec);
+                listaNotas.removeAll(listaNotas);
+
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese un valor númerico.", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+
 
     }//GEN-LAST:event_jBguardarActionPerformed
 
-    private void jTinscripcionMateriaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTinscripcionMateriaKeyTyped
+    private void jCBalumnosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBalumnosItemStateChanged
+        limpiar();
+        listar();
+
+        filasSelec.removeAll(filasSelec);
+        listaNotas.removeAll(listaNotas);
+
+    }//GEN-LAST:event_jCBalumnosItemStateChanged
+
+    private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
         // TODO add your handling code here:
-        //  double nota2=(Double)modelo.getValueAt(jTinscripcionMateriaKeyTyped(evt), 2);
-    }//GEN-LAST:event_jTinscripcionMateriaKeyTyped
+        dispose();
+        RegistroAlumnosUlp.ventanaAbiertaA = false;
+    }//GEN-LAST:event_jBsalirActionPerformed
 
-    private void jTinscripcionMateriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTinscripcionMateriaMouseClicked
+    private void jTinscripcionMateriaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTinscripcionMateriaMouseReleased
+        // TODO add your handling code here:
+        int filaFocused = jTinscripcionMateria.getSelectedRow();
+        if (filaFocused >= 0) {
+            filasSelec.add(filaFocused);
+        }
 
-    }//GEN-LAST:event_jTinscripcionMateriaMouseClicked
-
-    private void jCBalumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBalumnosActionPerformed
-        DefaultTableModel modelo = new DefaultTableModel();
-        //le doy a la tabla un valor de la tabla inscripcionMateria.
-        modelo = (DefaultTableModel)jTinscripcionMateria.getModel();
-        // llamo al metodo llenar combo box que
-        //instancia de una inscripción de datos
-        InscripcionData materiaInscripta= new InscripcionData();
-        //coloco la siguiente condicion mientras la tabla sea mayor a 0, limpio las filas
+    }//GEN-LAST:event_jTinscripcionMateriaMouseReleased
+    public void limpiar() {
         while (modelo.getRowCount() > 0) {
-            modelo.removeRow(0);}
-        //instancio un objeto alumno donde esta la seleccion del combo box
-        Alumno alumnoSeleccionado = (Alumno)jCBalumnos.getSelectedItem();
-        // creo variable de tipo entero donde coloco el id del alumno seleccionado
-        int idAlumno=alumnoSeleccionado.getIdAlumno();
-        //instancio dentro del for each,
-        //con el que recorro la tabla de inscripciondata llamada materiaInscripta y
-        //le paso el idalumno
-        for (Inscripcion listaObtenida:materiaInscripta.obtenerInscripcionesPorAlumno(idAlumno)) {
-            //añado una fila a la tabla, pasandole un objeto, el dato que esta en idmateria, lo que esta en materia y en nota
-            modelo.addRow(new Object[]{listaObtenida.getMateria().getIdMateria(), listaObtenida.getMateria().getNombre(), listaObtenida.getNota()});
+            modelo.removeRow(0);
+        }
+    }
+
+    public void obtenerNotasDeInscripciones(InscripcionData ins, int idAlumno) {
+        for (Inscripcion listaObtenida : ins.obtenerInscripcionesPorAlumno(idAlumno)) {
+            listaNotas.add(listaObtenida.getNota());
+        }
+    }
+
+    public void listar() {
+        InscripcionData materiaInscripta = new InscripcionData();
+        Alumno alumnoSeleccionado = (Alumno) jCBalumnos.getSelectedItem();
+        idAlumno = alumnoSeleccionado.getIdAlumno();
+        for (Inscripcion listaObtenida : materiaInscripta.obtenerInscripcionesPorAlumno(idAlumno)) {
+            modelo.addRow(new Object[]{listaObtenida.getMateria().getIdMateria(), listaObtenida.getMateria(), listaObtenida.getNota()});
 
         }
-       // private void jBsalirActionPerformed (java.awt.event.ActionEvent evt){
-       //     dispose();
-    }//GEN-LAST:event_jCBalumnosActionPerformed
+
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBguardar;
     private javax.swing.JButton jBsalir;
     private javax.swing.JComboBox<Alumno> jCBalumnos;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLfirma;
-    private javax.swing.JLabel jLimagen;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTinscripcionMateria;
     // End of variables declaration//GEN-END:variables
 
-  
 }
-

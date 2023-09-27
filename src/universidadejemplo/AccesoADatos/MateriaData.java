@@ -1,13 +1,21 @@
-//esta parte la realizo Rodolfo
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package universidadejemplo.AccesoADatos;
 
+import java.awt.AWTError;
+import java.awt.AWTException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import org.mariadb.jdbc.Statement;
+import universidadejemplo.Entidades.Inscripcion;
 import universidadejemplo.Entidades.Materia;
 
 /**
@@ -15,7 +23,7 @@ import universidadejemplo.Entidades.Materia;
  * @author Ruben
  */
 public class MateriaData {
-   private Connection con = null;
+    private Connection con = null;
 
     public MateriaData() {
         con=Conexion.getConex();
@@ -29,7 +37,7 @@ public class MateriaData {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             
             ps.setString(1, materia.getNombre());
-            ps.setInt(2, materia.getIdAnioMateria());
+            ps.setInt(2, materia.getAnio());
             ps.setBoolean(3, materia.isEstado());
             ps.executeUpdate();  
             
@@ -49,14 +57,15 @@ public class MateriaData {
     
     public void ModificaMateria(Materia materia) {
         
-        String sql = "UPDATE materia SET nombre = ?, año = ?, estado = ? "
-                    + "WHERE idMateria = ?";
+
     
         try {
-            
+              String sql = "UPDATE materia SET nombre = ?, año = ?, estado = ? "
+                    + "WHERE idMateria = ?";
+    
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, materia.getNombre());
-            ps.setInt(2, materia.getIdAnioMateria());
+            ps.setInt(2, materia.getAnio());
             ps.setBoolean(3, materia.isEstado());
             ps.setInt(4, materia.getIdMateria());
             ps.executeUpdate();  
@@ -69,7 +78,7 @@ public class MateriaData {
                 System.out.println("Error al modificar materia");
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error de acceso tabla Materia");    
+            JOptionPane.showMessageDialog(null, "Código de materia duplicado", "ERROR",JOptionPane.ERROR_MESSAGE);    
         }
 
     }
@@ -133,8 +142,8 @@ public class MateriaData {
             PreparedStatement psm = con.prepareStatement(sql);
             ResultSet rs = psm.executeQuery();
             while (rs.next()) {
-              //  Materia materia = new Materia(rs.getInt("idMateria"), rs.getString("nombre"), rs.getInt("año"));          
-              //  listaMaterias.add(materia);
+                Materia materia = new Materia(rs.getInt("idMateria"), rs.getString("nombre"), rs.getInt("año"));          
+                listaMaterias.add(materia);
             }
 
         } catch (SQLException ex) {
@@ -142,5 +151,4 @@ public class MateriaData {
         }
         return listaMaterias;
     }
- 
 }
