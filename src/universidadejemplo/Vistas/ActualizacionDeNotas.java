@@ -63,7 +63,7 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Seleccione un alumno:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, 40));
 
         jCBalumnos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jCBalumnos.addItemListener(new java.awt.event.ItemListener() {
@@ -119,7 +119,7 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
                 jBguardarActionPerformed(evt);
             }
         });
-        jPanel1.add(jBguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, -1));
+        jPanel1.add(jBguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, 30));
 
         jBsalir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jBsalir.setText("Salir");
@@ -128,7 +128,7 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
                 jBsalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jBsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 440, -1, -1));
+        jPanel1.add(jBsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 440, 60, 30));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FooterUlpVirtualM.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 60));

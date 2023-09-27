@@ -96,7 +96,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
                 jBBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(jBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, 40));
+        jPanel1.add(jBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, 50));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Apellido:");
@@ -138,7 +138,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         jPanel1.add(jBeditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 430, -1, 30));
 
         jBeliminar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jBeliminar.setText("Eliminar");
+        jBeliminar.setText("Dar baja");
         jBeliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBeliminarActionPerformed(evt);
@@ -162,7 +162,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
                 jBsalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jBsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 430, -1, 30));
+        jPanel1.add(jBsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, -1, 30));
 
         jTFapellido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel1.add(jTFapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 221, -1));

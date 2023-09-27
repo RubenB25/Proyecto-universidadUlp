@@ -113,7 +113,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Seleccione un alumno:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, 40));
 
         jRBNoInscriptas.setBackground(new java.awt.Color(204, 204, 204));
         buttonGroup1.add(jRBNoInscriptas);
@@ -132,7 +132,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                 jCBInscriptosItemStateChanged(evt);
             }
         });
-        jPanel1.add(jCBInscriptos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 207, -1));
+        jPanel1.add(jCBInscriptos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 200, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Listado de materias");
@@ -145,7 +145,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                 jBInscribirActionPerformed(evt);
             }
         });
-        jPanel1.add(jBInscribir, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, -1, -1));
+        jPanel1.add(jBInscribir, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, 30));
 
         jBAnularInsc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jBAnularInsc.setText("Anular inscripción");
@@ -154,7 +154,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                 jBAnularInscActionPerformed(evt);
             }
         });
-        jPanel1.add(jBAnularInsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, -1, -1));
+        jPanel1.add(jBAnularInsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, -1, 30));
 
         jBSalir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jBSalir.setText("Salir");
@@ -163,7 +163,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                 jBSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 450, 71, -1));
+        jPanel1.add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 440, 60, 30));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FooterUlpVirtualM.png"))); // NOI18N
         jLabel4.setPreferredSize(new java.awt.Dimension(502, 114));
