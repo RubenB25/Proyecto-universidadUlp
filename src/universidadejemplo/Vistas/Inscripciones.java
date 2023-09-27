@@ -23,8 +23,6 @@ public class Inscripciones extends javax.swing.JInternalFrame {
      * Creates new form Inscripciones
      */
     private DefaultTableModel modelo;
-    private String idAlumno;
-
     public Inscripciones() {
 
         initComponents();

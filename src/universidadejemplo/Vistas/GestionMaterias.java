@@ -112,9 +112,6 @@ boolean contieneNumero = false;
 
         jTcodigo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTcodigo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTcodigoKeyPressed(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTcodigoKeyTyped(evt);
             }
@@ -146,22 +143,6 @@ boolean contieneNumero = false;
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 60));
 
         jTnombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTnombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTnombreActionPerformed(evt);
-            }
-        });
-        jTnombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTnombreKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTnombreKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTnombreKeyTyped(evt);
-            }
-        });
         jPanel1.add(jTnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 245, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -228,9 +209,6 @@ boolean contieneNumero = false;
         }
     }//GEN-LAST:event_jBbuscarActionPerformed
 
-    private void jTcodigoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTcodigoKeyPressed
-    }//GEN-LAST:event_jTcodigoKeyPressed
-
     private void jTcodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTcodigoKeyTyped
         validaNumero(evt);
     }//GEN-LAST:event_jTcodigoKeyTyped
@@ -264,23 +242,6 @@ boolean contieneNumero = false;
     private void JTañoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTañoKeyTyped
         validaNumero(evt);
     }//GEN-LAST:event_JTañoKeyTyped
-
-    private void jTnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTnombreKeyTyped
-        //        validaNombre(evt);
-    }//GEN-LAST:event_jTnombreKeyTyped
-
-    private void jTnombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTnombreKeyReleased
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jTnombreKeyReleased
-
-    private void jTnombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTnombreKeyPressed
-
-    }//GEN-LAST:event_jTnombreKeyPressed
-
-    private void jTnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTnombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTnombreActionPerformed
 
         
     public void validaNumero(java.awt.event.KeyEvent evt) {

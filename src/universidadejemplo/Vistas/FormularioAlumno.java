@@ -215,7 +215,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         AlumnoData alumnoData = new AlumnoData();
 
         try {
-            int dni = Integer.parseInt(jTFdocumento.getText());
+             dni = Integer.parseInt(jTFdocumento.getText());
             alumno = alumnoData.buscarAlumnoPorDni(dni);
             if (!"".equals(jTFdocumento.getText()) && alumno != null) {
                 jTFapellido.setText(alumno.getApellido());
@@ -236,7 +236,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         if (!"".equals(jTFdocumento.getText()) && !"".equals(jTFnombre.getText()) && !"".equals(jTFapellido.getText()) && jDCfechaNacimiento.getDate() != null) {
 
             try {
-                int dni = Integer.parseInt(jTFdocumento.getText());
+                dni = Integer.parseInt(jTFdocumento.getText());
                 if (jRActivoSi.isSelected()) {
                     Alumno alumnoNuevo = new Alumno(dni, jTFapellido.getText(), jTFnombre.getText(), jDCfechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), true);
                     alumnoData.guardarAlumno(alumnoNuevo);
