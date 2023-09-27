@@ -230,7 +230,6 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
         // TODO add your handling code here:
         dispose();
-        RegistroAlumnosUlp.ventanaAbiertaA = false;
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jTinscripcionMateriaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTinscripcionMateriaMouseReleased

@@ -120,7 +120,6 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
         dispose();
-        RegistroAlumnosUlp.ventanaAbiertaC = false;
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jCBListadoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBListadoItemStateChanged

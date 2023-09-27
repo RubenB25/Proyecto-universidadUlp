@@ -209,7 +209,6 @@ boolean contieneNumero = false;
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
         dispose();
-        RegistroAlumnosUlp.ventanaAbiertaG = false;
     }//GEN-LAST:event_jBsalirActionPerformed
 
 

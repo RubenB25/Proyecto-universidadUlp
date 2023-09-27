@@ -199,7 +199,6 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
         dispose();
-        RegistroAlumnosUlp.ventanaAbiertaF = false;
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jDCfechaNacimientoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDCfechaNacimientoPropertyChange
