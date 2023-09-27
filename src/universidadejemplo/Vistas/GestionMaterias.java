@@ -96,11 +96,11 @@ boolean contieneNumero = false;
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Activo");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, 20));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, 20));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Año:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 40, 20));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 40, 20));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Codigo:");
@@ -121,7 +121,7 @@ boolean contieneNumero = false;
                 JTañoKeyTyped(evt);
             }
         });
-        jPanel1.add(JTaño, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 60, 30));
+        jPanel1.add(JTaño, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 60, 30));
 
         jBbuscar.setText("Buscar");
         jBbuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +130,7 @@ boolean contieneNumero = false;
             }
         });
         jPanel1.add(jBbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, -1, 40));
-        jPanel1.add(jChBEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, -1, -1));
+        jPanel1.add(jChBEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FooterUlpVirtualM.png"))); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(502, 114));
@@ -152,11 +152,11 @@ boolean contieneNumero = false;
                 jTnombreKeyTyped(evt);
             }
         });
-        jPanel1.add(jTnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 245, -1));
+        jPanel1.add(jTnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 245, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Nombre:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -85,7 +85,7 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
                 jCBalumnosActionPerformed(evt);
             }
         });
-        jPanel1.add(jCBalumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 210, 20));
+        jPanel1.add(jCBalumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 210, 30));
 
         jTinscripcionMateria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

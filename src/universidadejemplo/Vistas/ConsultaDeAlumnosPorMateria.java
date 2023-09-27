@@ -63,7 +63,7 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
                 jCBListadoItemStateChanged(evt);
             }
         });
-        jPanel1.add(jCBListado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 215, -1));
+        jPanel1.add(jCBListado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 215, 30));
 
         jTAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
