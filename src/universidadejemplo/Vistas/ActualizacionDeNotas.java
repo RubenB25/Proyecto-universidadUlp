@@ -168,36 +168,6 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jCBalumnosActionPerformed
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
-        //instancie un objeto inscripcionData y un alumno donde pongo la seleccion
-//        InscripcionData ins= new InscripcionData();
-//        Alumno alumnoSeleccionado = (Alumno)jCBalumnos.getSelectedItem();
-//        //pongo variables para guardar los datos que voy a uilizar
-//        int idAlumno=alumnoSeleccionado.getIdAlumno();
-//        //obtengo la fila seleccionada para sacar los datos necesarios para invocar el metodo de actualizar
-//        int filaSeleccionada = jTinscripcionMateria.getSelectedRow();
-//        //de mi objeto inscripciondata obtengo las materias cursadas
-//        ins.obtenerMateriasCursadas(idAlumno);
-//        //creo dos objetos para luego obtener los valores dentro de la tabla parseandolos
-//        Object valorMateria = modelo.getValueAt(filaSeleccionada,0);
-//        Object valorNota= modelo.getValueAt(filaSeleccionada,2);
-//        if (valorMateria!=null|| valorNota!=null){//si los mismos no son nulos 
-//    try {
-//        // los Convirto a entero
-//        int idMateria = Integer.parseInt(valorMateria.toString());
-//        //este sout fue para probar que me de el valor que necesitaba
-//        //System.out.println(idMateria);
-//        int nota=Integer.parseInt(valorNota.toString());
-//        //este sou era para sabe que lo que me daba era correco
-//        //System.out.println(nota);
-//        //llamo al metodo actualizar enviando la informacion necesaria
-//        ins.actualizarNota(idAlumno, idMateria, nota);
-//// Ahora, "valorEntero" es una variable entera que contiene el valor deseado.
-//    } catch (NumberFormatException e) {
-//        // En caso de que no se pueda convertir a entero
-//            JOptionPane.showMessageDialog(null,"El valor obtenido no es entero");
-//    }} else {
-//            JOptionPane.showMessageDialog(null,"El valor obtenido  es nulo");
-//}     
         try {
             registroError = 0;
             InscripcionData ins = new InscripcionData();
@@ -206,7 +176,7 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
             for (Integer integer : filasSelec) {
                 notaTabla = Double.parseDouble(jTinscripcionMateria.getValueAt(integer, 2).toString());
                 int idMateria = Integer.parseInt(jTinscripcionMateria.getValueAt(integer, 0).toString());
-                // itero sobre la lista fila y utilizo mi objeto integer como indice para obtener la nota actual de la fila que se está checkeando si hay cambios con la nota cambiada.
+                // intero sobre la lista fila y utilizo mi objeto integer como indice para obtener la nota actual de la fila que se está checkeando si hay cambios con la nota cambiada.
                 nota = listaNotas.get(integer);
                 if (notaTabla > 0 && notaTabla < 11) {
                     // si las notas difieren, se actualiza
