@@ -197,20 +197,23 @@ boolean contieneNumero = false;
 
     
     private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
-        
-        if (jTcodigo.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Ingrese el codigo de materia");
-        } else {
-            int codigo = Integer.parseInt(jTcodigo.getText());
+         int codigo = Integer.parseInt(jTcodigo.getText());
             MateriaData matData = new MateriaData();
             matData.buscarMateria(codigo);
             Materia mat = matData.buscarMateria(codigo);
+        try {   
+            if (jTcodigo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese el codigo de materia, ");
+            
+        } else {     
             jTnombre.setText(mat.getNombre());
             JTaño.setText(mat.getAnio()+"");
             jChBEstado.setSelected(mat.isEstado());
-        }
+            }
+            } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e);
     }//GEN-LAST:event_jBbuscarActionPerformed
-
+    }
     private void jTcodigoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTcodigoKeyPressed
     }//GEN-LAST:event_jTcodigoKeyPressed
 

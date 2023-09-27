@@ -38,7 +38,7 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         jMIAlumnosxM = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Universidad ULP");
+        setTitle("Universidad ULP (grupo 83: Ruben Botello, Gabriela Gimenez, Gabriel Mina, Rodolfo Richard) ");
         setPreferredSize(new java.awt.Dimension(1024, 768));
         setResizable(false);
 
@@ -58,7 +58,7 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         jDescritorio.setLayout(jDescritorioLayout);
         jDescritorioLayout.setHorizontalGroup(
             jDescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1020, Short.MAX_VALUE)
+            .addGap(0, 995, Short.MAX_VALUE)
         );
         jDescritorioLayout.setVerticalGroup(
             jDescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,11 +129,13 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDescritorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jDescritorio, javax.swing.GroupLayout.PREFERRED_SIZE, 999, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDescritorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jDescritorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -143,9 +145,7 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
        FormularioAlumno fa = new FormularioAlumno();
         if(!(ventanaAbiertaF)){
             jDescritorio.repaint();
-
         jDescritorio.add(fa);
-        
         Dimension desktopSize = jDescritorio.getSize();
         Dimension frameSize = fa.getSize();
         fa.setLocation((desktopSize.width - frameSize.width) / 2, (desktopSize.height - frameSize.height) / 2);
@@ -156,18 +156,12 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
     }//GEN-LAST:event_jMIFormularioAActionPerformed
 
     private void jMIManejoInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIManejoInscActionPerformed
-       
-        // TODO add your handling code here:+
+       //instancio Inscripciones
         Inscripciones JIInsc = new Inscripciones();
          if(!(ventanaAbiertaI)){
         jDescritorio.repaint();
-        
         // Crea una instancia de tu JInternalFrame
-        
-        // Agrega el JInternalFrame al JDesktopPane
-  
-        
-        
+        // Agrega el JInternalFrame al JDesktopPane                 
         jDescritorio.add(JIInsc);
         Dimension desktopSize = jDescritorio.getSize();
         Dimension frameSize = JIInsc.getSize();
@@ -175,10 +169,7 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         // Hace que el JInternalFrame sea visible
         JIInsc.setVisible(true);
         ventanaAbiertaI=true;
-    }
-        
-       
-        
+    }   
     }//GEN-LAST:event_jMIManejoInscActionPerformed
 
     private void jMIManipulacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIManipulacionActionPerformed
