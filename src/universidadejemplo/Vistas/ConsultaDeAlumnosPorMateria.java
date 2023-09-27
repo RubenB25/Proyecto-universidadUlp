@@ -57,6 +57,7 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         jLabel2.setText("Seleccione una materia:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, 20));
 
+        jCBListado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jCBListado.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jCBListadoItemStateChanged(evt);
@@ -64,6 +65,7 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jCBListado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 215, 30));
 
+        jTAlumnos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -90,6 +92,7 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 440, 280));
 
+        jBsalir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jBsalir.setText("Salir");
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

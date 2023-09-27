@@ -73,7 +73,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTInscriptos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jTInscriptos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTInscriptos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -126,7 +126,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jRBNoInscriptas, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, 28));
 
-        jCBInscriptos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jCBInscriptos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jCBInscriptos.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jCBInscriptosItemStateChanged(evt);
@@ -138,7 +138,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         jLabel3.setText("Listado de materias");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, -1, -1));
 
-        jBInscribir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jBInscribir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jBInscribir.setText("Inscribir");
         jBInscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,7 +147,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jBInscribir, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, -1, -1));
 
-        jBAnularInsc.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jBAnularInsc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jBAnularInsc.setText("Anular inscripción");
         jBAnularInsc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,7 +156,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jBAnularInsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, -1, -1));
 
-        jBSalir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jBSalir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jBSalir.setText("Salir");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

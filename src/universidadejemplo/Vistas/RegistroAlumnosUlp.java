@@ -37,7 +37,7 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         jMIAlumnosxM = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Universidad ULP");
+        setTitle("Universidad ULP grupo 83 (Ruben Botello, Gabriela Gimenez, Gabriel Mina, Rodolfo Richard)");
         setPreferredSize(new java.awt.Dimension(1024, 768));
         setResizable(false);
 
@@ -51,6 +51,7 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         };
         jDescritorio.setBackground(new java.awt.Color(255, 255, 255));
         jDescritorio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        jDescritorio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jDescritorio.setPreferredSize(new java.awt.Dimension(1024, 768));
 
         javax.swing.GroupLayout jDescritorioLayout = new javax.swing.GroupLayout(jDescritorio);
@@ -65,6 +66,7 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
         );
 
         jMenuBar1.setToolTipText("");
+        jMenuBar1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jMAlumno.setText("Alumno");
 

@@ -62,14 +62,16 @@ boolean contieneNumero = false;
         jPanel1.setPreferredSize(new java.awt.Dimension(500, 477));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jBnuevo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jBnuevo.setText("Nueva materia");
         jBnuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBnuevoActionPerformed(evt);
             }
         });
-        jPanel1.add(jBnuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 110, 30));
+        jPanel1.add(jBnuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 130, 30));
 
+        jBeliminar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jBeliminar.setText("Eliminar");
         jBeliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,6 +80,7 @@ boolean contieneNumero = false;
         });
         jPanel1.add(jBeliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, -1, 30));
 
+        jBguardar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jBguardar.setText("Guardar cambios");
         jBguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,6 +89,7 @@ boolean contieneNumero = false;
         });
         jPanel1.add(jBguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, -1, 30));
 
+        jBsalir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jBsalir.setText("Salir");
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,12 +104,13 @@ boolean contieneNumero = false;
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Año:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 40, 20));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 40, 20));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Codigo:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
 
+        jTcodigo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTcodigo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTcodigoKeyPressed(evt);
@@ -116,6 +121,7 @@ boolean contieneNumero = false;
         });
         jPanel1.add(jTcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 104, -1));
 
+        JTaño.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         JTaño.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 JTañoKeyTyped(evt);
@@ -123,6 +129,7 @@ boolean contieneNumero = false;
         });
         jPanel1.add(JTaño, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 60, 30));
 
+        jBbuscar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jBbuscar.setText("Buscar");
         jBbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,12 +137,15 @@ boolean contieneNumero = false;
             }
         });
         jPanel1.add(jBbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, -1, 40));
+
+        jChBEstado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel1.add(jChBEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FooterUlpVirtualM.png"))); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(502, 114));
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 60));
 
+        jTnombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTnombreActionPerformed(evt);

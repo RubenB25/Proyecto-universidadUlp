@@ -85,15 +85,18 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Documento:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
-        jPanel1.add(jTFdocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 221, -1));
 
+        jTFdocumento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jPanel1.add(jTFdocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 221, -1));
+
+        jBBuscar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jBBuscar.setText("Buscar");
         jBBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(jBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, -1, 40));
+        jPanel1.add(jBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, 40));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Apellido:");
@@ -125,39 +128,47 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jDCfechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 177, -1));
 
+        jBeditar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jBeditar.setText("Guardar cambios");
         jBeditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBeditarActionPerformed(evt);
             }
         });
-        jPanel1.add(jBeditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, -1, 30));
+        jPanel1.add(jBeditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 430, -1, 30));
 
+        jBeliminar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jBeliminar.setText("Eliminar");
         jBeliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBeliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(jBeliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, -1, 30));
+        jPanel1.add(jBeliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, -1, 30));
 
+        jBnuevo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jBnuevo.setText("Nuevo Alumno");
         jBnuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBnuevoActionPerformed(evt);
             }
         });
-        jPanel1.add(jBnuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 110, 30));
+        jPanel1.add(jBnuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 140, 30));
 
+        jBsalir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jBsalir.setText("Salir");
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBsalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jBsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, -1, 30));
-        jPanel1.add(jTFapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 221, -1));
-        jPanel1.add(jTFnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 221, -1));
+        jPanel1.add(jBsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 430, -1, 30));
+
+        jTFapellido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jPanel1.add(jTFapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 221, -1));
+
+        jTFnombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jPanel1.add(jTFnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 221, -1));
 
         jRActivoNo.setBackground(new java.awt.Color(204, 204, 204));
         bGEstado.add(jRActivoNo);
