@@ -47,6 +47,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         jTFnombre.setText("");
         bGEstado.clearSelection();
         jDCfechaNacimiento.setDate(null);
+        jLFecha.setText("");
     }
 
     @SuppressWarnings("unchecked")
