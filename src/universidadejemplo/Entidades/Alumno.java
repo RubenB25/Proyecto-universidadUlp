@@ -90,7 +90,7 @@ public class Alumno {
     
     @Override
     public String toString() {
-        return dni+" , "+nombre+" "+apellido+" , "+fechaNacimiento;
+        return dni+" , "+nombre+" "+apellido;
     }
     
 }
