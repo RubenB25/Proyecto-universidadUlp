@@ -63,7 +63,7 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Seleccione un alumno:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, 40));
 
         jCBalumnos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jCBalumnos.addItemListener(new java.awt.event.ItemListener() {

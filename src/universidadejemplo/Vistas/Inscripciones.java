@@ -113,7 +113,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Seleccione un alumno:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, 40));
 
         jRBNoInscriptas.setBackground(new java.awt.Color(204, 204, 204));
         buttonGroup1.add(jRBNoInscriptas);
@@ -132,7 +132,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                 jCBInscriptosItemStateChanged(evt);
             }
         });
-        jPanel1.add(jCBInscriptos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 207, -1));
+        jPanel1.add(jCBInscriptos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 200, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Listado de materias");

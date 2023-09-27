@@ -136,7 +136,7 @@ boolean contieneNumero = false;
                 jBbuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(jBbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, -1, 40));
+        jPanel1.add(jBbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, -1, 50));
 
         jChBEstado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel1.add(jChBEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, -1, -1));

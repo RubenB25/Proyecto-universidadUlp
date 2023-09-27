@@ -55,7 +55,7 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Seleccione una materia:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, 20));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, 30));
 
         jCBListado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jCBListado.addItemListener(new java.awt.event.ItemListener() {
