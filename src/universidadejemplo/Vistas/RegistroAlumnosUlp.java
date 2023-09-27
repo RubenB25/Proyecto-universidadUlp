@@ -4,18 +4,15 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JInternalFrame;
 
-/** @author Gabriel*/
+/**
+ * @author Gabriel
+ */
 public class RegistroAlumnosUlp extends javax.swing.JFrame {
-    public static boolean ventanaAbiertaA=false;
-    public static boolean ventanaAbiertaC=false;
-    public static boolean ventanaAbiertaF=false;
-    public static boolean ventanaAbiertaG=false;
-    public static boolean ventanaAbiertaI=false;
-    
     public RegistroAlumnosUlp() {
         initComponents();
-    //  Para centrar el jDescritorio
+        //  Para centrar el jDescritorio
         pack();
         setLocationRelativeTo(null);
     }
@@ -141,98 +138,203 @@ public class RegistroAlumnosUlp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMIFormularioAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIFormularioAActionPerformed
-       FormularioAlumno fa = new FormularioAlumno();
-        if(!(ventanaAbiertaF)){
-            jDescritorio.repaint();
+        FormularioAlumno fa = new FormularioAlumno();
+        // Verifica si el JInternalFrame ya está en el JDesktopPane
+        JInternalFrame[] frames = jDescritorio.getAllFramesInLayer(javax.swing.JLayeredPane.DEFAULT_LAYER);
+        boolean estaAbierta = false;
 
-        jDescritorio.add(fa);
-        
-        Dimension desktopSize = jDescritorio.getSize();
-        Dimension frameSize = fa.getSize();
-        fa.setLocation((desktopSize.width - frameSize.width) / 2, (desktopSize.height - frameSize.height) / 2);
-        jDescritorio.moveToFront(fa);
-        fa.setVisible(true);
-        ventanaAbiertaF= true;
-        }else fa.toFront(); // No funciona, consultar con couch
+        for (JInternalFrame frame : frames) {
+            if (frame.getClass() == fa.getClass()) {
+                estaAbierta = true;
+                try {
+                    frame.setSelected(true);
+                } catch (java.beans.PropertyVetoException e) {
+                    // Manejar la excepción si es necesario
+                    e.printStackTrace();
+                }
+                break;
+            }
+        }
+
+        if (!estaAbierta) {
+            // Agrega el JInternalFrame al JDesktopPane
+            jDescritorio.add(fa);
+
+            // Centra el JInternalFrame en el JDesktopPane
+            Dimension desktopSize = jDescritorio.getSize();
+            Dimension frameSize = fa.getSize();
+            fa.setLocation((desktopSize.width - frameSize.width) / 2, (desktopSize.height - frameSize.height) / 2);
+
+            // Lleva el JInternalFrame al frente
+            jDescritorio.moveToFront(fa);
+
+            // Hace que el JInternalFrame sea visible
+            fa.setVisible(true);
+        } else {
+            // Intenta traer al frente el JInternalFrame si ya está abierto
+            fa.toFront();
+        }
     }//GEN-LAST:event_jMIFormularioAActionPerformed
 
     private void jMIManejoInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIManejoInscActionPerformed
-       
-        // TODO add your handling code here:+
-        Inscripciones JIInsc = new Inscripciones();
-         if(!(ventanaAbiertaI)){
-        jDescritorio.repaint();
-        
+
         // Crea una instancia de tu JInternalFrame
-        
-        // Agrega el JInternalFrame al JDesktopPane
-  
-        
-        
-        jDescritorio.add(JIInsc);
-        Dimension desktopSize = jDescritorio.getSize();
-        Dimension frameSize = JIInsc.getSize();
-        JIInsc.setLocation((desktopSize.width - frameSize.width) / 2, (desktopSize.height - frameSize.height) / 2);
-        // Hace que el JInternalFrame sea visible
-        JIInsc.setVisible(true);
-        ventanaAbiertaI=true;
-    }
-        
-       
-        
+        Inscripciones JIInsc = new Inscripciones();
+
+        // Verifica si el JInternalFrame ya está en el JDesktopPane
+        JInternalFrame[] frames = jDescritorio.getAllFramesInLayer(javax.swing.JLayeredPane.DEFAULT_LAYER);
+        boolean estaAbierta = false;
+
+        for (JInternalFrame frame : frames) {
+            if (frame.getClass() == JIInsc.getClass()) {
+                estaAbierta = true;
+                try {
+                    frame.setSelected(true);
+                } catch (java.beans.PropertyVetoException e) {
+                    // Manejar la excepción si es necesario
+                    e.printStackTrace();
+                }
+                break;
+            }
+        }
+
+        if (!estaAbierta) {
+            // Agrega el JInternalFrame al JDesktopPane
+            jDescritorio.add(JIInsc);
+
+            // Centra el JInternalFrame en el JDesktopPane
+            Dimension desktopSize = jDescritorio.getSize();
+            Dimension frameSize = JIInsc.getSize();
+            JIInsc.setLocation((desktopSize.width - frameSize.width) / 2, (desktopSize.height - frameSize.height) / 2);
+
+            // Hace que el JInternalFrame sea visible
+            JIInsc.setVisible(true);
+        }
+
+
     }//GEN-LAST:event_jMIManejoInscActionPerformed
 
     private void jMIManipulacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIManipulacionActionPerformed
- if(!(ventanaAbiertaA)){
-         jDescritorio.repaint();
-        // Crea una instancia de tu JInternalFrame
-        ActualizacionDeNotas adn =new ActualizacionDeNotas();
-        // Agrega el JInternalFrame al JDesktopPane
-        
-        jDescritorio.add(adn);
-        Dimension desktopSize = jDescritorio.getSize();
-        Dimension frameSize = adn.getSize();
-        adn.setLocation((desktopSize.width - frameSize.width) / 2, (desktopSize.height - frameSize.height) / 2);
-        // Hace que el JInternalFrame sea visible
-        adn.setVisible(true);}
-    ventanaAbiertaA=true;
-       // adn.addComponentListener(adn);
+
+        // Verifica si el JInternalFrame ya está en el JDesktopPane
+        ActualizacionDeNotas adn = new ActualizacionDeNotas();
+        JInternalFrame[] frames = jDescritorio.getAllFramesInLayer(javax.swing.JLayeredPane.DEFAULT_LAYER);
+        boolean estaAbierta = false;
+
+        for (JInternalFrame frame : frames) {
+            if (frame.getClass() == adn.getClass()) {
+                estaAbierta = true;
+                try {
+                    frame.setSelected(true);
+                } catch (java.beans.PropertyVetoException e) {
+                    // Manejar la excepción si es necesario
+                    e.printStackTrace();
+                }
+                break;
+            }
+        }
+
+        if (!estaAbierta) {
+            // Agrega el JInternalFrame al JDesktopPane
+            jDescritorio.add(adn);
+
+            // Centra el JInternalFrame en el JDesktopPane
+            Dimension desktopSize = jDescritorio.getSize();
+            Dimension frameSize = adn.getSize();
+            adn.setLocation((desktopSize.width - frameSize.width) / 2, (desktopSize.height - frameSize.height) / 2);
+
+            // Lleva el JInternalFrame al frente
+            jDescritorio.moveToFront(adn);
+
+            // Hace que el JInternalFrame sea visible
+            adn.setVisible(true);
+        } else {
+            // Intenta traer al frente el JInternalFrame si ya está abierto
+            adn.toFront();
+        }
+        // adn.addComponentListener(adn);
     }//GEN-LAST:event_jMIManipulacionActionPerformed
 
     private void jMIFormularioMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIFormularioMActionPerformed
-        // TODO add your handling code here:
-         if(!(ventanaAbiertaG)){
-        jDescritorio.repaint();
+        // Verifica si el JInternalFrame ya está en el JDesktopPane
         GestionMaterias gM = new GestionMaterias();
-        jDescritorio.add(gM);
-        Dimension desktopSize = jDescritorio.getSize();
-        Dimension frameSize = gM.getSize();
-        gM.setLocation((desktopSize.width - frameSize.width) / 2, (desktopSize.height - frameSize.height) / 2);
-        gM.setVisible(true);
-        ventanaAbiertaG=true;
-         }
+        JInternalFrame[] frames = jDescritorio.getAllFramesInLayer(javax.swing.JLayeredPane.DEFAULT_LAYER);
+        boolean alreadyOpen = false;
+
+        for (JInternalFrame frame : frames) {
+            if (frame.getClass() == gM.getClass()) {
+                alreadyOpen = true;
+                try {
+                    frame.setSelected(true);
+                } catch (java.beans.PropertyVetoException e) {
+                    // Manejar la excepción si es necesario
+                    e.printStackTrace();
+                }
+                break;
+            }
+        }
+
+        if (!alreadyOpen) {
+            // Agrega el JInternalFrame al JDesktopPane
+            jDescritorio.add(gM);
+
+            // Centra el JInternalFrame en el JDesktopPane
+            Dimension desktopSize = jDescritorio.getSize();
+            Dimension frameSize = gM.getSize();
+            gM.setLocation((desktopSize.width - frameSize.width) / 2, (desktopSize.height - frameSize.height) / 2);
+
+            // Hace que el JInternalFrame sea visible
+            gM.setVisible(true);
+
+        } else {
+            // Intenta traer al frente el JInternalFrame si ya está abierto
+            gM.toFront();
+        }
     }//GEN-LAST:event_jMIFormularioMActionPerformed
 
     private void jMIAlumnosxMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIAlumnosxMActionPerformed
         // TODO add your handling code here:
-         if(!(ventanaAbiertaC)){
-        jDescritorio.repaint();
         ConsultaDeAlumnosPorMateria consultaAlumn = new ConsultaDeAlumnosPorMateria();
-        
-        jDescritorio.add(consultaAlumn);
-        Dimension desktopSize = jDescritorio.getSize();
-        Dimension frameSize = consultaAlumn.getSize();
-        consultaAlumn.setLocation((desktopSize.width - frameSize.width) / 2, (desktopSize.height - frameSize.height) / 2);
-        jDescritorio.moveToFront(consultaAlumn);
-        consultaAlumn.setVisible(true);
-        ventanaAbiertaC=true;
-         }
+        JInternalFrame[] frames = jDescritorio.getAllFramesInLayer(javax.swing.JLayeredPane.DEFAULT_LAYER);
+        boolean alreadyOpen = false;
+
+        for (JInternalFrame frame : frames) {
+            if (frame.getClass() == consultaAlumn.getClass()) {
+                alreadyOpen = true;
+                try {
+                    frame.setSelected(true);
+                } catch (java.beans.PropertyVetoException e) {
+                    // Manejar la excepción si es necesario
+                    e.printStackTrace();
+                }
+                break;
+            }
+        }
+
+        if (!alreadyOpen) {
+            // Agrega el JInternalFrame al JDesktopPane
+            jDescritorio.add(consultaAlumn);
+
+            // Centra el JInternalFrame en el JDesktopPane
+            Dimension desktopSize = jDescritorio.getSize();
+            Dimension frameSize = consultaAlumn.getSize();
+            consultaAlumn.setLocation((desktopSize.width - frameSize.width) / 2, (desktopSize.height - frameSize.height) / 2);
+
+            // Lleva el JInternalFrame al frente
+            jDescritorio.moveToFront(consultaAlumn);
+
+            // Hace que el JInternalFrame sea visible
+            consultaAlumn.setVisible(true);
+        } else {
+            // Intenta traer al frente el JInternalFrame si ya está abierto
+            consultaAlumn.toFront();
+        }
+
     }//GEN-LAST:event_jMIAlumnosxMActionPerformed
 
     public static void main(String args[]) {
-        
-        //Connection con = Conexion.getConex();
 
+        //Connection con = Conexion.getConex();
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
