@@ -1,24 +1,14 @@
 package universidadejemplo.Vistas;
 
-import java.awt.BorderLayout;
-import java.awt.event.KeyEvent;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-import javax.swing.DefaultCellEditor;
 import javax.swing.JOptionPane;
-import javax.swing.JSpinner;
-import javax.swing.event.CellEditorListener;
-import javax.swing.event.ChangeEvent;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellEditor;
-import javax.swing.table.TableColumn;
 import universidadejemplo.AccesoADatos.AlumnoData;
 import universidadejemplo.AccesoADatos.InscripcionData;
 import universidadejemplo.Entidades.Alumno;
 import universidadejemplo.Entidades.Inscripcion;
-import universidadejemplo.Entidades.Materia;
 
 public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
 

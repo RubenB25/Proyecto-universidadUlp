@@ -5,7 +5,6 @@
  */
 package universidadejemplo.Vistas;
 
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import universidadejemplo.AccesoADatos.InscripcionData;
 import universidadejemplo.AccesoADatos.MateriaData;

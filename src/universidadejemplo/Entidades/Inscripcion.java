@@ -1,8 +1,5 @@
 package universidadejemplo.Entidades;
 
-import universidadejemplo.Entidades.Alumno;
-import universidadejemplo.Entidades.Materia;
-
 /**
  *
  * @author Gabriel

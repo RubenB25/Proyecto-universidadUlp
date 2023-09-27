@@ -3,7 +3,6 @@ package universidadejemplo.Vistas;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.beans.PropertyVetoException;
 import javax.swing.ImageIcon;
 
 /** @author Gabriel*/

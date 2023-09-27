@@ -1,6 +1,5 @@
 package universidadejemplo.AccesoADatos;
 
-import java.awt.AWTException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
