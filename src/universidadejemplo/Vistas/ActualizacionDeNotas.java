@@ -26,13 +26,12 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
         //instancio una tabla con el modelo de la vista 
         modelo = (DefaultTableModel) jTinscripcionMateria.getModel();
         llenarCB();
-
     }
 
     public void llenarCB() {
         //metodo de llenado de la array de alumno
         AlumnoData llenar = new AlumnoData();
-        //lo recorre a la array y la llena
+        //lo recorre a la array y la llena en este caso el combo box
         for (Alumno listarAlumno : llenar.listarAlumnos()) {
             jCBalumnos.addItem(listarAlumno);
 
@@ -162,26 +161,27 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
                 } else {
                     JOptionPane.showMessageDialog(this, "Valor de nota fuera de rango (1 a 10)", "ERROR", JOptionPane.ERROR_MESSAGE);
                     registroError++;
-                }
-            }
+                }}
+                
+            int opcion = JOptionPane.showConfirmDialog(null, "Se actualizara la nota del alumno seleccionado, esta seguro?", "Confirmación", JOptionPane.YES_NO_OPTION);
+            if (opcion == JOptionPane.YES_OPTION) {
             // mensaje de confirmación y limpieza de las listas.
             if (registroError == 0) {
                 JOptionPane.showMessageDialog(this, "Notas actualizadas.");
                 filasSelec.removeAll(filasSelec);
                 listaNotas.removeAll(listaNotas);
-
+            }
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Ingrese un valor númerico.", "ERROR", JOptionPane.ERROR_MESSAGE);
+        
+
         }
-
-
     }//GEN-LAST:event_jBguardarActionPerformed
 
     private void jCBalumnosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBalumnosItemStateChanged
         limpiar();
         listar();
-
         filasSelec.removeAll(filasSelec);
         listaNotas.removeAll(listaNotas);
 
@@ -203,6 +203,7 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
     public void limpiar() {
         while (modelo.getRowCount() > 0) {
             modelo.removeRow(0);
+        jCBalumnos.getModel();
         }
     }
 
