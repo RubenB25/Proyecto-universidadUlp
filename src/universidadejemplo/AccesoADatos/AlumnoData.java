@@ -93,11 +93,11 @@ public class AlumnoData {
                 alumno.setFechaNacimiento(resultado.getDate("fechaNacimiento").toLocalDate());
                 alumno.setEstado(resultado.getBoolean("estado"));
             } else {
-                JOptionPane.showMessageDialog(null, "No existe el alumno o no se encuentra activo");
+                JOptionPane.showMessageDialog(null, "No existe el alumno");
                 ps.close();
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Errpr al acceder a la tabla Alumno. 3" + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Errpr al acceder a la tabla Alumno" + e.getMessage());
         }
         return alumno;
     }
@@ -122,7 +122,7 @@ public class AlumnoData {
             psa.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Alumno 4" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Alumno" + ex.getMessage());
         }
         return alumnos;
     }
@@ -157,7 +157,7 @@ public class AlumnoData {
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Alumno eliminado correctamente.");
+                JOptionPane.showMessageDialog(null, "Alumno dado de baja correctamente.");
             }
             ps.close();
         } catch (SQLException e) {
