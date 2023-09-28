@@ -239,6 +239,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 
     private void jBAnularInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnularInscActionPerformed
         // TODO add your handling code here:
+        
         if (jTInscriptos.getSelectedRow() != -1) {
             if (jRBInscriptas.isSelected()) {
                 Alumno alumnoSelec = (Alumno) jCBInscriptos.getSelectedItem();
@@ -247,10 +248,13 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                 // Casteo a int del idMateria
                 int idMateria = (int) modelo.getValueAt(jTInscriptos.getSelectedRow(), 0);
                 InscripcionData iData = new InscripcionData();
+                int opcion = JOptionPane.showConfirmDialog(null, "Se anulará la inscripción a la materia seleccionada", "Confirmación", JOptionPane.YES_NO_OPTION);
+            if (opcion == JOptionPane.YES_OPTION) {
                 iData.anularInscripcion(alumnoSelecI, idMateria);
-
+            }
                 limpiar();
                 listar();
+                
 
             } else {
                 JOptionPane.showMessageDialog(this, "El alumno no esta inscripto en la materia seleccionada.", "Error", JOptionPane.ERROR_MESSAGE);

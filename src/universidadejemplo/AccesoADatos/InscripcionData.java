@@ -127,7 +127,7 @@ public class InscripcionData {
         try {
             String sql = "SELECT i.nota, m.nombre, i.idMateria, m.año FROM "
                     + "inscripcion i join materia m on(i.idMateria = m.idMateria) "
-                    + "WHERE i.idAlumno=" + idAlumno;
+                    + "WHERE m.estado = 1 AND i.idAlumno=" + idAlumno;
             PreparedStatement psm = con.prepareStatement(sql);
             ResultSet rs = psm.executeQuery();
             while (rs.next()) {
