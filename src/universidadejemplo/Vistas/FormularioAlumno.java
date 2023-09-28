@@ -14,9 +14,11 @@ import universidadejemplo.Entidades.Alumno;
  * @author Gabriel
  */
 public class FormularioAlumno extends javax.swing.JInternalFrame {
-    boolean contieneNumero=false;
+
+    boolean contieneNumero = false;
     private Alumno alumno;
     private int dni;
+
     public FormularioAlumno() {
         initComponents();
         alumno = new Alumno();
@@ -25,7 +27,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
 
     public boolean verificarCampos() {
         ButtonModel bm = bGEstado.getSelection();
-        try {  
+        try {
             dni = Integer.parseInt(jTFdocumento.getText());
             if ((!"".equals(jTFapellido.getText()) && !"".equals(jTFnombre.getText()))
                     && bGEstado.isSelected(bm) && jDCfechaNacimiento.getDate() != null) { //(jRActivoNo.isSelected() || jRActivoSi.isSelected())
@@ -215,45 +217,49 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         AlumnoData alumnoData = new AlumnoData();
 
         try {
-             dni = Integer.parseInt(jTFdocumento.getText());
+            dni = Integer.parseInt(jTFdocumento.getText());
             alumno = alumnoData.buscarAlumnoPorDni(dni);
             if (!"".equals(jTFdocumento.getText()) && alumno != null) {
                 jTFapellido.setText(alumno.getApellido());
                 jTFnombre.setText(alumno.getNombre());
                 if (alumno.isEstado()) {
                     jRActivoSi.setSelected(true);
-                }else jRActivoNo.setSelected(true);
+                } else {
+                    jRActivoNo.setSelected(true);
+                }
                 jDCfechaNacimiento.setDate(Date.valueOf(alumno.getFechaNacimiento()));
             }
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Ingrese un documento valido.");
+            JOptionPane.showMessageDialog(this, "Verifique los datos", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
-        if(!validarString()){
-        AlumnoData alumnoData = new AlumnoData();
-        if (!"".equals(jTFdocumento.getText()) && !"".equals(jTFnombre.getText()) && !"".equals(jTFapellido.getText()) && jDCfechaNacimiento.getDate() != null) {
+        if (!validarString()) {
+            AlumnoData alumnoData = new AlumnoData();
+            if (!"".equals(jTFdocumento.getText()) && !"".equals(jTFnombre.getText()) && !"".equals(jTFapellido.getText()) && jDCfechaNacimiento.getDate() != null) {
 
-            try {
-                dni = Integer.parseInt(jTFdocumento.getText());
-                if (jRActivoSi.isSelected()) {
-                    Alumno alumnoNuevo = new Alumno(dni, jTFapellido.getText(), jTFnombre.getText(), jDCfechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), true);
-                    alumnoData.guardarAlumno(alumnoNuevo);
-                }
-                if (jRActivoNo.isSelected()) {
-                    Alumno alumnoNuevo = new Alumno(dni, jTFapellido.getText(), jTFnombre.getText(), jDCfechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), false);
-                    alumnoData.guardarAlumno(alumnoNuevo);
-                }
+                try {
+                    dni = Integer.parseInt(jTFdocumento.getText());
+                    if (jRActivoSi.isSelected()) {
+                        Alumno alumnoNuevo = new Alumno(dni, jTFapellido.getText(), jTFnombre.getText(), jDCfechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), true);
+                        alumnoData.guardarAlumno(alumnoNuevo);
+                    }
+                    if (jRActivoNo.isSelected()) {
+                        Alumno alumnoNuevo = new Alumno(dni, jTFapellido.getText(), jTFnombre.getText(), jDCfechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), false);
+                        alumnoData.guardarAlumno(alumnoNuevo);
+                    }
 
-                limpiarCampos();
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Datos invalidos.");
+                    limpiarCampos();
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Datos invalidos.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe completar todos los campos.");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Debe completar todos los campos.");
+            JOptionPane.showMessageDialog(this, "Verifique los datos", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-        }else JOptionPane.showMessageDialog(this, "Verifique los datos", "ERROR", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_jBnuevoActionPerformed
 
     private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
@@ -275,43 +281,48 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         }
 
     }//GEN-LAST:event_jBeliminarActionPerformed
-    
-     public boolean validarString(){
-         
-         String inputA= jTFapellido.getText();
-         String inputN = jTFnombre.getText()+inputA;
+
+    public boolean validarString() {
+
+        String inputA = jTFapellido.getText();
+        String inputN = jTFnombre.getText() + inputA;
         if (!inputN.isEmpty()) {
             for (char c : inputN.toCharArray()) {
-            if (Character.isDigit(c)) {
-                contieneNumero = true;
-                break;
-            }else contieneNumero= false;    
-        }
-            
+                if (Character.isDigit(c)) {
+                    contieneNumero = true;
+                    break;
+                } else {
+                    contieneNumero = false;
+                }
+            }
+
         }
         return contieneNumero;
     }
     private void jBeditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeditarActionPerformed
         AlumnoData alumnoData = new AlumnoData();
-        if(!validarString()){
-        if (verificarCampos()) {
-            
-            alumno.setDni(Integer.parseInt(jTFdocumento.getText()));
-            alumno.setApellido(jTFapellido.getText());
-            alumno.setNombre(jTFnombre.getText());
-            if (jRActivoSi.isSelected()) {
-                alumno.setEstado(true);
-            } else if (jRActivoNo.isSelected()) {
-                alumno.setEstado(false);
+        if (!validarString()) {
+            if (verificarCampos()) {
+
+                alumno.setDni(Integer.parseInt(jTFdocumento.getText()));
+                alumno.setApellido(jTFapellido.getText());
+                alumno.setNombre(jTFnombre.getText());
+                if (jRActivoSi.isSelected()) {
+                    alumno.setEstado(true);
+                } else if (jRActivoNo.isSelected()) {
+                    alumno.setEstado(false);
+                }
+                alumno.setFechaNacimiento(jDCfechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+
+                alumnoData.modificarAlumno(alumno);
+
+                limpiarCampos();
             }
-            alumno.setFechaNacimiento(jDCfechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        } else {
+            JOptionPane.showMessageDialog(this, "Verifique los datos", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
 
-            alumnoData.modificarAlumno(alumno);
 
-            limpiarCampos();
-        }}else JOptionPane.showMessageDialog(this, "Verifique los datos", "ERROR", JOptionPane.ERROR_MESSAGE);
-        
-        
     }//GEN-LAST:event_jBeditarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
