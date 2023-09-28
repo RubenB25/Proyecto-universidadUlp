@@ -32,7 +32,7 @@ public class MateriaData {
     }
     
     
-    public void nuevaMateria(Materia materia){
+    public Materia nuevaMateria(Materia materia){
         String sql = "INSERT INTO materia (nombre, año, estado)"
                 + "VALUES (?, ?, ?)";  
         try {
@@ -50,16 +50,15 @@ public class MateriaData {
                JOptionPane.showMessageDialog(null, "Materia Ingresada");
             } 
             ps.close();
-            
+            return materia; //retorna materia con idMateria actualizado
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Error al acceder a la tabla materia" +ex.getMessage());
+            return null; //Manejo de errores
         }
     }
    
     
     public void ModificaMateria(Materia materia) {
-        
-
     
         try {
               String sql = "UPDATE materia SET nombre = ?, año = ?, estado = ? "

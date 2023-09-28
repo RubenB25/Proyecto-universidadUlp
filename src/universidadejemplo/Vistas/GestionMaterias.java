@@ -7,7 +7,10 @@ package universidadejemplo.Vistas;
 
 import Control.ValidacionesController;
 import com.sun.glass.events.KeyEvent;
+import java.awt.List;
+import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import universidadejemplo.AccesoADatos.MateriaData;
 import universidadejemplo.Entidades.Materia;
@@ -17,7 +20,9 @@ import universidadejemplo.Entidades.Materia;
  * @author rar
  */
 public class GestionMaterias extends javax.swing.JInternalFrame {
-boolean contieneNumero = false;
+    boolean contieneNumero = false;
+    private int itemComboBox;
+    
     /**
      * Creates new form GestionMaterias
      */
@@ -25,6 +30,7 @@ boolean contieneNumero = false;
     public GestionMaterias() {
         initComponents();
         cargarComboMaterias();
+         
     }
 
     /**
@@ -52,6 +58,7 @@ boolean contieneNumero = false;
         jTnombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jCBMaterias = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setTitle("Gestion de Materias");
@@ -73,7 +80,7 @@ boolean contieneNumero = false;
         });
         jPanel1.add(jBnuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 110, 30));
 
-        jBeliminar.setText("Eliminar");
+        jBeliminar.setText("Dar Baja");
         jBeliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBeliminarActionPerformed(evt);
@@ -103,11 +110,11 @@ boolean contieneNumero = false;
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Año:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 40, 20));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 40, 20));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Codigo:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
 
         jTcodigo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -117,7 +124,7 @@ boolean contieneNumero = false;
                 jTcodigoKeyTyped(evt);
             }
         });
-        jPanel1.add(jTcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 104, -1));
+        jPanel1.add(jTcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 104, -1));
 
         JTaño.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -127,15 +134,15 @@ boolean contieneNumero = false;
                 JTañoKeyTyped(evt);
             }
         });
-        jPanel1.add(JTaño, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 60, 30));
+        jPanel1.add(JTaño, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 60, 30));
 
-        jBbuscar.setText("Buscar");
+        jBbuscar.setText("Limpiar");
         jBbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBbuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(jBbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, -1, 40));
+        jPanel1.add(jBbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, -1, 40));
         jPanel1.add(jChBEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FooterUlpVirtualM.png"))); // NOI18N
@@ -158,11 +165,11 @@ boolean contieneNumero = false;
                 jTnombreKeyTyped(evt);
             }
         });
-        jPanel1.add(jTnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 245, -1));
+        jPanel1.add(jTnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 230, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Nombre:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
 
         jCBMaterias.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -174,7 +181,10 @@ boolean contieneNumero = false;
                 jCBMateriasActionPerformed(evt);
             }
         });
-        jPanel1.add(jCBMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 210, -1));
+        jPanel1.add(jCBMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 210, 30));
+
+        jLabel5.setText("Buscar:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 96, -1, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -200,15 +210,14 @@ boolean contieneNumero = false;
             if(jChBEstado.isSelected()){
                estado = true;
             }
-            Materia mat = new Materia(Integer.valueOf(jTcodigo.getText()), jTnombre.getText(), Integer.valueOf(JTaño.getText()) , estado);
-            //Materia mat = new Materia(1, jTnombre.getText(), Integer.valueOf(JTaño.getText()) , true);
-             //System.out.println(mat.getIdMateria() + "" + " " + mat.getNombre() + " " 
-             //        + mat.getIdAnioMateria() + " " + mat.isEstado());
+            Materia mat = new Materia(Integer.valueOf(jTcodigo.getText()), 
+                    jTnombre.getText(), Integer.valueOf(JTaño.getText()) , estado);
              
             MateriaData matData = new MateriaData();
             matData.ModificaMateria(mat);
-            limpiar();
-            cargarComboMaterias();
+            
+            modificaItemJCB();
+            jCBMaterias.setSelectedItem(0);
         }
          
          }else JOptionPane.showMessageDialog(this, "Verifique los datos", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -224,18 +233,10 @@ boolean contieneNumero = false;
 
     
     private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
-        
-        if (jTcodigo.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Ingrese el codigo de materia");
-        } else {
-            int codigo = Integer.parseInt(jTcodigo.getText());
-            MateriaData matData = new MateriaData();
-            matData.buscarMateria(codigo);
-            Materia mat = matData.buscarMateria(codigo);
-            jTnombre.setText(mat.getNombre());
-            JTaño.setText(mat.getAnio()+"");
-            jChBEstado.setSelected(mat.isEstado());
-        }
+          jCBMaterias.setSelectedItem(0);
+          limpiar();
+
+
     }//GEN-LAST:event_jBbuscarActionPerformed
 
     private void jTcodigoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTcodigoKeyPressed
@@ -247,20 +248,28 @@ boolean contieneNumero = false;
     }//GEN-LAST:event_jTcodigoKeyTyped
 
     private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
-            
-        if(!validarString()){
-        if (validaDatos()) {
-            JOptionPane.showMessageDialog(null, "Debe completar todos los campos solicitados");
-        } else {
-            
-            Materia mat = new Materia(jTnombre.getText(), Integer.valueOf(JTaño.getText()) , true);
-            MateriaData matData = new MateriaData();
-            matData.nuevaMateria(mat);
-            limpiar();
-            cargarComboMaterias();
+
+        if (!validarString()) {
+            if (validaDatos()) {
+                JOptionPane.showMessageDialog(null, "Debe completar todos los campos solicitados");
+            } else {
+
+                Materia mat = new Materia(jTnombre.getText(), Integer.valueOf(JTaño.getText()), true);
+                MateriaData matData = new MateriaData();
+                Materia materiaIngresada = matData.nuevaMateria(mat);
+                if (materiaIngresada != null) {
+                    //agregaItemJCB();
+                    jCBMaterias.addItem(materiaIngresada);
+                    //int cantRegistros = jCBMaterias.getItemCount();
+                    //jCBMaterias.setSelectedItem(cantRegistros);
+                    limpiar();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error al ingresar la materia");
+                }
             }
-        }else JOptionPane.showMessageDialog(this, "Verifique los datos", "ERROR", JOptionPane.ERROR_MESSAGE);
-        
+        } else {
+            JOptionPane.showMessageDialog(this, "Verifique los datos", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jBnuevoActionPerformed
     
     //boton Eliminar
@@ -271,8 +280,9 @@ boolean contieneNumero = false;
             int codigo = Integer.parseInt(jTcodigo.getText());
             MateriaData matData = new MateriaData();
             matData.EliminaMateria(codigo);
-            limpiar();
-            cargarComboMaterias();
+            
+            modificaItemJCB();
+            jCBMaterias.setSelectedItem(0);
         }
     }//GEN-LAST:event_jBeliminarActionPerformed
 
@@ -298,17 +308,22 @@ boolean contieneNumero = false;
     }//GEN-LAST:event_jTnombreActionPerformed
 
     private void jCBMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBMateriasActionPerformed
-        Materia materiaSelec = (Materia) jCBMaterias.getSelectedItem();
-        if (materiaSelec.getIdMateria() != 0) {
-            jTcodigo.setText(materiaSelec.getIdMateria() + "");
-            jTnombre.setText(materiaSelec.getNombre());
-            JTaño.setText(materiaSelec.getAnio() + "");
-            jChBEstado.setSelected(materiaSelec.isEstado());
+        if (jCBMaterias.getItemCount() > 0) {
+
+            Materia materiaSelec = (Materia) jCBMaterias.getSelectedItem();
+            itemComboBox = jCBMaterias.getSelectedIndex();
+            if (materiaSelec.getIdMateria() != 0) {
+                jTcodigo.setText(materiaSelec.getIdMateria() + "");
+                jTnombre.setText(materiaSelec.getNombre());
+                JTaño.setText(materiaSelec.getAnio() + "");
+                jChBEstado.setSelected(materiaSelec.isEstado());
+            } else {
+                limpiar();
+            }
         } else {
-            limpiar();
+            cargarComboMaterias();
         }
-        
-        
+
     }//GEN-LAST:event_jCBMateriasActionPerformed
 
     private void JTañoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTañoKeyPressed
@@ -361,7 +376,6 @@ boolean contieneNumero = false;
 
         if (jTnombre.getText().length() > 100) {
             evt.consume(); 
-            
         }
     }
 
@@ -401,12 +415,34 @@ boolean contieneNumero = false;
             jCBMaterias.addItem(listaMaterias);
         }
         
-        for (int i = 1; i < materiasCB.listaComboMaterias().size() ; i++) {
-            System.out.println("i " + i); 
-           jCBMaterias.removeItem(i);
-        }
-        jCBMaterias.setSelectedIndex(0);
+        
     }
+    
+    private void modificaItemJCB() {
+        Materia materiaModificada = new Materia(Integer.valueOf(jTcodigo.getText()),
+        jTnombre.getText(), Integer.valueOf(JTaño.getText()),
+        jChBEstado.isSelected());
+        DefaultComboBoxModel<Materia> modelo = (DefaultComboBoxModel<Materia>) jCBMaterias.getModel();
+        modelo.removeElementAt(itemComboBox);
+        modelo.insertElementAt(materiaModificada, itemComboBox);
+        modelo.setSelectedItem(materiaModificada);
+    }
+    
+    private void buscaMateria() {
+        if (jTcodigo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese el codigo de materia");
+        } else {
+            int codigo = Integer.parseInt(jTcodigo.getText());
+            MateriaData matData = new MateriaData();
+            matData.buscarMateria(codigo);
+            Materia mat = matData.buscarMateria(codigo);
+            jTnombre.setText(mat.getNombre());
+            JTaño.setText(mat.getAnio()+"");
+            jChBEstado.setSelected(mat.isEstado());
+        }
+    }
+    
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JTaño;
@@ -421,9 +457,11 @@ boolean contieneNumero = false;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTcodigo;
     private javax.swing.JTextField jTnombre;
     // End of variables declaration//GEN-END:variables
+    
 }
