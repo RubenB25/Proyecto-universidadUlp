@@ -52,7 +52,7 @@ public class MateriaData {
             ps.close();
             return materia; //retorna materia con idMateria actualizado
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla materia" +ex.getMessage());
+            JOptionPane.showMessageDialog(null,"Materia existente","Atencion",JOptionPane.ERROR_MESSAGE);
             return null; //Manejo de errores
         }
     }

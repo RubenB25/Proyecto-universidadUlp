@@ -221,7 +221,8 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         }
          
          }else JOptionPane.showMessageDialog(this, "Verifique los datos", "ERROR", JOptionPane.ERROR_MESSAGE);
-        
+         
+         limpiar();
     
     }//GEN-LAST:event_jBguardarActionPerformed
 
@@ -263,13 +264,12 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                     //int cantRegistros = jCBMaterias.getItemCount();
                     //jCBMaterias.setSelectedItem(cantRegistros);
                     limpiar();
-                } else {
-                    JOptionPane.showMessageDialog(this, "Error al ingresar la materia");
-                }
+                } 
             }
         } else {
             JOptionPane.showMessageDialog(this, "Verifique los datos", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
+        
     }//GEN-LAST:event_jBnuevoActionPerformed
     
     //boton Eliminar
@@ -284,6 +284,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             modificaItemJCB();
             jCBMaterias.setSelectedItem(0);
         }
+        limpiar();
     }//GEN-LAST:event_jBeliminarActionPerformed
 
     private void JTañoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTañoKeyTyped
