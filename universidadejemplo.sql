@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-09-2023 a las 22:58:17
+-- Tiempo de generación: 29-09-2023 a las 02:00:20
 -- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.0.28
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -48,7 +48,8 @@ INSERT INTO `alumno` (`idAlumno`, `dni`, `apellido`, `nombre`, `fechaNacimiento`
 (3, 3244875, 'Godoy', 'Martín', '2003-01-16', 1),
 (4, 46526846, 'Chiguay', 'Gisel', '1993-03-23', 1),
 (5, 16440902, 'Richard ', 'Rodolfo  ', '1963-02-25', 0),
-(6, 25698741, 'Gerez', 'Miryam del Carmen', '2005-09-15', 1);
+(6, 25698741, 'Gerez', 'Miryam del Carmen', '2005-09-15', 1),
+(7, 40000650, 'Botello', 'Ruben', '1997-09-25', 1);
 
 -- --------------------------------------------------------
 
@@ -58,7 +59,7 @@ INSERT INTO `alumno` (`idAlumno`, `dni`, `apellido`, `nombre`, `fechaNacimiento`
 
 CREATE TABLE `inscripcion` (
   `idInscripto` int(11) NOT NULL,
-  `nota` int(11) NOT NULL,
+  `nota` double NOT NULL,
   `idAlumno` int(11) NOT NULL,
   `idMateria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -75,12 +76,16 @@ INSERT INTO `inscripcion` (`idInscripto`, `nota`, `idAlumno`, `idMateria`) VALUE
 (49, 7, 1, 3),
 (50, 0, 3, 4),
 (51, 8, 1, 1),
-(52, 8, 2, 2),
+(52, 5, 2, 2),
 (53, 5, 2, 4),
 (54, 0, 2, 1),
 (55, 0, 5, 15),
 (56, 0, 5, 6),
-(57, 8, 3, 10);
+(57, 8, 3, 10),
+(58, 5, 7, 2),
+(59, 4, 7, 20),
+(60, 9, 7, 9),
+(62, 2, 7, 24);
 
 -- --------------------------------------------------------
 
@@ -157,13 +162,13 @@ ALTER TABLE `materia`
 -- AUTO_INCREMENT de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `inscripcion`
 --
 ALTER TABLE `inscripcion`
-  MODIFY `idInscripto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `idInscripto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT de la tabla `materia`
